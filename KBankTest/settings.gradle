@@ -1,2 +1,2 @@
-rootProject.name = "KBTest"
+rootProject.name = "KBankTest"
 include ':app'

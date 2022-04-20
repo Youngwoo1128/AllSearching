@@ -1,4 +1,4 @@
-package com.woojoo.kbtest
+package com.woojoo.kbanktest
 
 import org.junit.Test
 
