@@ -30,17 +30,22 @@ package com.woojoo.kbanktest
 
 // -> 정리
 // 통신 -> Retrofit
-// 로컬 DB -> Room
-// SharedPreference -> ???
-// DI -> Hilt
-// Paging -> Paginate?? Android Paging???
-// Design Pattern -> MVVM (AAC)
 // Response -> DataBinding
 // UI -> ViewBinding
+// DI -> Hilt
+// Design Pattern -> MVVM (AAC)
+// 로컬 DB -> Room
 // Image -> Glide
+
+// SharedPreference -> ???
+// Paging -> Paginate?? Android Paging3 일단 나중에 다시 생각하기???
 
 // 욕심 좀 더 내서 Response의 item 클릭시 상세 화면으로 넘어가서 댓글, 좋아요, 기능 추가 (댓글은 Local DB)
 // 좋아요 누르면 Push 받기 (현업에서 Push 한번도 못해봄)
 // 이번 기회에 패키지 정하는 법도 고민해보기
 
 // git은.. 기능별?? 그냥 master에? 고민해보기...
+
+// Clean Architecture -> 대철님 께서 보내주신 블로그 보고 구조 살펴보기 (예제소스)
+// Clean Architecture 설명 : https://velog.io/@sery270/Android%EC%9D%98-Clean-Architecture%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90-n9ihbaj4
+// Clean Architecture 좋은 블로그 : https://leveloper.tistory.com/205
