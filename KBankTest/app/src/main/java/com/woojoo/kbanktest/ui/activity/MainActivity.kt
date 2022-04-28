@@ -1,10 +1,11 @@
-package com.woojoo.kbanktest.ui
+package com.woojoo.kbanktest.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.woojoo.kbanktest.R
 import com.woojoo.kbanktest.databinding.ActivityMainBinding
+import com.woojoo.kbanktest.ui.KBViewModel
 import com.woojoo.kbanktest.ui.fragment.SearchingResultFragment
 import dagger.hilt.android.AndroidEntryPoint
 
