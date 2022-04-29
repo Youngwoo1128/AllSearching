@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.woojoo.kbanktest.extension.request
-import com.woojoo.kbanktest.model.response.ResImage
+import com.woojoo.kbanktest.model.network.response.ResImage
 import com.woojoo.kbanktest.repository.ImageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -20,10 +20,12 @@ class KBViewModel @Inject constructor(
     val imageResult: LiveData<ResImage>
         get() = _imageResult
 
-    fun getImageSearchingResult(query: String) {
+    fun getImageSearchingResult(query: String, page: Int) {
         viewModelScope.request {
-            _imageResult.value = imageRepository.getImageResult(query)
+            _imageResult.value?.documents?.clear()
+            _imageResult.value = imageRepository.getImageResult(query, page)
             Log.d("response : ", "${_imageResult.value}")
         }
     }
+
 }

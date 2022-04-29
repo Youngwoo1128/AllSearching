@@ -12,8 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: KBViewModel by viewModels()
-
     private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setFragment()
-        binding.btnSearching.setOnClickListener {
-            searching(binding.etSearching.text.toString())
-        }
     }
 
     private fun setFragment() {
@@ -33,7 +28,5 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    private fun searching(searchingText: String) {
-        viewModel.getImageSearchingResult(searchingText)
-    }
+
 }

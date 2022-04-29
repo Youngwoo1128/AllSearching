@@ -1,8 +1,8 @@
-package com.woojoo.kbanktest.model.response
+package com.woojoo.kbanktest.model.network.response
 
 data class ResImage(
     val meta: Meta,
-    val documents: ArrayList<Documents>
+    var documents: ArrayList<Documents>
 )
 
 data class Meta(

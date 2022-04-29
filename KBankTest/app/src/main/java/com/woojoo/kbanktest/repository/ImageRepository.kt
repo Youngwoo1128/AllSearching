@@ -5,5 +5,6 @@ import javax.inject.Inject
 
 class ImageRepository @Inject constructor(private val api: NetworkAPI) {
 
-    suspend fun getImageResult(query: String) = api.searchImageResult(query)
+    //이미지 불러오기
+    suspend fun getImageResult(query: String, page: Int) = api.searchImageResult(query, page, 30)
 }
