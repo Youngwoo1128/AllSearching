@@ -2,6 +2,7 @@ package com.woojoo.kbanktest.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.woojoo.kbanktest.R
 import com.woojoo.kbanktest.databinding.FragmentSearchingResultBinding
@@ -13,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
 
-    private val viewModel: KBViewModel by viewModels()
+    private val viewModel by activityViewModels<KBViewModel>()
     private lateinit var adapter : ImageResultAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

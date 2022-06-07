@@ -5,7 +5,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-fun CoroutineScope.request(
+fun CoroutineScope.requestAPI(
     block: suspend CoroutineScope.() -> Unit
 ) {
     val coroutineException = CoroutineExceptionHandler { _, throwable ->
