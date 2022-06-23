@@ -1,6 +1,7 @@
 package com.woojoo.kbanktest.network
 
-import com.woojoo.kbanktest.model.network.response.ResImage
+import com.woojoo.kbanktest.model.response.ResImage
+import com.woojoo.kbanktest.model.response.ResVideo
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,8 +13,14 @@ interface NetworkAPI {
     suspend fun searchImageResult(
         @Query ("query") query: String,
         @Query("page") page: Int,
-        @Query("size") size: Int)
-    : ResImage
+        @Query("size") size: Int
+    ): ResImage
 
+    @GET("/v2/search/vclip")
+    suspend fun searchVideoResult(
+        @Query("query") query: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): ResVideo
 
 }

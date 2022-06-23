@@ -4,25 +4,28 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.woojoo.kbanktest.databinding.ItemImageResultBinding
-import com.woojoo.kbanktest.model.network.response.Documents
+import com.woojoo.kbanktest.model.response.Document
 import com.woojoo.kbanktest.ui.ViewHolder.ImageResultViewHolder
 
 class ImageResultAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var document = ArrayList<Documents>()
+    var documents = arrayListOf<Document>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ImageResultViewHolder(ItemImageResultBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ImageResultViewHolder).onBind(document, position)
+        (holder as ImageResultViewHolder).onBind(documents, position, object : ConvertDate {
+            override fun convertDate(date: String): String {
+              return date.substring(0, 10)
+            }
+        })
     }
 
-    override fun getItemCount(): Int = document.size
+    override fun getItemCount(): Int = documents.size
 
-    fun setItemList(items: ArrayList<Documents>) {
-        this.document = items
-        notifyDataSetChanged()
+    interface ConvertDate {
+        fun convertDate(date: String): String
     }
 }

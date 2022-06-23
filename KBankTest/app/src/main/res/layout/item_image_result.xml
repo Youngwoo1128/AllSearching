@@ -7,18 +7,23 @@
     <data>
         <variable
             name="item"
-            type="com.woojoo.kbanktest.model.network.response.Documents" />
+            type="com.woojoo.kbanktest.model.response.Document" />
+
+        <variable
+            name="callback"
+            type="com.woojoo.kbanktest.ui.adapter.ImageResultAdapter.ConvertDate" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:id="@+id/iv_thumnail"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -28,18 +33,19 @@
             android:layout_height="wrap_content"
             android:text="@{item.collection}"
             android:textSize="16dp"
-            android:textStyle="bold"
+            android:fontFamily="@font/spoqa_han_sans_bold"
             android:layout_marginStart="12dp"
             app:layout_constraintTop_toTopOf="@+id/iv_thumnail"
             app:layout_constraintStart_toEndOf="@id/iv_thumnail"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_date"
+            app:layout_constraintBottom_toTopOf="@+id/tv_date"
             tools:text="기사"/>
 
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{item.datetime}"
+            android:text="@{callback.convertDate(item.datetime)}"
+            android:fontFamily="@font/spoqa_han_sans_regular"
             app:layout_constraintTop_toBottomOf="@+id/tv_type"
             app:layout_constraintStart_toStartOf="@+id/tv_type"
             app:layout_constraintBottom_toBottomOf="parent"

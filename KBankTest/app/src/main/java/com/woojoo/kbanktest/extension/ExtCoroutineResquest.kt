@@ -9,7 +9,7 @@ fun CoroutineScope.requestAPI(
     block: suspend CoroutineScope.() -> Unit
 ) {
     val coroutineException = CoroutineExceptionHandler { _, throwable ->
-        Log.d("Connect Error : ", "${throwable}")
+        Log.d("Error : ", "${throwable}")
     }
     this.launch (coroutineException) {
         block.invoke(this)
