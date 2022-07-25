@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -8,6 +9,7 @@
         <variable
             name="item"
             type="com.woojoo.kbanktest.model.response.Document" />
+
 
     </data>
 
@@ -28,7 +30,7 @@
             android:id="@+id/tv_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{item.collection}"
+            android:text="@{item.title}"
             android:textSize="16dp"
             android:fontFamily="@font/spoqa_han_sans_bold"
             android:layout_marginStart="12dp"
@@ -58,6 +60,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

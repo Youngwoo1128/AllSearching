@@ -3,7 +3,6 @@ package com.woojoo.kbanktest.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.woojoo.kbanktest.R
 import com.woojoo.kbanktest.databinding.ActivityMainBinding
 import com.woojoo.kbanktest.ui.fragment.SearchingResultFragment
