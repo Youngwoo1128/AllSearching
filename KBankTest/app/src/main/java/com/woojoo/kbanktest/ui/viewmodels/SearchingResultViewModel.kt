@@ -33,8 +33,6 @@ class SearchingResultViewModel @Inject constructor(
             _imageResult.value = searchingRepository.getImageResult(query, page)
             _videoResult.value = searchingRepository.getVideoResult(query, page)
 
-//            _document.value = (_imageResult.value!!.documents + _videoResult.value!!.documents) as ArrayList<Document>
-//            sortResponse(_document.value!!)
             _document.value = sortResponse(
                 (_imageResult.value!!.documents + _videoResult.value!!.documents) as ArrayList<Document>
             )
@@ -51,9 +49,10 @@ class SearchingResultViewModel @Inject constructor(
         val sortObject = Comparator<Document> { o1, o2 ->
             o1?.datetime?.compareTo(o2?.datetime.toString())!!
         }
-        Collections.sort(result, sortObject)
 
+        Collections.sort(result, sortObject)
         result.reverse()
+
         Log.d("responseResult : ", "$result")
         return result
     }
