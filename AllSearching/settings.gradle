@@ -1,2 +1,2 @@
-rootProject.name = "KBankTest"
-include ':app'
+rootProject.name = "AllSearching"
+include ':app', ':data', ':domain'

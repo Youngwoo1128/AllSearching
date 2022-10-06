@@ -4,11 +4,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.ItemImageResultBinding
-import com.woojoo.allsearching.model.response.Document
+import com.woojoo.allsearching.domain.entites.Documents
 
 class ImageResultViewHolder(val binding: ItemImageResultBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun onBind(item: ArrayList<Document>, position: Int) {
+    fun onBind(item: ArrayList<Documents>, position: Int) {
         binding.item = item[position]
 
         Glide.with(binding.root.context)

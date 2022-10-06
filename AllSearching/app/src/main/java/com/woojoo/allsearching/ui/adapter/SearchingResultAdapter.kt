@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.woojoo.allsearching.databinding.ItemImageResultBinding
 import com.woojoo.allsearching.databinding.ItemVideoResultBinding
-import com.woojoo.allsearching.model.response.Document
+import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.ui.ViewHolder.ImageResultViewHolder
 import com.woojoo.allsearching.ui.ViewHolder.VideoResultViewHolder
 
 class SearchingResultAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var documents = arrayListOf<Document>()
+    var documents = arrayListOf<Documents>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == IMAGE_VIEW_TYPE) {
