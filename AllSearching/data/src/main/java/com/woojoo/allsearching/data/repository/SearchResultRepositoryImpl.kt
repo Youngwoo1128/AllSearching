@@ -11,6 +11,7 @@ class SearchResultRepositoryImpl @Inject constructor(
 ) : SearchResultRepository {
 
     override suspend fun getTotalList(query: String, page: Int): ArrayList<Documents> {
+
         val responseImage = searchingDataSource.getImageResult(query, page, REQUEST_PARAM_SIZE).documents
         val responseVideo = searchingDataSource.getVideoResult(query, page, REQUEST_PARAM_SIZE).documents
         val param = (responseImage + responseVideo) as ArrayList

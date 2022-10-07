@@ -1,10 +1,5 @@
-package com.woojoo.allsearching.model.response
+package com.woojoo.allsearching.data.network.response
 
-/**
- * Class: ResMeta
- * Created by ywsong on 2022/06/23.
- * Description:
- */
 data class Meta(
     val total_count: Int, //검색된 문서 수
     val pageable_count: Int, // total_count 중 볼 수 있는 문서 수

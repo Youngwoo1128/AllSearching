@@ -1,7 +1,7 @@
 package com.woojoo.allsearching.data.network
 
-import com.woojoo.allsearching.data.models.ResImage
-import com.woojoo.allsearching.data.models.ResVideo
+import com.woojoo.allsearching.data.network.response.ResImage
+import com.woojoo.allsearching.data.network.response.ResVideo
 import retrofit2.http.GET
 import retrofit2.http.Query
 

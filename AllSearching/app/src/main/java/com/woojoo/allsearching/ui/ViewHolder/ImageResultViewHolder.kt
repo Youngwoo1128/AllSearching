@@ -5,10 +5,11 @@ import com.bumptech.glide.Glide
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.ItemImageResultBinding
 import com.woojoo.allsearching.domain.entites.Documents
+import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
 
 class ImageResultViewHolder(val binding: ItemImageResultBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun onBind(item: ArrayList<Documents>, position: Int) {
+    fun onBind(item: ArrayList<Documents>, position: Int, callback: SearchingResultAdapter.InsertSearchingData) {
         binding.item = item[position]
 
         Glide.with(binding.root.context)
@@ -17,6 +18,8 @@ class ImageResultViewHolder(val binding: ItemImageResultBinding): RecyclerView.V
             .circleCrop()
             .into(binding.ivThumnail)
 
-//        binding.root.setOnClickListener {}
+        binding.ivFavorite.setOnClickListener {
+            callback.onInsertSearchingData(item[position])
+        }
     }
 }

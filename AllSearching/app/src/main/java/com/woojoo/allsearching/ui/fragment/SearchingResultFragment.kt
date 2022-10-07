@@ -3,11 +3,14 @@ package com.woojoo.allsearching.ui.fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.FragmentSearchingResultBinding
+import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
 import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
@@ -27,21 +30,24 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
     }
 
     private fun setObserver() {
-
         viewModel.document.observe(viewLifecycleOwner) { response ->
-            adapter.documents = response
+            adapter.addNewItem(response)
             adapter.notifyDataSetChanged()
             Log.d("responseList : ", "${response::class.java}")
         }
     }
 
     private fun initView() {
-        adapter = SearchingResultAdapter()
+        adapter = SearchingResultAdapter(object : SearchingResultAdapter.InsertSearchingData {
+            override fun onInsertSearchingData(item: Documents) {
+                viewModel.insertSearchingItem(item)
+            }
+        })
         binding.rvImageResult.adapter = adapter
         binding.rvImageResult.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
 
         binding.btnSearching.setOnClickListener {
-            adapter.documents.clear()
+            adapter.clearSearchingResult()
             viewModel.getSearchingResult(binding.etSearching.text.toString(),1)
         }
     }

@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.woojoo.allsearching.databinding.ItemImageResultBinding
 import com.woojoo.allsearching.databinding.ItemVideoResultBinding
 import com.woojoo.allsearching.domain.entites.Documents
+import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.ui.ViewHolder.ImageResultViewHolder
 import com.woojoo.allsearching.ui.ViewHolder.VideoResultViewHolder
 
-class SearchingResultAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SearchingResultAdapter(private val callback: InsertSearchingData): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var documents = arrayListOf<Documents>()
+    private val documents = arrayListOf<Documents>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == IMAGE_VIEW_TYPE) {
@@ -27,27 +28,36 @@ class SearchingResultAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val item = documents[position]
 
         if (item.viewType == IMAGE_VIEW_TYPE) {
-            (holder as ImageResultViewHolder).onBind(documents, position)
+            (holder as ImageResultViewHolder).onBind(documents, position, callback)
         } else {
-            (holder as VideoResultViewHolder).onBind(documents, position)
+            (holder as VideoResultViewHolder).onBind(documents, position, callback)
         }
     }
 
     override fun getItemCount(): Int = documents.size
 
     override fun getItemViewType(position: Int): Int {
-        if (!documents[position].thumbnail_url.isNullOrEmpty() && documents[position].thumbnail.isNullOrEmpty()) {
+        return if (!documents[position].thumbnail_url.isNullOrEmpty() && documents[position].thumbnail.isNullOrEmpty()) {
             documents[position].viewType = IMAGE_VIEW_TYPE
-            return IMAGE_VIEW_TYPE
-        }else {
+            IMAGE_VIEW_TYPE
+        } else {
             documents[position].viewType = VIDEO_VIEW_TYPE
-            return VIDEO_VIEW_TYPE
+            VIDEO_VIEW_TYPE
         }
     }
 
-//    interface ConvertDate {
-//        fun convertDate(date: String): String
-//    }
+    interface InsertSearchingData {
+        fun onInsertSearchingData(item: Documents)
+    }
+
+    fun addNewItem(newItem: ArrayList<Documents>) {
+        documents.addAll(newItem)
+        documents.distinct()
+    }
+
+    fun clearSearchingResult() {
+        documents.clear()
+    }
 
     companion object {
         private const val IMAGE_VIEW_TYPE = 1

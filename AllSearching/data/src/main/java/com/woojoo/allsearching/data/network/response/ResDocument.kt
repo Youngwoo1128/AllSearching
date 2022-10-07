@@ -1,13 +1,6 @@
-package com.woojoo.allsearching.model.response
+package com.woojoo.allsearching.data.network.response
 
-/**
- * Class: ResVideoDocument
- * Created by ywsong on 2022/06/23.
- * Description: request 이미지, 동영상
- */
-
-data class Document(
-
+data class ResDocument(
     //image
     val collection: String?, //
     val thumbnail_url: String?, // 미리보기 이미지 URL
@@ -26,6 +19,5 @@ data class Document(
 
     //공통
     var datetime: String?, // 문서 작성시간
-
     var viewType: Int
 )

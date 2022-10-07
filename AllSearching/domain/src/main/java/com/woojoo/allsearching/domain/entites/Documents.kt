@@ -20,6 +20,5 @@ data class Documents(
 
     //공통
     var datetime: String?, // 문서 작성시간
-
     var viewType: Int
 )

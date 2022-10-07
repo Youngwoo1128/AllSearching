@@ -1,6 +1,6 @@
 package com.woojoo.allsearching.data.mapping
 
-import com.woojoo.allsearching.data.models.ResDocument
+import com.woojoo.allsearching.data.network.response.ResDocument
 import com.woojoo.allsearching.domain.entites.Documents
 import java.util.*
 import kotlin.Comparator

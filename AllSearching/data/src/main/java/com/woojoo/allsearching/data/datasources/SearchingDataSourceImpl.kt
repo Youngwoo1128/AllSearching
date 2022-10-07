@@ -1,7 +1,7 @@
 package com.woojoo.allsearching.data.datasources
 
-import com.woojoo.allsearching.data.models.ResImage
-import com.woojoo.allsearching.data.models.ResVideo
+import com.woojoo.allsearching.data.network.response.ResImage
+import com.woojoo.allsearching.data.network.response.ResVideo
 import com.woojoo.allsearching.data.network.NetworkAPI
 import javax.inject.Inject
 
