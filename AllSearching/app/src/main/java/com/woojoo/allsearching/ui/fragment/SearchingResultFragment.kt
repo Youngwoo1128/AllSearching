@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
 
-    private val viewModel by activityViewModels<SearchingResultViewModel>()
+    private val viewModel by viewModels<SearchingResultViewModel>()
     private lateinit var adapter : SearchingResultAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,10 +29,15 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
     }
 
     private fun setObserver() {
-        viewModel.document.observe(viewLifecycleOwner) { response ->
+        viewModel.searchingDocuments.observe(viewLifecycleOwner) { response ->
             adapter.addNewItem(response)
-            adapter.notifyDataSetChanged()
             Log.d("responseList : ", "${response::class.java}")
+        }
+
+        viewModel.insertToRoom.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(),
+                requireContext().getString(R.string.string_favorite),
+                Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -43,6 +47,7 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
                 viewModel.insertSearchingItem(item)
             }
         })
+
         binding.rvImageResult.adapter = adapter
         binding.rvImageResult.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
 

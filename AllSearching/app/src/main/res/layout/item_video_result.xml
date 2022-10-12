@@ -40,13 +40,6 @@
             tools:text="기사"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="video"
-            app:layout_constraintTop_toBottomOf="@+id/tv_type"
-            app:layout_constraintStart_toStartOf="@id/tv_type"/>
-
-        <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,10 +55,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/iv_non_favorite"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_video"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toTopOf="@+id/iv_favorite"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_favorite"
+            app:layout_constraintEnd_toStartOf="@id/iv_favorite"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

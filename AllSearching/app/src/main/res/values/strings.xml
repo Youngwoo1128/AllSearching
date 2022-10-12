@@ -3,4 +3,5 @@
 
     <string name="string_searching">검색하기</string>
     <string name="string_my_storage">내 저장소</string>
+    <string name="string_favorite">즐겨찾기 완료</string>
 </resources>

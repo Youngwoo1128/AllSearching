@@ -13,7 +13,7 @@ class ImageResultViewHolder(val binding: ItemImageResultBinding): RecyclerView.V
         binding.item = item[position]
 
         Glide.with(binding.root.context)
-            .load(item[position].thumbnail_url)
+            .load(item[position].thumbnail)
             .placeholder(R.drawable.default_image)
             .circleCrop()
             .into(binding.ivThumnail)

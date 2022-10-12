@@ -22,6 +22,7 @@ object DatabaseModule {
         @ApplicationContext context: Context
     ): ResearchingDatabase = Room
         .databaseBuilder(context, ResearchingDatabase::class.java, ResearchingDatabase.DATABASE_NAME)
+        .fallbackToDestructiveMigration()
         .build()
 
     @Singleton

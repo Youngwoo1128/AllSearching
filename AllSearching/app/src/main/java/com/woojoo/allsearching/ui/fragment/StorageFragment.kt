@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.FragmentStorageBinding
 import com.woojoo.allsearching.ui.BindingFragment
+import com.woojoo.allsearching.ui.adapter.StorageAdapter
 import com.woojoo.allsearching.ui.viewmodels.StorageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -13,25 +14,28 @@ import dagger.hilt.android.AndroidEntryPoint
 class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment_storage) {
 
     private val viewModel by viewModels<StorageViewModel>()
+    private lateinit var adapter: StorageAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setObserver()
-    }
-
-    override fun onResume() {
-        super.onResume()
+        initView()
         viewModel.getLocalResearchingList()
     }
 
     private fun setObserver() {
         viewModel.localResearching.observe(viewLifecycleOwner) { result ->
-            binding.temp.text = result.size.toString()
+            adapter.addNewItem(result)
         }
 
         viewModel.deleteResearching.observe(viewLifecycleOwner) { result ->
 
         }
+    }
+
+    private fun initView() {
+        adapter = StorageAdapter()
+        binding.rvResearching.adapter = adapter
     }
 }

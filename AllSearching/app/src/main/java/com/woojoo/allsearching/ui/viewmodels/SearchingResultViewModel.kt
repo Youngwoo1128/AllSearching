@@ -5,12 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.woojoo.allsearching.SingleLiveEvent
 import com.woojoo.allsearching.extension.requestAPI
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.InsertResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
@@ -20,29 +23,34 @@ class SearchingResultViewModel @Inject constructor(
     private val insertResearchingUseCase: InsertResearchingUseCase,
 ): ViewModel() {
 
-    private val _document = MutableLiveData<ArrayList<Documents>>()
-    val document : LiveData<ArrayList<Documents>>
-        get() = _document
+    private val _searchingDocuments = MutableLiveData<ArrayList<Documents>>()
+    val searchingDocuments : LiveData<ArrayList<Documents>>
+        get() = _searchingDocuments
+
+    private val _insertToRoom = SingleLiveEvent<Unit>()
+    val insertToRoom: LiveData<Unit>
+        get() = _insertToRoom
 
     fun getSearchingResult(query: String, page: Int) {
         viewModelScope.requestAPI {
-            _document.value = searchResultUseCase(query, page)
+            withContext(Dispatchers.IO) {
+                _searchingDocuments.postValue(searchResultUseCase(query, page))
+            }
+
         }
     }
 
     fun insertSearchingItem(item: Documents) {
         viewModelScope.requestAPI {
-            val item = Researching(
+            insertResearchingUseCase(Researching(
                 id = null,
                 dateTime = item.datetime!!,
                 viewType = item.viewType,
                 title = item.title!!,
                 thumbnail = item.thumbnail!!
-            )
-            insertResearchingUseCase(item)
+            ))
+            _insertToRoom.call()
         }
     }
-
-    fun getDocuments(): ArrayList<Documents>? = _document.value
 
 }

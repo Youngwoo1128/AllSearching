@@ -37,11 +37,9 @@ class SearchingResultAdapter(private val callback: InsertSearchingData): Recycle
     override fun getItemCount(): Int = documents.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (!documents[position].thumbnail_url.isNullOrEmpty() && documents[position].thumbnail.isNullOrEmpty()) {
-            documents[position].viewType = IMAGE_VIEW_TYPE
+        return if (documents[position].viewType == IMAGE_VIEW_TYPE) {
             IMAGE_VIEW_TYPE
         } else {
-            documents[position].viewType = VIDEO_VIEW_TYPE
             VIDEO_VIEW_TYPE
         }
     }

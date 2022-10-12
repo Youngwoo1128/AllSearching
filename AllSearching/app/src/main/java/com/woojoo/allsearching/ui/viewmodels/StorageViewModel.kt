@@ -1,5 +1,6 @@
 package com.woojoo.allsearching.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,9 +30,8 @@ class StorageViewModel @Inject constructor(
 
     fun getLocalResearchingList() {
         viewModelScope.requestAPI {
-            withContext(Dispatchers.IO) {
-                _localResearching.postValue(getAllResearchingUseCase())
-            }
+            Log.d("researching List Size : ", "${getAllResearchingUseCase.invoke().size}")
+            _localResearching.postValue(getAllResearchingUseCase()!!)
         }
     }
 
