@@ -19,7 +19,8 @@ object SearchingModule {
 
     @Provides
     fun provideSearchResultRepository(
-        searchingDataSource: SearchingDataSource
-    ): SearchResultRepository = SearchResultRepositoryImpl(searchingDataSource)
+        searchingDataSource: SearchingDataSource,
+        networkAPI: NetworkAPI
+    ): SearchResultRepository = SearchResultRepositoryImpl(searchingDataSource, networkAPI)
 
 }

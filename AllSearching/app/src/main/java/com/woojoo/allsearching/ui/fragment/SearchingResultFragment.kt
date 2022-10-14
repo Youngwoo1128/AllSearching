@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.*
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.woojoo.allsearching.R
@@ -14,11 +16,14 @@ import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
 import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
 
     private val viewModel by viewModels<SearchingResultViewModel>()
+
     private lateinit var adapter : SearchingResultAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,11 +34,6 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
     }
 
     private fun setObserver() {
-        viewModel.searchingDocuments.observe(viewLifecycleOwner) { response ->
-            adapter.addNewItem(response)
-            Log.d("responseList : ", "${response::class.java}")
-        }
-
         viewModel.insertToRoom.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(),
                 requireContext().getString(R.string.string_favorite),
@@ -52,8 +52,9 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
         binding.rvImageResult.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
 
         binding.btnSearching.setOnClickListener {
-            adapter.clearSearchingResult()
-            viewModel.getSearchingResult(binding.etSearching.text.toString(),1)
+            lifecycleScope.launchWhenStarted {
+                viewModel.getSearchingResult(binding.etSearching.text.toString())
+            }
         }
     }
 }

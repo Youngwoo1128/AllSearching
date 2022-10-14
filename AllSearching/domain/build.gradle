@@ -42,12 +42,16 @@ dependencies {
 
     // coroutine
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
     
     // Hilt
     implementation "com.google.dagger:hilt-android:2.42"
     kapt "com.google.dagger:hilt-android-compiler:2.42"
     kapt "com.google.dagger:dagger-android-processor:2.42"
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.42'
+
+
+    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
 
 
 }
