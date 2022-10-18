@@ -16,6 +16,7 @@ import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
 import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -25,6 +26,7 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
     private val viewModel by viewModels<SearchingResultViewModel>()
 
     private lateinit var adapter : SearchingResultAdapter
+    private var job: Job? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,8 +54,12 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
         binding.rvImageResult.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
 
         binding.btnSearching.setOnClickListener {
-            lifecycleScope.launchWhenStarted {
-                viewModel.getSearchingResult(binding.etSearching.text.toString())
+            job?.cancel()
+
+            job = lifecycleScope.launch {
+                viewModel.getSearchingResult(binding.etSearching.text.toString()).collectLatest {
+                    adapter.submitData(it)
+                }
             }
         }
     }

@@ -56,20 +56,5 @@ fun searchingResultMapping(
     return mappedModel.combineDocument()
 }
 
-//fun ArrayList<ResDocument>.combineResponse(): ArrayList<Documents> {
-//    val newArrayList = ArrayList<Documents>()
-//    for (i in this.indices) {
-//        val indexValue = this[i]
-//        val item = Documents(
-//            thumbnail = indexValue.thumbnail,
-//            title = indexValue.title,
-//            datetime = indexValue.datetime,
-//            viewType = indexValue.viewType
-//        )
-//        newArrayList.add(item)
-//    }
-//    return newArrayList
-//}
-
 const val IMAGE_VIEW_TYPE = 1
 const val VIDEO_VIEW_TYPE = 2
