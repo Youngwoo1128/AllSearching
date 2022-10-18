@@ -1,4 +1,4 @@
-package com.woojoo.allsearching.ui.ViewHolder
+package com.woojoo.allsearching.ui.viewholders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide

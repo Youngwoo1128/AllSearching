@@ -8,15 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.woojoo.allsearching.databinding.ItemImageResultBinding
 import com.woojoo.allsearching.databinding.ItemVideoResultBinding
 import com.woojoo.allsearching.domain.entites.Documents
-import com.woojoo.allsearching.domain.entites.Researching
-import com.woojoo.allsearching.ui.ViewHolder.ImageResultViewHolder
-import com.woojoo.allsearching.ui.ViewHolder.VideoResultViewHolder
+import com.woojoo.allsearching.ui.viewholders.ImageResultViewHolder
+import com.woojoo.allsearching.ui.viewholders.VideoResultViewHolder
 
-//class SearchingResultAdapter(private val callback: InsertSearchingData): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-class SearchingResultAdapter(private val callback: InsertSearchingData):
-    PagingDataAdapter<Documents, RecyclerView.ViewHolder>(diffCallback) {
-
-//    private val documents = arrayListOf<Documents>()
+class SearchingResultAdapter(
+    private val callback: InsertSearchingData
+    ): PagingDataAdapter<Documents, RecyclerView.ViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == IMAGE_VIEW_TYPE) {
@@ -26,11 +23,9 @@ class SearchingResultAdapter(private val callback: InsertSearchingData):
             val binding = ItemVideoResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             VideoResultViewHolder(binding)
         }
-
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        val item = documents[position]
         val item = getItem(position)
 
         if (item?.viewType == IMAGE_VIEW_TYPE) {
@@ -39,8 +34,6 @@ class SearchingResultAdapter(private val callback: InsertSearchingData):
             (holder as VideoResultViewHolder).onBind(item, callback)
         }
     }
-
-//    override fun getItemCount(): Int = documents.size
 
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)
@@ -55,14 +48,6 @@ class SearchingResultAdapter(private val callback: InsertSearchingData):
         fun onInsertSearchingData(item: Documents)
     }
 
-//    fun addNewItem(newItem: ArrayList<Documents>) {
-//        documents.addAll(newItem)
-//        documents.distinct()
-//    }
-//
-//    fun clearSearchingResult() {
-//        getItem().clear()
-//    }
 
     companion object {
         private const val IMAGE_VIEW_TYPE = 1
