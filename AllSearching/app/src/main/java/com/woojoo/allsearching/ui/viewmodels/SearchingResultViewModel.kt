@@ -26,36 +26,10 @@ class SearchingResultViewModel @Inject constructor(
     private val insertResearchingUseCase: InsertResearchingUseCase,
 ): ViewModel() {
 
-//    private val _searchingDocuments = MutableLiveData<ArrayList<Documents>>()
-//    val searchingDocuments : LiveData<ArrayList<Documents>>
-//        get() = _searchingDocuments
-
-    private val _searchingDocuments = MutableLiveData<Flow<PagingData<Documents>>>()
-    val searchingDocuments : LiveData<Flow<PagingData<Documents>>>
-        get() = _searchingDocuments
-
 
     private val _insertToRoom = SingleLiveEvent<Unit>()
     val insertToRoom: LiveData<Unit>
         get() = _insertToRoom
-
-
-
-//    fun getSearchingResult(query: String, page: Int) {
-//        viewModelScope.requestAPI {
-//            withContext(Dispatchers.IO) {
-//                _searchingDocuments.postValue(searchResultUseCase(query, page))
-//                Log.d("","")
-//            }
-//
-//        }
-//    }
-
-//    fun getSearchingResult(query: String) {
-//        viewModelScope.requestAPI {
-//            _searchingDocuments.value = searchResultUseCase.invoke(query)
-//        }
-//    }
 
     suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
         return searchResultUseCase.invoke(query).cachedIn(viewModelScope)

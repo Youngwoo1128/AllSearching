@@ -54,6 +54,10 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
         binding.rvImageResult.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
 
         binding.btnSearching.setOnClickListener {
+            if (binding.etSearching.text.toString().isNullOrEmpty()) {
+                Toast.makeText(requireContext(), requireContext().getString(R.string.string_input_keyword), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             job?.cancel()
 
             job = lifecycleScope.launch {
