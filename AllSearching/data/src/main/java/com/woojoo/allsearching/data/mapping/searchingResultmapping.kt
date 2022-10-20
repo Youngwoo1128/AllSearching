@@ -1,16 +1,20 @@
 package com.woojoo.allsearching.data.mapping
 
+import android.util.Log
 import com.woojoo.allsearching.data.network.response.ResDocument
 import com.woojoo.allsearching.domain.entites.Documents
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.Comparator
 import kotlin.collections.ArrayList
 
 
 fun ArrayList<Documents>.combineDocument(): ArrayList<Documents> {
+
     this.distinct()
     for (i in 0 until this.size) {
-        this[i].datetime = this[i].datetime?.substring(0 until 10)
+        this[i].datetime = convertDateToString(this[i].datetime.toString())
     }
 
     val sort = Comparator<Documents> { o1, o2 ->
@@ -19,6 +23,13 @@ fun ArrayList<Documents>.combineDocument(): ArrayList<Documents> {
 
     Collections.sort(this, sort)
     return this
+}
+
+fun convertDateToString(dateString: String): String {
+    Log.d("response Date", "$dateString")
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val dateTime = OffsetDateTime.parse(dateString)
+    return dateTime.format(formatter)
 }
 
 fun searchingResultMapping(

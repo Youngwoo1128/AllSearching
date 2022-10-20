@@ -1,9 +1,6 @@
 package com.woojoo.allsearching.ui.viewmodels
 
-
-import android.util.Log
 import androidx.lifecycle.*
-import androidx.paging.Pager
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.woojoo.allsearching.SingleLiveEvent
@@ -13,12 +10,8 @@ import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.InsertResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 @HiltViewModel
 class SearchingResultViewModel @Inject constructor(
