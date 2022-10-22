@@ -10,7 +10,8 @@ class EmptySearchingKeywordDialog: BaseDialogFragment<DialogEmptySearchingKeywor
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        isCancelable
+        val isCancelAble = arguments?.getBoolean(IS_CANCELABLE) ?: false
+        isCancelable = isCancelAble
     }
 
     companion object {
