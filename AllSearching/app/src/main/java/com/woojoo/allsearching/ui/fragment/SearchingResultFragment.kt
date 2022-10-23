@@ -8,11 +8,14 @@ import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.woojoo.allsearching.R
+import com.woojoo.allsearching.constant.EXTRA_EMPTY_SEARCHING_KEYWORD
 import com.woojoo.allsearching.databinding.FragmentSearchingResultBinding
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
 import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
+import com.woojoo.allsearching.ui.dialog.*
+import com.woojoo.allsearching.utils.showKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
@@ -24,11 +27,13 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
     private val viewModel by viewModels<SearchingResultViewModel>()
 
     private lateinit var adapter : SearchingResultAdapter
+    //Activity에 Job을 컨트롤 하는건 안 좋은것 같음 개선해보기
     private var job: Job? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setFragmentResult()
         setObserver()
         initView()
     }
@@ -53,16 +58,47 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
 
         binding.btnSearching.setOnClickListener {
             if (binding.etSearching.text.toString().isNullOrEmpty()) {
-                Toast.makeText(requireContext(), requireContext().getString(R.string.string_input_keyword), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            job?.cancel()
+                showEmptyKeywordDialog()
+            } else {
+                job?.cancel()
 
-            job = lifecycleScope.launch {
-                viewModel.getSearchingResult(binding.etSearching.text.toString()).collectLatest {
-                    adapter.submitData(it)
+                job = lifecycleScope.launch {
+                    viewModel.getSearchingResult(binding.etSearching.text.toString()).collectLatest {
+                        adapter.submitData(it)
+                    }
                 }
             }
         }
+    }
+
+    private fun setFragmentResult() {
+        setFragmentResultListener(
+            dialogFragmentManager = dialogFragmentManager(),
+            requestKey = EMPTY_KEYWORD,
+            listener = { _, bundle ->
+                when (bundle.getParcelable(EXTRA_EMPTY_SEARCHING_KEYWORD) as? EmptySearchingKeywordDialogAction) {
+                    //추후 기능 생각하기
+                    EmptySearchingKeywordDialogAction.EmptySearchingKeyword -> {
+                        binding.etSearching.requestFocus()
+                        showKeyboard(requireActivity())
+                    }
+                    else -> Unit
+                }
+            }
+        )
+    }
+
+    private fun showEmptyKeywordDialog() {
+        showEmptySearchingKeywordDialog(
+            dialogFragmentManager = dialogFragmentManager(),
+            requestTag = EMPTY_KEYWORD,
+            message = requireContext().getString(R.string.string_input_keyword),
+            isCancelable = false,
+            buttonText = requireContext().getString(R.string.string_ok)
+        )
+    }
+
+    companion object {
+        private const val EMPTY_KEYWORD = "EMPTY_KEYWORD"
     }
 }

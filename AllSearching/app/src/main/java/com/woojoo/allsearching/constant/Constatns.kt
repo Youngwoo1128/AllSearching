@@ -1,4 +1,3 @@
 package com.woojoo.allsearching.constant
 
-const val RESPONSE_IMAGE_TYPE = "IMAGE"
-const val RESPONSE_VIDEO_TYPE = "VIDEO"
+const val EXTRA_EMPTY_SEARCHING_KEYWORD = "EXTRA_EMPTY_SEARCHING_KEYWORD"
