@@ -12,7 +12,7 @@ import kotlin.collections.ArrayList
 
 fun ArrayList<Documents>.combineDocument(): ArrayList<Documents> {
 
-    this.distinct()
+//    this.distinct()
     for (i in 0 until this.size) {
         this[i].datetime = convertDateToString(this[i].datetime.toString())
     }
