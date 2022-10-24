@@ -1,5 +1,6 @@
 package com.woojoo.allsearching.data.paging
 
+import android.util.Log
 import androidx.paging.*
 import com.woojoo.allsearching.data.mapping.searchingResultMapping
 import com.woojoo.allsearching.data.network.NetworkAPI
@@ -42,6 +43,7 @@ class SearchingPagingDataSource (
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Documents> {
         val page = params.key ?: 1
+        Log.d("currentPageValue", "$page")
         return try {
             val response = searchingResultMapping(
                 networkAPI.searchImageResult(query, page, 30).documents,

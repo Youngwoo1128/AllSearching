@@ -23,6 +23,7 @@ class SearchingResultViewModel @Inject constructor(
     val insertToRoom: LiveData<Unit>
         get() = _insertToRoom
 
+
     suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
         return searchResultUseCase.invoke(query).cachedIn(viewModelScope)
     }

@@ -48,7 +48,6 @@ class SearchingResultAdapter(
         fun onInsertSearchingData(item: Documents)
     }
 
-
     companion object {
         private const val IMAGE_VIEW_TYPE = 1
         private const val VIDEO_VIEW_TYPE = 2

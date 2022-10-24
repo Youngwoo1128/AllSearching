@@ -15,6 +15,7 @@ open class BindingFragment<T: ViewDataBinding>(@LayoutRes private val layoutId: 
     protected val binding: T
         get() = _binding!!
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         return binding.root

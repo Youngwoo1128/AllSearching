@@ -1,7 +1,10 @@
 package com.woojoo.allsearching.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
@@ -22,27 +25,27 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
+class SearchingResultFragment :
+    BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
 
     private val viewModel by viewModels<SearchingResultViewModel>()
-
-    private lateinit var adapter : SearchingResultAdapter
-    //Activity에 Job을 컨트롤 하는건 안 좋은것 같음 개선해보기
-    private var job: Job? = null
-
+    private lateinit var adapter: SearchingResultAdapter
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setFragmentResult()
+        setFragmentResultListener()
         setObserver()
         initView()
     }
 
     private fun setObserver() {
         viewModel.insertToRoom.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(),
+            Toast.makeText(
+                requireContext(),
                 requireContext().getString(R.string.string_favorite),
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -54,30 +57,35 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
         })
 
         binding.rvImageResult.adapter = adapter
-        binding.rvImageResult.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
+        binding.rvImageResult.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                LinearLayoutManager.VERTICAL
+            )
+        )
 
         binding.btnSearching.setOnClickListener {
             if (binding.etSearching.text.toString().isNullOrEmpty()) {
                 showEmptyKeywordDialog()
             } else {
-                job?.cancel()
 
-                job = lifecycleScope.launch {
-                    viewModel.getSearchingResult(binding.etSearching.text.toString()).collectLatest {
-                        adapter.submitData(it)
-                    }
+                lifecycleScope.launch {
+                    viewModel.getSearchingResult(binding.etSearching.text.toString())
+                        .collectLatest {
+                            adapter.submitData(it)
+                            adapter.refresh()
+                        }
                 }
             }
         }
     }
 
-    private fun setFragmentResult() {
+    private fun setFragmentResultListener() {
         setFragmentResultListener(
             dialogFragmentManager = dialogFragmentManager(),
             requestKey = EMPTY_KEYWORD,
             listener = { _, bundle ->
                 when (bundle.getParcelable(EXTRA_EMPTY_SEARCHING_KEYWORD) as? EmptySearchingKeywordDialogAction) {
-                    //추후 기능 생각하기
                     EmptySearchingKeywordDialogAction.EmptySearchingKeyword -> {
                         binding.etSearching.requestFocus()
                         showKeyboard(requireActivity())
@@ -96,6 +104,21 @@ class SearchingResultFragment: BindingFragment<FragmentSearchingResultBinding>(R
             isCancelable = false,
             buttonText = requireContext().getString(R.string.string_ok)
         )
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("yw lifeCycle onPause", "")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d("yw lifeCycle onDestroyView", "")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("yw lifeCycle onDestroy", "")
     }
 
     companion object {
