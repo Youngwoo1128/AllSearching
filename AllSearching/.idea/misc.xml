@@ -17,7 +17,11 @@
       </map>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="11" project-jdk-type="JavaSDK">
+=======
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+>>>>>>> 73c9bbc07491bd9829292c8d3bf28508d2867f04
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

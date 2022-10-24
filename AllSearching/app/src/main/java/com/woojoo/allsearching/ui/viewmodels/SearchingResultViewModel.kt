@@ -19,7 +19,6 @@ class SearchingResultViewModel @Inject constructor(
     private val insertResearchingUseCase: InsertResearchingUseCase,
 ): ViewModel() {
 
-
     private val _insertToRoom = SingleLiveEvent<Unit>()
     val insertToRoom: LiveData<Unit>
         get() = _insertToRoom
@@ -27,7 +26,6 @@ class SearchingResultViewModel @Inject constructor(
     suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
         return searchResultUseCase.invoke(query).cachedIn(viewModelScope)
     }
-
 
     fun insertSearchingItem(item: Documents) {
         viewModelScope.requestAPI {
