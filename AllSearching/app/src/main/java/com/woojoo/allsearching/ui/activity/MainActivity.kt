@@ -2,102 +2,60 @@ package com.woojoo.allsearching.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
+import androidx.viewpager2.widget.ViewPager2
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.ActivityMainBinding
+import com.woojoo.allsearching.ui.adapter.MainViewPagerAdapter
 import com.woojoo.allsearching.ui.fragment.SearchingResultFragment
 import com.woojoo.allsearching.ui.fragment.StorageFragment
-import com.woojoo.allsearching.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(){
 
     private lateinit var binding : ActivityMainBinding
-    private val viewModel by viewModels<MainViewModel>()
 
     // Bottom Navigation 에서 item을 클릭 할때 마다 Fragment가 바뀌는건 Fragment가 onCreate 부터 다시 호출함
     // 이게 문제
     // 그래서 검색 하고 다른 Fragment에 갔다가 다시 돌아오면 init 되어 있음
     // 원인은 replace()
     // 해결 -> observing
+    // 위 방법으로 하면 데이터는 유지 되나 lifeCycle 별로 callback을 받기가 안됨
+    // 그리고 찾아보니 BottomNavigation은 replace를 하기 때문에 원래도 이런 이슈가 있었고 많은 개발자 들이 불편을 겪었다고 함
+    // 구글도 이 문제를 인지는 하고 있으나 이 이슈를 고치고 있지 않다고 함
+    // 그래서 나의 생각은 BottomNavigation 에 setOnItemSelectedListener 가 있으니
+    // Viewpager에게 해당 Fragment를 전달하는것으로 하는게 가장 좋을 것 같음
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.vm = viewModel
-        binding.lifecycleOwner = this
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setObserve()
-        setOnBottomNavigation()
+        initView()
     }
 
-    private fun setObserve() {
-        viewModel.currentFragmentType.observe(this) {
-            changeFragment(it)
-        }
-    }
 
-    private fun changeFragment(fragmentType: FragmentType) {
-       var targetFragment = supportFragmentManager.findFragmentByTag(fragmentType.fragmentTag)
+    private fun initView() {
+        val fragmentList = listOf<Fragment>(SearchingResultFragment(), StorageFragment())
+        binding.vpFragmentContainer.adapter = MainViewPagerAdapter(this, fragmentList)
+        binding.vpFragmentContainer.isUserInputEnabled = false
 
-        supportFragmentManager.commit {
-            if (targetFragment == null) {
-                targetFragment = getFragment(fragmentType)
-                add(binding.fragmentContainer.id, targetFragment!!, fragmentType.fragmentTag)
-            }
-
-            show(targetFragment!!)
-
-            FragmentType.values()
-                .filterNot { it == fragmentType }
-                .forEach {
-                    supportFragmentManager.findFragmentByTag(it.fragmentTag)?.let {
-                        hide(it)
-                    }
-                }
-        }
-    }
-
-    private fun setOnBottomNavigation() {
         binding.bottomNavigation.run {
             setOnItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.menu_searching -> {
-                        changeFragment(FragmentType.SearchingResultFragment)
-                        true
-                    }
-                    R.id.menu_storage -> {
-                        changeFragment(FragmentType.StorageFragment)
-                        true
-                    }
-                    else -> {
-                        Unit
-                    }
+                val fragmentValue = when (item.itemId) {
+                    R.id.menu_searching -> FRAGMENT_SEARCHING_RESULT_VALUE
+                    else ->  FRAGMENT_STORAGE_VALUE
                 }
-                false
+                binding.vpFragmentContainer.setCurrentItem(fragmentValue, false)
+                true
             }
             selectedItemId = R.id.menu_searching
         }
     }
 
-    private fun getFragment(fragment: FragmentType): Fragment {
-        return when(fragment.fragmentTag) {
-            "SearchingResultFragment_Tag" -> {
-                SearchingResultFragment()
-            }
-            else -> {
-                StorageFragment()
-            }
-        }
+    companion object {
+        private const val FRAGMENT_SEARCHING_RESULT_VALUE = 0
+        private const val FRAGMENT_STORAGE_VALUE = 1
     }
-}
-
-enum class FragmentType(val fragmentTitle: String, val fragmentTag: String) {
-    SearchingResultFragment("SearchingResultFragment", "SearchingResultFragment_Tag"),
-    StorageFragment("StorageFragment", "StorageFragment_Tag")
 }

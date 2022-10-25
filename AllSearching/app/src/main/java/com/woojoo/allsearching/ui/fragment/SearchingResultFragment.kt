@@ -23,7 +23,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
 
-    //이슈 1: Bottom Navigation을 각각 누를때 마다 onCreate 부터 다시 호출 됨
     private val viewModel by viewModels<SearchingResultViewModel>()
     private lateinit var adapter: SearchingResultAdapter
 

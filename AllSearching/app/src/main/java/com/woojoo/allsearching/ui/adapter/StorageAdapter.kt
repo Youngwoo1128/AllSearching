@@ -9,7 +9,7 @@ import com.woojoo.allsearching.ui.viewholders.StorageViewHolder
 
 class StorageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val researchingList = ArrayList<Researching>()
+    private var researchingList = mutableListOf<Researching>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = ItemStorageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -25,7 +25,7 @@ class StorageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun addNewItem(newItem: List<Researching>) {
         researchingList.addAll(newItem)
-        researchingList.distinct()
+        researchingList = researchingList.distinct().toMutableList()
         notifyDataSetChanged()
     }
 

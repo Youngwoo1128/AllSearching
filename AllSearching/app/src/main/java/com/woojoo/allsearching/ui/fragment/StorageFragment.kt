@@ -1,6 +1,7 @@
 package com.woojoo.allsearching.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.woojoo.allsearching.R
@@ -21,6 +22,16 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
         setObserver()
         initView()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("yw lifecycle", "onCreate")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         viewModel.getLocalResearchingList()
     }
 
