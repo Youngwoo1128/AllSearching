@@ -17,5 +17,5 @@ interface ResearchingDao {
     suspend fun insertResearching(item: ResearchingEntity)
 
     @Delete
-    suspend fun delete(researchingEntity: ResearchingEntity)
+    suspend fun delete(researchingEntity: ResearchingEntity): Int
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.woojoo.allsearching.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.DeleteResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
@@ -24,9 +25,9 @@ class StorageViewModel @Inject constructor(
         get() = _localResearching
     private val _localResearching = MutableLiveData<List<Researching>>()
 
-    val deleteResearching: LiveData<String>
-        get() = _deleteResearching
-    private val _deleteResearching = MutableLiveData<String>()
+    val deletedItem : LiveData<Long?>
+        get() = _deletedItem
+    private val _deletedItem = SingleLiveEvent<Long?>()
 
     fun getLocalResearchingList() {
         viewModelScope.requestAPI {
@@ -37,8 +38,7 @@ class StorageViewModel @Inject constructor(
 
     fun deleteResearchingItem(item: Researching) {
         viewModelScope.requestAPI {
-            deleteResearchingUseCase(item)
-            _deleteResearching.postValue("")
+            _deletedItem.value = deleteResearchingUseCase(item)
         }
     }
 

@@ -7,7 +7,7 @@ import com.woojoo.allsearching.databinding.ItemStorageBinding
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.ui.viewholders.StorageViewHolder
 
-class StorageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class StorageAdapter(private val callback: DeleteLocalItem) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var researchingList = mutableListOf<Researching>()
 
@@ -18,10 +18,14 @@ class StorageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = researchingList[position]
-        (holder as StorageViewHolder).onBind(item)
+        (holder as StorageViewHolder).onBind(item, callback)
     }
 
     override fun getItemCount(): Int = researchingList.size
+
+    interface DeleteLocalItem {
+        fun deleteLocalItem(item: Researching)
+    }
 
     fun addNewItem(newItem: List<Researching>) {
         researchingList.addAll(newItem)

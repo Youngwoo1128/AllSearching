@@ -24,7 +24,9 @@ class ResearchingRepositoryImpl @Inject constructor(
         researchingDao.insertResearching(item.toData())
     }
 
-    override suspend fun deleteResearching(item: Researching) {
-        return researchingDao.delete(item.toData())
+    override suspend fun deleteResearching(item: Researching): Long? {
+        val id = item.id
+        researchingDao.delete(item.toData())
+        return id
     }
 }
