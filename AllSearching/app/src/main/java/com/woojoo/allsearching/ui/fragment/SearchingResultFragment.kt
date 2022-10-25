@@ -1,10 +1,7 @@
 package com.woojoo.allsearching.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
@@ -20,17 +17,16 @@ import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
 import com.woojoo.allsearching.ui.dialog.*
 import com.woojoo.allsearching.utils.showKeyboard
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchingResultFragment :
-    BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
+class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
 
+    //이슈 1: Bottom Navigation을 각각 누를때 마다 onCreate 부터 다시 호출 됨
     private val viewModel by viewModels<SearchingResultViewModel>()
     private lateinit var adapter: SearchingResultAdapter
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -68,12 +64,10 @@ class SearchingResultFragment :
             if (binding.etSearching.text.toString().isNullOrEmpty()) {
                 showEmptyKeywordDialog()
             } else {
-
                 lifecycleScope.launch {
                     viewModel.getSearchingResult(binding.etSearching.text.toString())
                         .collectLatest {
                             adapter.submitData(it)
-                            adapter.refresh()
                         }
                 }
             }
@@ -104,21 +98,6 @@ class SearchingResultFragment :
             isCancelable = false,
             buttonText = requireContext().getString(R.string.string_ok)
         )
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("yw lifeCycle onPause", "")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.d("yw lifeCycle onDestroyView", "")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("yw lifeCycle onDestroy", "")
     }
 
     companion object {
