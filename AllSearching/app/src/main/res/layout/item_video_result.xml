@@ -9,15 +9,15 @@
         <variable
             name="item"
             type="com.woojoo.allsearching.domain.entites.Documents" />
-
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
 
         <ImageView
             android:id="@+id/iv_thumnail"
@@ -28,15 +28,21 @@
 
         <TextView
             android:id="@+id/tv_type"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:text="@{item.title}"
             android:textSize="16dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:fontFamily="@font/spoqa_han_sans_bold"
-            android:layout_marginStart="12dp"
+
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintTop_toTopOf="@+id/iv_thumnail"
             app:layout_constraintStart_toEndOf="@id/iv_thumnail"
             app:layout_constraintBottom_toTopOf="@+id/tv_date"
+            app:layout_constraintEnd_toStartOf="@+id/iv_type_video"
             tools:text="기사"/>
 
         <TextView
@@ -54,13 +60,13 @@
             android:id="@+id/iv_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:src="@drawable/iv_non_favorite"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <ImageView
+            android:id="@+id/iv_type_video"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_video"
