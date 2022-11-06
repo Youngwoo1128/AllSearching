@@ -29,4 +29,8 @@ class ResearchingRepositoryImpl @Inject constructor(
         researchingDao.delete(item.toData())
         return id
     }
+
+    override suspend fun updatePrimaryKey(id: Int) {
+        TODO("Not yet implemented")
+    }
 }

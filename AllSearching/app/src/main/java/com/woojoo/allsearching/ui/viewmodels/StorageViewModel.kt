@@ -36,9 +36,15 @@ class StorageViewModel @Inject constructor(
         }
     }
 
+    /*
+    * Room이 해당 값을 삭제하면 그 뒤의 Primary 키 값들을 자동으로 업데이트 해주는건지 아닌지 찾아보기
+    * 안된다면 loop 돌면서 primary 키값 수정해주는 기능 구현하기
+    * */
+
     fun deleteResearchingItem(item: Researching) {
         viewModelScope.requestAPI {
             _deletedItem.value = deleteResearchingUseCase(item)
+            Log.d("Deleted Item :", "${_deletedItem.value}")
         }
     }
 

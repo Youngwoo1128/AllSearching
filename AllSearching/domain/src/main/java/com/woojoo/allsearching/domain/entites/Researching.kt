@@ -1,7 +1,7 @@
 package com.woojoo.allsearching.domain.entites
 
 data class Researching(
-    val id: Long?,
+    var id: Long?,
     val dateTime: String,
     val viewType: Int,
     val title: String?,

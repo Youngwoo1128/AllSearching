@@ -47,6 +47,7 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
             // delete 를 하고 notify를 하여도 adapter의 값들은 이미 참조중이기 때문에 변함이 없음
             // 때문에 delete를 할때 다시 내부 DB의 값들을 가져 올 것 인지
             // 아니면 delete를 하고 long을 리턴 받았을때 arrayList의 long 번째 index를 지우고 notify를 할지 고민해보기
+            adapter.notifyItemChanged(it?.toInt()!!)
         }
     }
 
