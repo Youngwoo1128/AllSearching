@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface ResearchingDao {
@@ -18,4 +19,7 @@ interface ResearchingDao {
 
     @Delete
     suspend fun delete(researchingEntity: ResearchingEntity): Int
+
+    @Update
+    suspend fun update(researchingEntity: ResearchingEntity)
 }

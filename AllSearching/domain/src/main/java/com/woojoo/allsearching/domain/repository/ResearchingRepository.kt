@@ -6,5 +6,5 @@ interface ResearchingRepository {
     suspend fun getResearchingItem(): List<Researching>
     suspend fun insertResearching(item: Researching)
     suspend fun deleteResearching(item: Researching): Long?
-    suspend fun updatePrimaryKey(id: Int)
+    suspend fun updatePrimaryKey(item: Researching)
 }

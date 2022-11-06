@@ -8,11 +8,8 @@ class UpdateResearchingUseCase @Inject constructor(
     private val researchingRepository: ResearchingRepository
 ){
 
-    private val searchingList = GetAllResearchingUseCase(researchingRepository)
-    private val updateItems = ArrayList<Researching>()
-
-    suspend operator fun invoke(primaryKey: Int) {
-
+    suspend operator fun invoke(item: Researching) {
+        researchingRepository.updatePrimaryKey(item)
     }
 
 

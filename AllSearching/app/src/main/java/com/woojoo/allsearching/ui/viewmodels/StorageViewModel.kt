@@ -25,9 +25,9 @@ class StorageViewModel @Inject constructor(
         get() = _localResearching
     private val _localResearching = MutableLiveData<List<Researching>>()
 
-    val deletedItem : LiveData<Long?>
+    val deletedItem : LiveData<Long>
         get() = _deletedItem
-    private val _deletedItem = SingleLiveEvent<Long?>()
+    private val _deletedItem = SingleLiveEvent<Long>()
 
     fun getLocalResearchingList() {
         viewModelScope.requestAPI {
@@ -43,7 +43,7 @@ class StorageViewModel @Inject constructor(
 
     fun deleteResearchingItem(item: Researching) {
         viewModelScope.requestAPI {
-            _deletedItem.value = deleteResearchingUseCase(item)
+            _deletedItem.value = deleteResearchingUseCase(item)!!
             Log.d("Deleted Item :", "${_deletedItem.value}")
         }
     }

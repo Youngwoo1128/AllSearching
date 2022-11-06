@@ -30,7 +30,7 @@ class ResearchingRepositoryImpl @Inject constructor(
         return id
     }
 
-    override suspend fun updatePrimaryKey(id: Int) {
-        TODO("Not yet implemented")
+    override suspend fun updatePrimaryKey(item: Researching) {
+        researchingDao.update(item.toData())
     }
 }
