@@ -1,20 +1,19 @@
 package com.woojoo.allsearching.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.ActivityMainBinding
+import com.woojoo.allsearching.ui.BindingActivity
 import com.woojoo.allsearching.ui.adapter.MainViewPagerAdapter
 import com.woojoo.allsearching.ui.fragment.SearchingResultFragment
 import com.woojoo.allsearching.ui.fragment.StorageFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(){
+class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main){
 
-    private lateinit var binding : ActivityMainBinding
+
 
     // Bottom Navigation 에서 item을 클릭 할때 마다 Fragment가 바뀌는건 Fragment가 onCreate 부터 다시 호출함
     // 이게 문제
@@ -29,8 +28,6 @@ class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         initView()
     }

@@ -1,6 +1,5 @@
 package com.woojoo.allsearching.domain.usecases
 
-import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.repository.ResearchingRepository
 import javax.inject.Inject
 
@@ -9,22 +8,29 @@ class DeleteResearchingUseCase @Inject constructor(
 ) {
 
     private val getAllSearchResultUseCase = GetAllResearchingUseCase(researchingRepository)
+    private val updateResearchingUseCase = UpdateResearchingUseCase(researchingRepository)
 
-    suspend operator fun invoke(item: Researching): Long {
-        val primaryKey = item.id
-        researchingRepository.deleteResearching(item)
-        modifyLocalPrimaryKey(primaryKey!!.toInt())
-        return primaryKey
+//    suspend operator fun invoke(item: Researching): Researching {
+//        val primaryKey = item.id
+//        researchingRepository.deleteResearching(item)
+//        modifyLocalPrimaryKey(primaryKey!!)
+//        return item
+//    }
+
+    suspend operator fun invoke(id: Int): Int {
+        return researchingRepository.deleteResearching(id)
     }
 
-    private suspend fun modifyLocalPrimaryKey(deletedKey: Int) {
+    private suspend fun modifyLocalPrimaryKey(deletedKey: Long) {
         val savedList = getAllSearchResultUseCase.invoke()
 
-        for (i in savedList.size - 1 until deletedKey) {
-            val indexValue = savedList[i]
-            indexValue.id = (i - 1).toLong()
-            UpdateResearchingUseCase(researchingRepository).invoke(indexValue)
+        for (i in deletedKey until savedList.size) {
+            val roomData = savedList[i.toInt()]
+            roomData.id = i - 1
+            updateResearchingUseCase.invoke(roomData)
         }
+
+
 
     }
 }

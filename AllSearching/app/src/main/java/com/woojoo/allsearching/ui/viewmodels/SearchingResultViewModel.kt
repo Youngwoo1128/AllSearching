@@ -35,7 +35,8 @@ class SearchingResultViewModel @Inject constructor(
                 dateTime = item.datetime!!,
                 viewType = item.viewType,
                 title = item.title!!,
-                thumbnail = item.thumbnail!!
+                thumbnail = item.thumbnail!!,
+                url = item.url!!
             ))
             _insertToRoom.call()
         }

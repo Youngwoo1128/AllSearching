@@ -11,7 +11,7 @@ class ResearchingRepositoryImpl @Inject constructor(
     private val researchingDao: ResearchingDao
 ) : ResearchingRepository {
 
-    override suspend fun getResearchingItem(): List<Researching> {
+    override suspend fun getResearchingList(): List<Researching> {
         val researchingList = researchingDao.getAll()
         val list = mutableListOf<Researching>()
         for (i in researchingList.indices) {
@@ -24,11 +24,11 @@ class ResearchingRepositoryImpl @Inject constructor(
         researchingDao.insertResearching(item.toData())
     }
 
-    override suspend fun deleteResearching(item: Researching): Long? {
-        val id = item.id
-        researchingDao.delete(item.toData())
-        return id
+    override suspend fun deleteResearching(id: Int): Int {
+        return researchingDao.delete(id)
     }
+
+
 
     override suspend fun updatePrimaryKey(item: Researching) {
         researchingDao.update(item.toData())

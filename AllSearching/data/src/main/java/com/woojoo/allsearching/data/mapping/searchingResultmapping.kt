@@ -48,7 +48,8 @@ fun searchingResultMapping(
                     datetime = totalResponse[i].datetime,
                     viewType = IMAGE_VIEW_TYPE,
                     title = totalResponse[i].collection,
-                    thumbnail = totalResponse[i].thumbnail_url
+                    thumbnail = totalResponse[i].thumbnail_url,
+                    url = totalResponse[i].doc_url
                 )
             )
         } else {
@@ -58,7 +59,8 @@ fun searchingResultMapping(
                     datetime = totalResponse[i].datetime,
                     viewType = VIDEO_VIEW_TYPE,
                     title = totalResponse[i].title,
-                    thumbnail = totalResponse[i].thumbnail
+                    thumbnail = totalResponse[i].thumbnail,
+                    url = totalResponse[i].url
                 )
             )
         }

@@ -18,6 +18,12 @@ class ImageResultViewHolder(val binding: ItemImageResultBinding): RecyclerView.V
             .circleCrop()
             .into(binding.ivThumnail)
 
+        binding.layoutImageResult.setOnClickListener {
+            item?.let { result ->
+                callback.onClick(result)
+            }
+        }
+
         binding.ivFavorite.setOnClickListener {
             item?.let {
                 callback.onInsertSearchingData(it)

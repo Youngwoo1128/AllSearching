@@ -17,8 +17,11 @@ interface ResearchingDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertResearching(item: ResearchingEntity)
 
-    @Delete
-    suspend fun delete(researchingEntity: ResearchingEntity): Int
+//    @Query("DELETE FROM ${ResearchingEntity.TABLE_NAME} WHERE id = :${researchingEntity.id}")
+//    suspend fun delete(researchingEntity: ResearchingEntity): Int
+
+    @Query("DELETE FROM ${ResearchingEntity.TABLE_NAME} WHERE id = :id")
+    suspend fun delete(id: Int): Int
 
     @Update
     suspend fun update(researchingEntity: ResearchingEntity)

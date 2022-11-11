@@ -1,5 +1,6 @@
 package com.woojoo.allsearching.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,15 @@ class StorageAdapter(private val callback: DeleteLocalItem) : RecyclerView.Adapt
     }
 
     override fun getItemCount(): Int = researchingList.size
+
+    fun removeItem(index: Int) {
+        researchingList.removeAt(index - 1)
+        notifyItemRemoved(index - 1)
+
+        for (i in researchingList) {
+            Log.d("Primary Key Update", "${i.id}")
+        }
+    }
 
     interface DeleteLocalItem {
         fun deleteLocalItem(item: Researching)

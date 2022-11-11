@@ -12,6 +12,7 @@ data class ResearchingEntity(
     @ColumnInfo(name = "viewType") val viewType: Int,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "thumbnail") val thumbnail: String?,
+    @ColumnInfo(name = "url") val url: String?
 ) {
     companion object {
         const val TABLE_NAME = "researching"

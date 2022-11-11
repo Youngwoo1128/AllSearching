@@ -11,6 +11,7 @@ import com.woojoo.allsearching.R
 import com.woojoo.allsearching.constant.EXTRA_EMPTY_SEARCHING_KEYWORD
 import com.woojoo.allsearching.databinding.FragmentSearchingResultBinding
 import com.woojoo.allsearching.domain.entites.Documents
+import com.woojoo.allsearching.extension.IntentProvider
 import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
 import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
@@ -48,6 +49,10 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
         adapter = SearchingResultAdapter(object : SearchingResultAdapter.InsertSearchingData {
             override fun onInsertSearchingData(item: Documents) {
                 viewModel.insertSearchingItem(item)
+            }
+
+            override fun onClick(item: Documents) {
+                startActivity(IntentProvider.getWebViewIntent(requireContext(), item))
             }
         })
 

@@ -17,6 +17,12 @@ class VideoResultViewHolder(val binding: ItemVideoResultBinding): RecyclerView.V
             .circleCrop()
             .into(binding.ivThumnail)
 
+        binding.layoutVideoResult.setOnClickListener {
+            item?.let { result ->
+                callback.onClick(result)
+            }
+        }
+
         binding.ivFavorite.setOnClickListener {
             item?.let {
                 callback.onInsertSearchingData(it)

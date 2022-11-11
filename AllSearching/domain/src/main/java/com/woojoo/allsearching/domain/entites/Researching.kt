@@ -6,4 +6,5 @@ data class Researching(
     val viewType: Int,
     val title: String?,
     val thumbnail: String?,
+    val url: String
 )

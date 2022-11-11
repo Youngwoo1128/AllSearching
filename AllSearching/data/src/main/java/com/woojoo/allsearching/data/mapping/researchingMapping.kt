@@ -8,7 +8,8 @@ fun ResearchingEntity.toDomain() = Researching(
     dateTime,
     viewType,
     title,
-    thumbnail
+    thumbnail,
+    url.toString()
 )
 
 fun Researching.toData() = ResearchingEntity(
@@ -16,5 +17,6 @@ fun Researching.toData() = ResearchingEntity(
     dateTime,
     viewType,
     title,
-    thumbnail
+    thumbnail,
+    url
 )

@@ -8,6 +8,6 @@ class GetAllResearchingUseCase @Inject constructor(
     private val researchingRepository: ResearchingRepository
 ) {
     suspend operator fun invoke(): List<Researching> {
-        return researchingRepository.getResearchingItem()
+        return researchingRepository.getResearchingList()
     }
 }

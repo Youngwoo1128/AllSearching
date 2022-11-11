@@ -46,6 +46,7 @@ class SearchingResultAdapter(
 
     interface InsertSearchingData {
         fun onInsertSearchingData(item: Documents)
+        fun onClick(item: Documents)
     }
 
     companion object {
