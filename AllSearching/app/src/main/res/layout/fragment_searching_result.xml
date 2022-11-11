@@ -38,5 +38,7 @@
             app:layout_constraintTop_toBottomOf="@+id/et_searching"
             tools:listitem="@layout/item_image_result" />
 
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
