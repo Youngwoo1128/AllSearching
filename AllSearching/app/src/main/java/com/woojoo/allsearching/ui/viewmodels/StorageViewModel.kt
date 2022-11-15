@@ -48,6 +48,8 @@ class StorageViewModel @Inject constructor(
         }
     }
 
+    //delete 이슈 수정 해결 방안 정리
+
     fun updateResearchingList(deletedKey: Int) {
         viewModelScope.requestAPI {
 //            val researchingList = getAllResearchingUseCase.invoke()
