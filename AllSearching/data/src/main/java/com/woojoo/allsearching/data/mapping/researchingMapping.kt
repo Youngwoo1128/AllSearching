@@ -5,6 +5,7 @@ import com.woojoo.allsearching.domain.entites.Researching
 
 fun ResearchingEntity.toDomain() = Researching(
     id,
+    index,
     dateTime,
     viewType,
     title,
@@ -14,6 +15,7 @@ fun ResearchingEntity.toDomain() = Researching(
 
 fun Researching.toData() = ResearchingEntity(
     id,
+    index,
     dateTime,
     viewType,
     title,

@@ -7,6 +7,7 @@ import com.woojoo.allsearching.SingleLiveEvent
 import com.woojoo.allsearching.extension.requestAPI
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.Researching
+import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.InsertResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class SearchingResultViewModel @Inject constructor(
     private val searchResultUseCase: SearchResultUseCase,
     private val insertResearchingUseCase: InsertResearchingUseCase,
+    private val getAllResearchingUseCase: GetAllResearchingUseCase
 ): ViewModel() {
 
     private val _insertToRoom = SingleLiveEvent<Unit>()
@@ -30,8 +32,12 @@ class SearchingResultViewModel @Inject constructor(
 
     fun insertSearchingItem(item: Documents) {
         viewModelScope.requestAPI {
+            val savedResearchingList = getAllResearchingUseCase.invoke()
+            val listIndex = savedResearchingList[savedResearchingList.size - 1].index ?: 0
+
             insertResearchingUseCase(Researching(
                 id = null,
+                index = listIndex + 1,
                 dateTime = item.datetime!!,
                 viewType = item.viewType,
                 title = item.title!!,

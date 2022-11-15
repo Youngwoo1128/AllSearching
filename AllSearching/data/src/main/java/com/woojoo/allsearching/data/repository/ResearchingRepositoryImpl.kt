@@ -24,11 +24,10 @@ class ResearchingRepositoryImpl @Inject constructor(
         researchingDao.insertResearching(item.toData())
     }
 
-    override suspend fun deleteResearching(id: Int): Int {
-        return researchingDao.delete(id)
+    override suspend fun deleteResearching(item: Researching): Int {
+        researchingDao.delete(item.toData())
+        return item.index!!.toInt()
     }
-
-
 
     override suspend fun updatePrimaryKey(item: Researching) {
         researchingDao.update(item.toData())

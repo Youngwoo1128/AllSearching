@@ -48,8 +48,10 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
             // 때문에 delete를 할때 다시 내부 DB의 값들을 가져 올 것 인지
             // 아니면 delete를 하고 long을 리턴 받았을때 arrayList의 long 번째 index를 지우고 notify를 할지 고민해보기
 //            adapter.notifyItemRemoved(it.toInt() - 1)
-            adapter.removeItem(it)
+//            adapter.removeItem(it)
+            viewModel.updateResearchingList(it)
         }
+
     }
 
     private fun initView() {

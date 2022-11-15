@@ -8,6 +8,7 @@ import com.woojoo.allsearching.data.local.ResearchingEntity.Companion.TABLE_NAME
 @Entity(tableName = TABLE_NAME)
 data class ResearchingEntity(
     @PrimaryKey(autoGenerate = true) var id: Long?,
+    @ColumnInfo(name = "index") var index: Long? = 0,
     @ColumnInfo(name = "dateTime") val dateTime: String,
     @ColumnInfo(name = "viewType") val viewType: Int,
     @ColumnInfo(name = "title") val title: String?,

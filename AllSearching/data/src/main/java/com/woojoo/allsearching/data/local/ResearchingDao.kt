@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.woojoo.allsearching.domain.entites.Researching
 
 @Dao
 interface ResearchingDao {
@@ -19,11 +20,8 @@ interface ResearchingDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertResearching(item: ResearchingEntity)
 
-//    @Query("DELETE FROM ${ResearchingEntity.TABLE_NAME} WHERE id = :${researchingEntity.id}")
-//    suspend fun delete(researchingEntity: ResearchingEntity): Int
-
-    @Query("DELETE FROM ${ResearchingEntity.TABLE_NAME} WHERE id = :id")
-    suspend fun delete(id: Int): Int
+    @Delete
+    suspend fun delete(researchingEntity: ResearchingEntity)
 
     @Update
     suspend fun update(researchingEntity: ResearchingEntity)

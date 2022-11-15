@@ -9,6 +9,7 @@ import com.woojoo.allsearching.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.DeleteResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
+import com.woojoo.allsearching.domain.usecases.UpdateResearchingUseCase
 import com.woojoo.allsearching.extension.requestAPI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -18,20 +19,20 @@ import javax.inject.Inject
 @HiltViewModel
 class StorageViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
-    private val deleteResearchingUseCase: DeleteResearchingUseCase
+    private val deleteResearchingUseCase: DeleteResearchingUseCase,
+    private val updatedResearchingUseCase: UpdateResearchingUseCase
     ): ViewModel() {
 
     val localResearching: LiveData<List<Researching>>
         get() = _localResearching
     private val _localResearching = MutableLiveData<List<Researching>>()
 
-//    val deletedItem : LiveData<Researching>
-//        get() = _deletedItem
-//    private val _deletedItem = SingleLiveEvent<Researching>()
-
     val deletedItem : LiveData<Int>
         get() = _deletedItem
     private val _deletedItem = SingleLiveEvent<Int>()
+
+    val updated = MutableLiveData<Int>()
+
 
     fun getLocalResearchingList() {
         viewModelScope.requestAPI {
@@ -40,27 +41,32 @@ class StorageViewModel @Inject constructor(
         }
     }
 
-    /*
-    * Room이 해당 값을 삭제하면 그 뒤의 Primary 키 값들을 자동으로 업데이트 해주는건지 아닌지 찾아보기
-    * 안된다면 loop 돌면서 primary 키값 수정해주는 기능 구현하기
-    * */
-
     fun deleteResearchingItem(item: Researching) {
         viewModelScope.requestAPI {
-            _deletedItem.value = item.id?.let {
-                deleteResearchingUseCase(it.toInt())
-            }
+            _deletedItem.value = deleteResearchingUseCase(item)!!
             Log.d("Deleted Item :", "${_deletedItem.value}")
         }
     }
 
-    fun updateResearchingList(primaryKey: Int) {
+    fun updateResearchingList(deletedKey: Int) {
         viewModelScope.requestAPI {
-            val researchingList = getAllResearchingUseCase.invoke()
+//            val researchingList = getAllResearchingUseCase.invoke()
+//
+//            for (i in deletedKey   ..  researchingList.size) {
+//                val savedData = researchingList[i - 1]
+//                savedData.index = i.toLong()
+//                updatedResearchingUseCase.invoke(savedData)
+//            }
+//            updated.value = 1
 
-//            for (i in primaryKey until resear)
+            val researchingList = getAllResearchingUseCase.invoke()
+            var count = 0L
+            for (i in researchingList) {
+                i.index = count++
+            }
         }
 
     }
+
 
 }
