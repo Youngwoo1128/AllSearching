@@ -27,10 +27,6 @@ class StorageAdapter(private val callback: DeleteLocalItem) : RecyclerView.Adapt
     fun removeItem(index: Int) {
         researchingList.removeAt(index - 1)
         notifyItemRemoved(index - 1)
-
-        for (i in researchingList) {
-            Log.d("Primary Key Update", "${i.id}")
-        }
     }
 
     interface DeleteLocalItem {

@@ -33,11 +33,15 @@ class SearchingResultViewModel @Inject constructor(
     fun insertSearchingItem(item: Documents) {
         viewModelScope.requestAPI {
             val savedResearchingList = getAllResearchingUseCase.invoke()
-            val listIndex = savedResearchingList[savedResearchingList.size - 1].index ?: 0
+            val listIndex = if (savedResearchingList.isEmpty()) {
+                0
+            } else {
+                savedResearchingList[savedResearchingList.size - 1].index
+            }
 
             insertResearchingUseCase(Researching(
                 id = null,
-                index = listIndex + 1,
+                index = listIndex?.plus(1),
                 dateTime = item.datetime!!,
                 viewType = item.viewType,
                 title = item.title!!,

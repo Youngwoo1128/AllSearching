@@ -52,15 +52,6 @@ class StorageViewModel @Inject constructor(
 
     fun updateResearchingList(deletedKey: Int) {
         viewModelScope.requestAPI {
-//            val researchingList = getAllResearchingUseCase.invoke()
-//
-//            for (i in deletedKey   ..  researchingList.size) {
-//                val savedData = researchingList[i - 1]
-//                savedData.index = i.toLong()
-//                updatedResearchingUseCase.invoke(savedData)
-//            }
-//            updated.value = 1
-
             val researchingList = getAllResearchingUseCase.invoke()
             var count = 0L
             for (i in researchingList) {
