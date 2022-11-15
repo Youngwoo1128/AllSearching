@@ -48,18 +48,15 @@ class StorageViewModel @Inject constructor(
         }
     }
 
-    //delete 이슈 수정 해결 방안 정리
-
     fun updateResearchingList(deletedKey: Int) {
         viewModelScope.requestAPI {
             val researchingList = getAllResearchingUseCase.invoke()
-            var count = 0L
-            for (i in researchingList) {
-                i.index = count++
+
+            for (i in deletedKey .. researchingList.size) {
+                val savedItem = researchingList[i - 1]
+                savedItem.index = i.toLong()
+                updatedResearchingUseCase.invoke(savedItem)
             }
         }
-
     }
-
-
 }
