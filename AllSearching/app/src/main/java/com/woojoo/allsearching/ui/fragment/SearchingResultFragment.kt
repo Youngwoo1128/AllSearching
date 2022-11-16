@@ -16,7 +16,7 @@ import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
 import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
 import com.woojoo.allsearching.ui.dialog.*
-import com.woojoo.allsearching.utils.showKeyboard
+import com.woojoo.allsearching.utils.showKeyboardOnEditText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -85,8 +85,8 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
             listener = { _, bundle ->
                 when (bundle.getParcelable(EXTRA_EMPTY_SEARCHING_KEYWORD) as? EmptySearchingKeywordDialogAction) {
                     EmptySearchingKeywordDialogAction.EmptySearchingKeyword -> {
-                        binding.etSearching.requestFocus()
-                        showKeyboard(requireActivity())
+                        requireContext().showKeyboardOnEditText(binding.etSearching)
+
                     }
                     else -> Unit
                 }
