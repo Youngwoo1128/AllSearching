@@ -5,9 +5,4 @@ import com.woojoo.allsearching.data.local.ResearchingDatabase
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class AllSearchingApplication: Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-    }
-}
+class AllSearchingApplication: Application()

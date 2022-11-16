@@ -1,4 +1,4 @@
-package com.woojoo.allsearching
+package com.woojoo.allsearching.utils
 
 import android.util.Log
 import androidx.annotation.MainThread

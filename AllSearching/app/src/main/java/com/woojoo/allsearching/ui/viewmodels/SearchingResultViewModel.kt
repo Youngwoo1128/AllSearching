@@ -3,7 +3,7 @@ package com.woojoo.allsearching.ui.viewmodels
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.woojoo.allsearching.SingleLiveEvent
+import com.woojoo.allsearching.utils.SingleLiveEvent
 import com.woojoo.allsearching.extension.requestAPI
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.Researching
@@ -27,7 +27,7 @@ class SearchingResultViewModel @Inject constructor(
 
 
     suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
-        return searchResultUseCase.invoke(query).cachedIn(viewModelScope)
+        return searchResultUseCase(query).cachedIn(viewModelScope)
     }
 
     fun insertSearchingItem(item: Documents) {

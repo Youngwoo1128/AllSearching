@@ -13,14 +13,16 @@ import com.woojoo.allsearching.ui.viewholders.VideoResultViewHolder
 
 class SearchingResultAdapter(
     private val callback: InsertSearchingData
-    ): PagingDataAdapter<Documents, RecyclerView.ViewHolder>(diffCallback) {
+) : PagingDataAdapter<Documents, RecyclerView.ViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == IMAGE_VIEW_TYPE) {
-            val binding = ItemImageResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-             ImageResultViewHolder(binding)
-        }else {
-            val binding = ItemVideoResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding =
+                ItemImageResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ImageResultViewHolder(binding)
+        } else {
+            val binding =
+                ItemVideoResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             VideoResultViewHolder(binding)
         }
     }

@@ -9,8 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 
-open class BaseDialogFragment<T: ViewDataBinding>(@LayoutRes private val contentLayoutResId: Int) :
-    DialogFragment() {
+open class BaseDialogFragment<T: ViewDataBinding>(@LayoutRes private val contentLayoutResId: Int) : DialogFragment() {
 
     private var _binding: T? = null
     protected val binding: T
