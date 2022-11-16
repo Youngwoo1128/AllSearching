@@ -25,11 +25,6 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
         initView()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d("yw lifecycle", "onCreate")
-    }
-
     override fun onResume() {
         super.onResume()
 
@@ -45,7 +40,6 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
             adapter.removeItem(it)
             viewModel.updateResearchingList(it)
         }
-
     }
 
     private fun initView() {
