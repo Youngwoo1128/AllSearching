@@ -56,20 +56,20 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
             }
         })
 
-        binding.rvImageResult.adapter = adapter
-        binding.rvImageResult.addItemDecoration(
+        binding.recyclerViewImageResult.adapter = adapter
+        binding.recyclerViewImageResult.addItemDecoration(
             DividerItemDecoration(
                 requireContext(),
                 LinearLayoutManager.VERTICAL
             )
         )
 
-        binding.btnSearching.setOnClickListener {
-            if (binding.etSearching.text.toString().isNullOrEmpty()) {
+        binding.buttonSearching.setOnClickListener {
+            if (binding.editTextSearching.text.toString().isNullOrEmpty()) {
                 showEmptyKeywordDialog()
             } else {
                 lifecycleScope.launch {
-                    viewModel.getSearchingResult(binding.etSearching.text.toString())
+                    viewModel.getSearchingResult(binding.editTextSearching.text.toString())
                         .collectLatest {
                             adapter.submitData(it)
                         }
@@ -85,7 +85,7 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
             listener = { _, bundle ->
                 when (bundle.getParcelable(EXTRA_EMPTY_SEARCHING_KEYWORD) as? EmptySearchingKeywordDialogAction) {
                     EmptySearchingKeywordDialogAction.EmptySearchingKeyword -> {
-                        requireContext().showKeyboardOnEditText(binding.etSearching)
+                        requireContext().showKeyboardOnEditText(binding.editTextSearching)
 
                     }
                     else -> Unit

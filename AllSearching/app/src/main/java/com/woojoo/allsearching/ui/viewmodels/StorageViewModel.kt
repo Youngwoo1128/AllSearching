@@ -31,21 +31,21 @@ class StorageViewModel @Inject constructor(
 
     fun getLocalResearchingList() {
         viewModelScope.requestAPI {
-            _localResearching.value = getAllResearchingUseCase.invoke()
+            _localResearching.value = getAllResearchingUseCase()
             Log.d("researching List Size : ", "${_localResearching.value?.size}")
         }
     }
 
     fun deleteResearchingItem(item: Researching) {
         viewModelScope.requestAPI {
-            _deletedItem.value = deleteResearchingUseCase.invoke(item)
+            _deletedItem.value = deleteResearchingUseCase(item)
             Log.d("Deleted Item :", "${_deletedItem.value}")
         }
     }
 
     fun updateResearchingList(deletedKey: Int) {
         viewModelScope.requestAPI {
-            val researchingList = getAllResearchingUseCase.invoke()
+            val researchingList = getAllResearchingUseCase()
 
             for (i in deletedKey..researchingList.size) {
                 val savedItem = researchingList[i - 1]

@@ -10,7 +10,7 @@ fun ResearchingEntity.toDomain() = Researching(
     viewType,
     title,
     thumbnail,
-    url.toString()
+    url
 )
 
 fun Researching.toData() = ResearchingEntity(
