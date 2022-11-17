@@ -10,15 +10,14 @@ import kotlin.Comparator
 import kotlin.collections.ArrayList
 
 
-fun ArrayList<Documents>.combineDocument(): ArrayList<Documents> {
+fun ArrayList<Documents>.sortDateTime(): ArrayList<Documents> {
 
-//    this.distinct()
     for (i in 0 until this.size) {
-        this[i].datetime = convertDateToString(this[i].datetime.toString())
+        this[i].datetime = convertDateToString(this[i].datetime)
     }
 
     val sort = Comparator<Documents> { o1, o2 ->
-        o2?.datetime?.compareTo(o1.datetime.toString())!!
+        o2?.datetime?.compareTo(o1.datetime)!!
     }
 
     Collections.sort(this, sort)
@@ -52,21 +51,22 @@ fun searchingResultMapping(
                     url = totalResponse[i].doc_url ?: ""
                 )
             )
-        } else {
-            //video
-            mappedModel.add(
-                Documents(
-                    datetime = totalResponse[i].datetime,
-                    viewType = VIDEO_VIEW_TYPE,
-                    title = totalResponse[i].title ?: "",
-                    thumbnail = totalResponse[i].thumbnail ?: "",
-                    url = totalResponse[i].url ?: ""
-                )
-            )
+            continue
         }
+        //video
+        mappedModel.add(
+            Documents(
+                datetime = totalResponse[i].datetime,
+                viewType = VIDEO_VIEW_TYPE,
+                title = totalResponse[i].title ?: "",
+                thumbnail = totalResponse[i].thumbnail ?: "",
+                url = totalResponse[i].url ?: ""
+            )
+        )
+
     }
 
-    return mappedModel.combineDocument()
+    return mappedModel.sortDateTime()
 }
 
 const val IMAGE_VIEW_TYPE = 1
