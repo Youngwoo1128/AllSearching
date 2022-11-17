@@ -19,7 +19,7 @@ class StorageAdapter(private val callback: DeleteLocalItem) : RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = researchingList[position]
-        (holder as StorageViewHolder).onBind(item, callback)
+        (holder as? StorageViewHolder)?.onBind(item, callback)
     }
 
     override fun getItemCount(): Int = researchingList.size

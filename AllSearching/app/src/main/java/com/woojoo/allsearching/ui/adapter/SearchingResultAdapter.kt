@@ -31,9 +31,9 @@ class SearchingResultAdapter(
         val item = getItem(position)
 
         if (item?.viewType == IMAGE_VIEW_TYPE) {
-            (holder as ImageResultViewHolder).onBind(item, callback)
+            (holder as? ImageResultViewHolder)?.onBind(item, callback)
         } else {
-            (holder as VideoResultViewHolder).onBind(item, callback)
+            (holder as? VideoResultViewHolder)?.onBind(item, callback)
         }
     }
 
