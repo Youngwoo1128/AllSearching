@@ -41,15 +41,15 @@ fun searchingResultMapping(
     val totalResponse = imageResponse + videoResponse
 
     for (i in totalResponse.indices) {
-        if (!totalResponse[i].thumbnail_url.isNullOrEmpty()) {
+        if (!totalResponse[i].thumbnailUrl.isNullOrEmpty()) {
             //image
             mappedModel.add(
                 Documents(
                     datetime = totalResponse[i].datetime,
                     viewType = IMAGE_VIEW_TYPE,
-                    title = totalResponse[i].collection,
-                    thumbnail = totalResponse[i].thumbnail_url,
-                    url = totalResponse[i].doc_url
+                    title = totalResponse[i].collection ?: "",
+                    thumbnail = totalResponse[i].thumbnailUrl ?: "",
+                    url = totalResponse[i].doc_url ?: ""
                 )
             )
         } else {
@@ -58,9 +58,9 @@ fun searchingResultMapping(
                 Documents(
                     datetime = totalResponse[i].datetime,
                     viewType = VIDEO_VIEW_TYPE,
-                    title = totalResponse[i].title,
-                    thumbnail = totalResponse[i].thumbnail,
-                    url = totalResponse[i].url
+                    title = totalResponse[i].title ?: "",
+                    thumbnail = totalResponse[i].thumbnail ?: "",
+                    url = totalResponse[i].url ?: ""
                 )
             )
         }
