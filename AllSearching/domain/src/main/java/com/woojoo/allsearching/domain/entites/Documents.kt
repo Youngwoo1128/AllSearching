@@ -5,9 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Documents(
-    var datetime: String?,
+    var datetime: String,
     var viewType: Int,
-    val title: String?,
-    val thumbnail: String?,
-    val url: String?
+    val title: String,
+    val thumbnail: String,
+    val url: String
 ): Parcelable

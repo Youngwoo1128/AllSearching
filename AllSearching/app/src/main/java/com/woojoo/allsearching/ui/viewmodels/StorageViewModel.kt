@@ -19,13 +19,13 @@ class StorageViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
     private val deleteResearchingUseCase: DeleteResearchingUseCase,
     private val updatedResearchingUseCase: UpdateResearchingUseCase
-    ): ViewModel() {
+) : ViewModel() {
 
     val localResearching: LiveData<List<Researching>>
         get() = _localResearching
     private val _localResearching = MutableLiveData<List<Researching>>()
 
-    val deletedItem : LiveData<Int>
+    val deletedItem: LiveData<Int>
         get() = _deletedItem
     private val _deletedItem = SingleLiveEvent<Int>()
 
@@ -47,7 +47,7 @@ class StorageViewModel @Inject constructor(
         viewModelScope.requestAPI {
             val researchingList = getAllResearchingUseCase.invoke()
 
-            for (i in deletedKey .. researchingList.size) {
+            for (i in deletedKey..researchingList.size) {
                 val savedItem = researchingList[i - 1]
                 savedItem.index = i.toLong()
                 updatedResearchingUseCase.invoke(savedItem)
