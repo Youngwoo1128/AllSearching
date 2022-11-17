@@ -49,6 +49,6 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
             }
         })
 
-        binding.rvResearching.adapter = adapter
+        binding.recyclerViewResearching.adapter = adapter
     }
 }

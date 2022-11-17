@@ -16,14 +16,15 @@ class SearchingResultAdapter(
 ) : PagingDataAdapter<Documents, RecyclerView.ViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == IMAGE_VIEW_TYPE) {
-            val binding =
-                ItemImageResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            ImageResultViewHolder(binding)
-        } else {
-            val binding =
-                ItemVideoResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            VideoResultViewHolder(binding)
+        return when(viewType) {
+            IMAGE_VIEW_TYPE -> {
+                val binding = ItemImageResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ImageResultViewHolder(binding)
+            }
+            else -> {
+                val binding = ItemVideoResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                VideoResultViewHolder(binding)
+            }
         }
     }
 
