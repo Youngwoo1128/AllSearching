@@ -11,16 +11,9 @@ import kotlin.collections.ArrayList
 
 
 fun ArrayList<Documents>.sortDateTime(): ArrayList<Documents> {
-
-    for (i in 0 until this.size) {
-        this[i].datetime = convertDateToString(this[i].datetime)
+    this.sortByDescending {
+        it.datetime
     }
-
-    val sort = Comparator<Documents> { o1, o2 ->
-        o2?.datetime?.compareTo(o1.datetime)!!
-    }
-
-    Collections.sort(this, sort)
     return this
 }
 
@@ -44,7 +37,7 @@ fun searchingResultMapping(
             //image
             mappedModel.add(
                 Documents(
-                    datetime = totalResponse[i].datetime,
+                    datetime = convertDateToString(totalResponse[i].datetime),
                     viewType = IMAGE_VIEW_TYPE,
                     title = totalResponse[i].collection ?: "",
                     thumbnail = totalResponse[i].thumbnailUrl ?: "",
@@ -56,7 +49,7 @@ fun searchingResultMapping(
         //video
         mappedModel.add(
             Documents(
-                datetime = totalResponse[i].datetime,
+                datetime = convertDateToString(totalResponse[i].datetime),
                 viewType = VIDEO_VIEW_TYPE,
                 title = totalResponse[i].title ?: "",
                 thumbnail = totalResponse[i].thumbnail ?: "",
