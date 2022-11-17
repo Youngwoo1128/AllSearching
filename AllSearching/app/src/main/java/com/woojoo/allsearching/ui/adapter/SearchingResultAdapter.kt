@@ -15,6 +15,8 @@ class SearchingResultAdapter(
     private val callback: InsertSearchingData
 ) : PagingDataAdapter<Documents, RecyclerView.ViewHolder>(diffCallback) {
 
+    private val searchingEvent = callback
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
             IMAGE_VIEW_TYPE -> {
@@ -32,9 +34,9 @@ class SearchingResultAdapter(
         val item = getItem(position)
 
         if (item?.viewType == IMAGE_VIEW_TYPE) {
-            (holder as? ImageResultViewHolder)?.onBind(item, callback)
+            (holder as? ImageResultViewHolder)?.onBind(item, searchingEvent)
         } else {
-            (holder as? VideoResultViewHolder)?.onBind(item, callback)
+            (holder as? VideoResultViewHolder)?.onBind(item, searchingEvent)
         }
     }
 
