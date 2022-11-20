@@ -4,7 +4,6 @@ import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.woojoo.allsearching.utils.SingleLiveEvent
-import com.woojoo.allsearching.extension.requestAPI
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
@@ -19,7 +18,7 @@ class SearchingResultViewModel @Inject constructor(
     private val searchResultUseCase: SearchResultUseCase,
     private val insertResearchingUseCase: InsertResearchingUseCase,
     private val getAllResearchingUseCase: GetAllResearchingUseCase
-): ViewModel() {
+): BaseViewModel() {
 
     private val _insertToRoom = SingleLiveEvent<Unit>()
     val insertToRoom: LiveData<Unit>
