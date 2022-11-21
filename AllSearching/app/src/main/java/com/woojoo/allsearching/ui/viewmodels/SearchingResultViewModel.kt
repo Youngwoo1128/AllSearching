@@ -1,5 +1,6 @@
 package com.woojoo.allsearching.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -12,8 +13,11 @@ import com.woojoo.allsearching.domain.usecases.InsertResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,7 +27,7 @@ class SearchingResultViewModel @Inject constructor(
     private val searchResultUseCase: SearchResultUseCase,
     private val insertResearchingUseCase: InsertResearchingUseCase,
     private val getAllResearchingUseCase: GetAllResearchingUseCase
-): BaseViewModel() {
+) : BaseViewModel() {
 
     private val _insertToRoom = SingleLiveEvent<Unit>()
     val insertToRoom: LiveData<Unit>
@@ -38,27 +42,53 @@ class SearchingResultViewModel @Inject constructor(
         return searchResultUseCase(query).cachedIn(viewModelScope)
     }
 
-  fun insertSearchingItem(item: Documents) {
-      viewModelScope.launch {
-          val savedResearchingList = getAllResearchingUseCase.invoke()
-          val listIndex = when (savedResearchingList.isEmpty()) {
-              true -> 0
-              else -> savedResearchingList[savedResearchingList.size - 1].index
-          }
-          insertResearchingUseCase.getResult(Researching(
-              id = null,
-              index = listIndex.plus(1),
-              dateTime = item.datetime,
-              viewType = item.viewType,
-              title = item.title,
-              thumbnail = item.thumbnail,
-              url = item.url
-          )).take(1).collect { result ->
-              _insertResult.value = result
-          }
-      }
-  }
+    fun insertSearchingItem(item: Documents) {
+        val savedResearchingList = getAllResearchingUseCase.invoke()
+        val listIndex = when (savedResearchingList.isEmpty()) {
+            true -> 0
+            else -> savedResearchingList[savedResearchingList.size - 1].index
+        }
+        insertResearchingUseCase.getResult(
+            Researching(
+                id = null,
+                index = listIndex.plus(1),
+                dateTime = item.datetime,
+                viewType = item.viewType,
+                title = item.title,
+                thumbnail = item.thumbnail,
+                url = item.url
+            )
+        ).onEach { result ->
+            _insertResult.value = result
+            if (result == ResponseResult.ResultFail()) {
+                val throwable = result as? ResponseResult.ResultFail
+                throwable?.throwable?.let {
+                    handlingResponseResult(it)
+                } ?: {}
+            }
+        }.launchIn(viewModelScope)
 
+//      collect 는 deprecated,,,
+//        viewModelScope.launch {
+//            insertResearchingUseCase.getResult(
+//                Researching(
+//                    id = null,
+//                    index = listIndex.plus(1),
+//                    dateTime = item.datetime,
+//                    viewType = item.viewType,
+//                    title = item.title,
+//                    thumbnail = item.thumbnail,
+//                    url = item.url
+//                )
+//            ).collect()
+//        }
+    }
+
+    fun retryInsertSearchingItem(retryCount: Int = 3, retryMethod: () -> Unit) {
+        repeat(retryCount) {
+            retryMethod.invoke()
+        }
+    }
 
 //    fun insertSearchingItem(item: Documents) {
 //        viewModelScope.requestAPI {

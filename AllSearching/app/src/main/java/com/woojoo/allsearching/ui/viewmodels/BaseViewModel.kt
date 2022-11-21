@@ -61,7 +61,7 @@ open class BaseViewModel: ViewModel() {
                 setNetworkException(UNKNOWN_HOST_EXCEPTION_STATUS, message)
             }
             is Exception -> {
-                _networkException.value = ResError(NORMAL_EXCEPTION_STATUS, message)
+                setNetworkException(NORMAL_EXCEPTION_STATUS, message)
             }
         }
     }
@@ -70,9 +70,9 @@ open class BaseViewModel: ViewModel() {
         _networkException.value = ResError(status, message)
     }
 
-    protected fun handlingResponseResult(exception: Exception) {
-        val message = exception.message.toString()
-       when (exception) {
+    protected fun handlingResponseResult(throwable: Throwable) {
+        val message = throwable.message.toString()
+       when (throwable) {
            is HttpException -> {
 
            }
@@ -86,6 +86,7 @@ open class BaseViewModel: ViewModel() {
            }
            else -> {
                _networkException.value = ResError(NORMAL_EXCEPTION_STATUS, message)
+
            }
        }
     }

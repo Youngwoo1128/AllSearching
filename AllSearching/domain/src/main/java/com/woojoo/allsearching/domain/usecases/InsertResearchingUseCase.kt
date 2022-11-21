@@ -13,7 +13,7 @@ class InsertResearchingUseCase @Inject constructor(
 //        researchingRepository.insertResearching(item)
 //    }
 
-    suspend fun getResult(item: Researching): Flow<ResponseResult> {
+    fun getResult(item: Researching): Flow<ResponseResult> {
         return researchingRepository.insertResearching(item)
     }
 }

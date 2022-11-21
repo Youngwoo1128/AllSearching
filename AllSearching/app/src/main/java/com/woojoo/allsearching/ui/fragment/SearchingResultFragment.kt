@@ -1,6 +1,7 @@
 package com.woojoo.allsearching.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -48,6 +49,8 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
         viewModel.insertResult.observe(viewLifecycleOwner) { result ->
             showResultToast(result)
         }
+
+
     }
 
     private fun initView() {
@@ -91,7 +94,6 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
                 when (bundle.getParcelable(EXTRA_EMPTY_SEARCHING_KEYWORD) as? EmptySearchingKeywordDialogAction) {
                     EmptySearchingKeywordDialogAction.EmptySearchingKeyword -> {
                         requireContext().showKeyboardOnEditText(binding.editTextSearching)
-
                     }
                     else -> Unit
                 }
@@ -111,12 +113,13 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
 
     private fun showResultToast(result : ResponseResult) {
         when (result) {
-            ResponseResult.ResultSuccess -> {
+            is ResponseResult.ResultSuccess -> {
                 Toast.makeText(
                     requireContext(),
                     requireContext().getString(R.string.string_favorite),
                     Toast.LENGTH_SHORT
                 ).show()
+                Log.d("inserted Item: ", "${result.any}")
             }
             else -> {
                 Toast.makeText(
@@ -124,6 +127,10 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
                     requireContext().getString(R.string.string_favorite_fail),
                     Toast.LENGTH_SHORT
                 ).show()
+                Log.d("throwable Message", "${(result as? ResponseResult.ResultFail)?.throwable?.message}")
+                viewModel.retryInsertSearchingItem {
+
+                }
             }
         }
     }
