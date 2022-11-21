@@ -39,6 +39,9 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoVersion"
 
+    // Domain 영역은 순수 Kotlin 코드만 존재해야 함
+    // 따라서 아래 의존성들은 제거할 필요가 있음
+
     // coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"

@@ -11,6 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import java.lang.Exception
 
 //android 에서 핸들링 가능한 Exception 종류를 알아보고 적용 후 data 영역으로 전환
 
@@ -19,6 +20,10 @@ open class BaseViewModel: ViewModel() {
     val networkException : LiveData<ResError>
         get() = _networkException
     private val _networkException = MutableLiveData<ResError>()
+
+    val exceptionHandler: LiveData<Exception>
+        get() = _exceptionHandler
+    private val _exceptionHandler = MutableLiveData<Exception>()
 
     fun CoroutineScope.requestAPI(
         loadingType: LoadingType = LoadingType.NormalLoading,
@@ -63,6 +68,26 @@ open class BaseViewModel: ViewModel() {
 
     private fun setNetworkException(status: Int, message: String) {
         _networkException.value = ResError(status, message)
+    }
+
+    protected fun handlingResponseResult(exception: Exception) {
+        val message = exception.message.toString()
+       when (exception) {
+           is HttpException -> {
+
+           }
+           is SocketTimeoutException -> {
+               // response 받을때 까지 시간 초과
+               setNetworkException(SOCKET_TIME_OUT_EXCEPTION_STATUS, message)
+           }
+           is UnknownHostException -> {
+               // 네트워크에 연결이 되지 않을 경우
+               setNetworkException(UNKNOWN_HOST_EXCEPTION_STATUS, message)
+           }
+           else -> {
+               _networkException.value = ResError(NORMAL_EXCEPTION_STATUS, message)
+           }
+       }
     }
 
     sealed class LoadingType {

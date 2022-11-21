@@ -26,7 +26,7 @@ class ResearchingRepositoryImpl @Inject constructor(
             researchingDao.insertResearching(item.toData())
             emit(ResponseResult.ResultSuccess)
         }.catch {
-            ResponseResult.ResultFail
+            emit(ResponseResult.ResultFail)
         }
     }
 

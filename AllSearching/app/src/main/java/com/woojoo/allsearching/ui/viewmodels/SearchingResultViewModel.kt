@@ -41,7 +41,7 @@ class SearchingResultViewModel @Inject constructor(
   fun insertSearchingItem(item: Documents) {
       viewModelScope.launch {
           val savedResearchingList = getAllResearchingUseCase.invoke()
-          val listIndex = when(savedResearchingList.isEmpty()) {
+          val listIndex = when (savedResearchingList.isEmpty()) {
               true -> 0
               else -> savedResearchingList[savedResearchingList.size - 1].index
           }
