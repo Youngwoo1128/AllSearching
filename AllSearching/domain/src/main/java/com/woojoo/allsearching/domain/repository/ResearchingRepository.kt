@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface ResearchingRepository {
     suspend fun getResearchingList(): List<Researching>
     fun insertResearching(item: Researching): Flow<ResponseResult>
-
     suspend fun deleteResearching(item: Researching): Int
     suspend fun updatePrimaryKey(item: Researching)
 }

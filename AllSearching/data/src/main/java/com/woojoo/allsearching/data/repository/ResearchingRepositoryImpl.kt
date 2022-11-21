@@ -9,7 +9,6 @@ import com.woojoo.allsearching.domain.repository.ResearchingRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import java.lang.Exception
 import javax.inject.Inject
 
 class ResearchingRepositoryImpl @Inject constructor(
@@ -21,6 +20,7 @@ class ResearchingRepositoryImpl @Inject constructor(
             it.toDomain()
         }
     }
+
 
     override fun insertResearching(item: Researching): Flow<ResponseResult> {
         return flow<ResponseResult> {

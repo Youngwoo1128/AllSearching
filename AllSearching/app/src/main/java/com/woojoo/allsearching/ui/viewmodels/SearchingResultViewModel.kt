@@ -1,6 +1,5 @@
 package com.woojoo.allsearching.ui.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -12,13 +11,12 @@ import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.InsertResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -43,32 +41,34 @@ class SearchingResultViewModel @Inject constructor(
     }
 
     fun insertSearchingItem(item: Documents) {
-        val savedResearchingList = getAllResearchingUseCase.invoke()
-        val listIndex = when (savedResearchingList.isEmpty()) {
-            true -> 0
-            else -> savedResearchingList[savedResearchingList.size - 1].index
-        }
-        insertResearchingUseCase.getResult(
-            Researching(
-                id = null,
-                index = listIndex.plus(1),
-                dateTime = item.datetime,
-                viewType = item.viewType,
-                title = item.title,
-                thumbnail = item.thumbnail,
-                url = item.url
-            )
-        ).onEach { result ->
-            _insertResult.value = result
-            if (result == ResponseResult.ResultFail()) {
-                val throwable = result as? ResponseResult.ResultFail
-                throwable?.throwable?.let {
-                    handlingResponseResult(it)
-                } ?: {}
+        viewModelScope.launch(Dispatchers.IO) {
+            val savedResearchingList = getAllResearchingUseCase()
+            val listIndex = when (savedResearchingList.isEmpty()) {
+                true -> 0
+                else -> savedResearchingList[savedResearchingList.size - 1].index
             }
-        }.launchIn(viewModelScope)
+            insertResearchingUseCase.getResult(
+                Researching(
+                    id = null,
+                    index = listIndex.plus(1),
+                    dateTime = item.datetime,
+                    viewType = item.viewType,
+                    title = item.title,
+                    thumbnail = item.thumbnail,
+                    url = item.url
+                )
+            ).onEach { result ->
+                _insertResult.value = result
+                if (result == ResponseResult.ResultFail()) {
+                    val throwable = result as? ResponseResult.ResultFail
+                    throwable?.throwable?.let {
+                        handlingResponseResult(it)
+                    } ?: run {}
+                }
+            }.launchIn(viewModelScope)
+        }
 
-//      collect 는 deprecated,,,
+//      collect 가 deprecated,,,??
 //        viewModelScope.launch {
 //            insertResearchingUseCase.getResult(
 //                Researching(
