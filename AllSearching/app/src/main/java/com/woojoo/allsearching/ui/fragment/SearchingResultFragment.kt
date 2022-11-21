@@ -11,6 +11,7 @@ import com.woojoo.allsearching.R
 import com.woojoo.allsearching.constant.EXTRA_EMPTY_SEARCHING_KEYWORD
 import com.woojoo.allsearching.databinding.FragmentSearchingResultBinding
 import com.woojoo.allsearching.domain.entites.Documents
+import com.woojoo.allsearching.domain.entites.ResponseResult
 import com.woojoo.allsearching.extension.IntentProvider
 import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
@@ -42,6 +43,10 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
                 requireContext().getString(R.string.string_favorite),
                 Toast.LENGTH_SHORT
             ).show()
+        }
+
+        viewModel.insertResult.observe(viewLifecycleOwner) { result ->
+            showResultToast(result)
         }
     }
 
@@ -102,6 +107,25 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
             isCancelable = false,
             buttonText = requireContext().getString(R.string.string_ok)
         )
+    }
+
+    private fun showResultToast(result : ResponseResult) {
+        when (result) {
+            ResponseResult.ResultSuccess -> {
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.string_favorite),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            else -> {
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.string_favorite_fail),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     companion object {

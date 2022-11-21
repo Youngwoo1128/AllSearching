@@ -1,6 +1,5 @@
 package com.woojoo.allsearching.domain.usecases
 
-import androidx.paging.Pager
 import androidx.paging.PagingData
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.repository.SearchResultRepository
