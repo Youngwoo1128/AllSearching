@@ -3,14 +3,12 @@ package com.woojoo.allsearching.ui.viewmodels
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.woojoo.allsearching.utils.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.DeleteResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.UpdateResearchingUseCase
-import com.woojoo.allsearching.extension.requestAPI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -19,7 +17,7 @@ class StorageViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
     private val deleteResearchingUseCase: DeleteResearchingUseCase,
     private val updatedResearchingUseCase: UpdateResearchingUseCase
-) : ViewModel() {
+) : BaseViewModel() {
 
     val localResearching: LiveData<List<Researching>>
         get() = _localResearching
