@@ -21,10 +21,8 @@ class ResearchingRepositoryImpl @Inject constructor(
         }
     }
 
-
     override fun insertResearching(item: Researching): Flow<ResponseResult> {
         return flow<ResponseResult> {
-//            throw Exception()
             researchingDao.insertResearching(item.toData())
             emit(ResponseResult.ResultSuccess(item))
         }.catch { throwable ->

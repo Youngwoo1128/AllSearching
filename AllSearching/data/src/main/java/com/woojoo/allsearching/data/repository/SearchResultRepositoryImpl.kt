@@ -18,9 +18,13 @@ class SearchResultRepositoryImpl @Inject constructor(
 
     override suspend fun getTotalList(query: String): Flow<PagingData<Documents>> {
         return Pager(
-            config = PagingConfig(pageSize = 30, enablePlaceholders = false),
+            config = PagingConfig(pageSize = REQUEST_PARAM_SIZE, enablePlaceholders = false),
             pagingSourceFactory = { SearchingPagingDataSource(query, networkAPI) }
         ).flow
+    }
+
+    companion object {
+        private const val REQUEST_PARAM_SIZE = 30
     }
 }
 
