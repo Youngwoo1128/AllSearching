@@ -2,7 +2,6 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
     id 'kotlin-parcelize'
 }
 
@@ -39,18 +38,12 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoVersion"
 
-    // Domain 영역은 순수 Kotlin 코드만 존재해야 함
-    // 따라서 아래 의존성들은 제거할 필요가 있음
+    implementation 'javax.inject:javax.inject:1'
 
     // coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
-    
-    // Hilt
-    implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
-    kapt "com.google.dagger:dagger-android-processor:$hiltVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$hiltVersion"
+
 
     implementation "androidx.paging:paging-runtime-ktx:$androidxPagingVersion"
 }
