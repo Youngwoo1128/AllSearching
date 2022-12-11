@@ -3,13 +3,13 @@
 Hilt, Coroutine, Room, AAC, CustomDialogFragmet들을 사용하여 Kakao Open API 연동한 어플리케이션 개발 
 Response를의 데이터를 활용한 WebView 연동
 
-**개발언어** : Kotlin
-**IDE** : Android Studio
-**네트워킹** : Retrofit 2.0, OkHttp
-**아키텍처** : MVVM, Clean Architecture
-**DI** : Hilt
-**Database** : Room
-**그 외** : ViewBinding, DataBinding, Coroutine, Android Jetpack
+**개발언어** : Kotlin </br>
+**IDE** : Android Studio </br>
+**네트워킹** : Retrofit 2.0, OkHttp </br>
+**아키텍처** : MVVM, Clean Architecture </br>
+**DI** : Hilt </br>
+**Database** : Room </br>
+**그 외** : ViewBinding, DataBinding, Coroutine, Android Jetpack </br>
 
 
 Clean Architecture 기반 개발
