@@ -1,7 +1,7 @@
 # All Searching
 
-Hilt, Coroutine, Room, AAC, CustomDialogFragmet들을 사용하여 Kakao Open API 연동한 어플리케이션 개발 
-Response를의 데이터를 활용한 WebView 연동
+**목표** : Kakao Open API 이용한 검색 어플리케이션 개발 
+
 
 **개발언어** : Kotlin </br>
 **IDE** : Android Studio </br>
@@ -9,7 +9,7 @@ Response를의 데이터를 활용한 WebView 연동
 **아키텍처** : MVVM, Clean Architecture </br>
 **DI** : Hilt </br>
 **Database** : Room </br>
-**그 외** : ViewBinding, DataBinding, Coroutine, Android Jetpack </br>
+**그 외** : ViewBinding, DataBinding, Coroutine, Android Jetpack, WebView </br>
 
 
 Clean Architecture 기반 개발
