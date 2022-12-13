@@ -49,6 +49,7 @@ open class BaseViewModel: ViewModel() {
         /*
         * Database 작업의 에러들 핸들링하기
         * 어떤 에러가 발생할 수 있는지 조사하고 exception 처리
+        * 그리고 지금은 exception 핸들링을 ViewModel에서 작성하였는데 다른 layer에서 하도록 수정하기
         * */
 
         if (exceptionInterceptor?.invoke(throwable) == true) return
