@@ -9,11 +9,7 @@ import javax.inject.Inject
 class InsertResearchingUseCase @Inject constructor(
     private val researchingRepository: ResearchingRepository
 ) {
-//    suspend operator fun invoke(item: Researching) {
-//        researchingRepository.insertResearching(item)
-//    }
-
-    fun getResult(item: Researching): Flow<ResponseResult> {
+    operator fun invoke(item: Researching): Flow<ResponseResult> {
         return researchingRepository.insertResearching(item)
     }
 }

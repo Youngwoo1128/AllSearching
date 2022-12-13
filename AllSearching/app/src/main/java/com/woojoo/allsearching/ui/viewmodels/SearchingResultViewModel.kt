@@ -13,10 +13,8 @@ import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -47,7 +45,7 @@ class SearchingResultViewModel @Inject constructor(
                 true -> 0
                 else -> savedResearchingList[savedResearchingList.size - 1].index
             }
-            insertResearchingUseCase.getResult(
+            insertResearchingUseCase(
                 Researching(
                     id = null,
                     index = listIndex.plus(1),
@@ -62,7 +60,7 @@ class SearchingResultViewModel @Inject constructor(
                 if (result == ResponseResult.ResultFail()) {
                     val throwable = result as? ResponseResult.ResultFail
                     throwable?.throwable?.let {
-                        handlingResponseResult(it)
+                        handlingDatabaseError(it)
                     } ?: run {}
                 }
             }.launchIn(viewModelScope)

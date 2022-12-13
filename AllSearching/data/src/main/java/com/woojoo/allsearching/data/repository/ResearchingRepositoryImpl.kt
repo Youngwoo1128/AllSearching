@@ -35,7 +35,7 @@ class ResearchingRepositoryImpl @Inject constructor(
         return item.index.toInt()
     }
 
-    override suspend fun updatePrimaryKey(item: Researching) {
+    override suspend fun updateResearchingItem(item: Researching) {
         researchingDao.update(item.toData())
     }
 }

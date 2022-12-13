@@ -69,27 +69,12 @@ open class BaseViewModel: ViewModel() {
     private fun setNetworkException(status: Int, message: String) {
         _networkException.value = Error(status, message)
     }
-
-    protected fun handlingResponseResult(throwable: Throwable) {
+    protected fun handlingDatabaseError(throwable: Throwable) {
         val message = throwable.message.toString()
-       when (throwable) {
-           is HttpException -> {
-
-           }
-           is SocketTimeoutException -> {
-               // response 받을때 까지 시간 초과
-               setNetworkException(SOCKET_TIME_OUT_EXCEPTION_STATUS, message)
-           }
-           is UnknownHostException -> {
-               // 네트워크에 연결이 되지 않을 경우
-               setNetworkException(UNKNOWN_HOST_EXCEPTION_STATUS, message)
-           }
-           else -> {
-               _networkException.value =
-                   Error(NORMAL_EXCEPTION_STATUS, message)
-
-           }
-       }
+        /*
+        * Database 작업의 에러들 핸들링하기
+        * 어떤 에러가 발생할 수 있는지 조사하고 exception 처리
+        * */
     }
 
     sealed class LoadingType {

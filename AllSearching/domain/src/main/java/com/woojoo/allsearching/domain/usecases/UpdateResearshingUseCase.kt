@@ -9,7 +9,7 @@ class UpdateResearchingUseCase @Inject constructor(
     private val researchingRepository: ResearchingRepository
 ){
     suspend operator fun invoke(item: Researching) {
-        researchingRepository.updatePrimaryKey(item)
+        researchingRepository.updateResearchingItem(item)
         Log.d("Update Primary Key", "${item.id}")
     }
 
