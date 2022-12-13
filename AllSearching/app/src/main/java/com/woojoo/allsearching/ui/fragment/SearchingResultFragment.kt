@@ -49,6 +49,12 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
         viewModel.insertResult.observe(viewLifecycleOwner) { result ->
             showResultToast(result)
         }
+
+        viewModel.resultLiveData.observe(viewLifecycleOwner) { result ->
+            viewLifecycleOwner.lifecycleScope.launch {
+                adapter.submitData(result)
+            }
+        }
     }
 
     private fun initView() {

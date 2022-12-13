@@ -12,4 +12,8 @@ class SearchResultUseCase @Inject constructor(
     suspend operator fun invoke(query: String): Flow<PagingData<Documents>> {
         return searchResultRepository.getTotalList(query)
     }
+
+    suspend fun getSearchingResultLiveData(query: String): PagingData<Documents> {
+        return searchResultRepository.getTotalListLiveData(query)
+    }
 }

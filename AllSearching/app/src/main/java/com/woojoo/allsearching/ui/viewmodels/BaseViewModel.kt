@@ -34,7 +34,7 @@ open class BaseViewModel: ViewModel() {
     ) {
 
         val coroutineException = CoroutineExceptionHandler { _, throwable ->
-            Log.d("Error : ", "${throwable.message}")
+            Log.d("DataBase Error : ", "${throwable.message}")
             throwable.printStackTrace()
             handlingDatabaseError(throwable, exceptionInterceptor)
             exceptionHandle?.invoke()
@@ -76,6 +76,7 @@ open class BaseViewModel: ViewModel() {
             is SocketTimeoutException -> setNetworkException(SOCKET_TIME_OUT_EXCEPTION_STATUS, message)
             is UnknownHostException -> setNetworkException(UNKNOWN_HOST_EXCEPTION_STATUS, message)
             is ConnectException -> setNetworkException(CONNECT_EXCEPTION_STATUS, message)
+            else -> setNetworkException(NORMAL_EXCEPTION_STATUS, message)
         }
     }
 

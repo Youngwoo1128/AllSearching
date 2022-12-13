@@ -1,8 +1,10 @@
 package com.woojoo.allsearching.data.repository
 
+import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.woojoo.allsearching.data.datasources.SearchingDataSource
 import com.woojoo.allsearching.data.network.NetworkAPI
 import com.woojoo.allsearching.data.paging.SearchingPagingDataSource
@@ -21,6 +23,15 @@ class SearchResultRepositoryImpl @Inject constructor(
             config = PagingConfig(pageSize = REQUEST_PARAM_SIZE, enablePlaceholders = false),
             pagingSourceFactory = { SearchingPagingDataSource(query, networkAPI) }
         ).flow
+    }
+
+    override suspend fun getTotalListLiveData(query: String): PagingData<Documents> {
+         val value = Pager(
+            config = PagingConfig(pageSize = REQUEST_PARAM_SIZE, enablePlaceholders = false),
+            pagingSourceFactory = { SearchingPagingDataSource(query, networkAPI) }
+        ).liveData.value
+        //추후 null 처리 작업하기
+        return value!!
     }
 
     companion object {

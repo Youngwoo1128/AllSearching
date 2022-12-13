@@ -13,7 +13,6 @@ import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -26,21 +25,29 @@ class SearchingResultViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase
 ) : BaseViewModel() {
 
-    private val _insertToRoom = SingleLiveEvent<Unit>()
     val insertToRoom: LiveData<Unit>
         get() = _insertToRoom
+    private val _insertToRoom = SingleLiveEvent<Unit>()
 
     val insertResult: LiveData<ResponseResult>
         get() = _insertResult
     private val _insertResult = SingleLiveEvent<ResponseResult>()
 
+    val resultLiveData: LiveData<PagingData<Documents>>
+        get() = _resultLiveData
+    private val _resultLiveData = MutableLiveData<PagingData<Documents>>()
+
 
     suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
-        return searchResultUseCase(query).cachedIn(viewModelScope).catch {
-            handlingNetworkError(it)
-        }
+        return searchResultUseCase(query).cachedIn(viewModelScope)
     }
 
+    fun getSearchingResultLiveData(query: String) {
+        //LiveData 용 으로도 한번 만들어보기
+        viewModelScope.launch(Dispatchers.IO) {
+            _resultLiveData.postValue(searchResultUseCase.getSearchingResultLiveData(query))
+        }
+    }
 
     fun insertSearchingItem(item: Documents) {
         viewModelScope.launch(Dispatchers.IO) {
