@@ -50,6 +50,10 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
             showResultToast(result)
         }
 
+        viewModel.test.observe(viewLifecycleOwner) { result ->
+//            adapter.submitData(result)
+        }
+
 
     }
 
@@ -77,6 +81,7 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
                 showEmptyKeywordDialog()
             } else {
                 lifecycleScope.launch {
+                    //Activity에서 Scope를 열어서 하는게 맞나,, 고민해보기
                     viewModel.getSearchingResult(binding.editTextSearching.text.toString())
                         .collectLatest {
                             adapter.submitData(it)

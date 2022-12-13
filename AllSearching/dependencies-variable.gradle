@@ -21,6 +21,7 @@ ext {
     androidDaggerVersion = '2.28'
 
     androidxPagingVersion = '3.1.1'
+    andoridPagingGuavaVersion = '3.1.1'
 
     androidxEspressoVersion = '3.4.0'
 
