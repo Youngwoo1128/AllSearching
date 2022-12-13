@@ -1,6 +1,6 @@
 package com.woojoo.allsearching.domain.entites
 
-data class ResError(
+data class Error(
     val status: Int,
     val message: String
 )
