@@ -38,6 +38,8 @@ class SearchingResultViewModel @Inject constructor(
         return searchResultUseCase(query).cachedIn(viewModelScope)
     }
 
+
+
     fun insertSearchingItem(item: Documents) {
         viewModelScope.launch(Dispatchers.IO) {
             val savedResearchingList = getAllResearchingUseCase()

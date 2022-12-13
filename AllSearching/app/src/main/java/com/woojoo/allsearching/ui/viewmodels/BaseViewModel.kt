@@ -25,8 +25,8 @@ open class BaseViewModel: ViewModel() {
         get() = _exceptionHandler
     private val _exceptionHandler = MutableLiveData<Exception>()
 
-    fun CoroutineScope.requestAPI(
-        loadingType: LoadingType = LoadingType.NormalLoading,
+
+    fun CoroutineScope.requestDataBase(
         exceptionHandle: (() -> Unit)? = null,
         exceptionInterceptor: ((Throwable) -> Boolean)? = null,
         block: suspend CoroutineScope.() -> Unit
@@ -45,24 +45,16 @@ open class BaseViewModel: ViewModel() {
     }
 
     private fun handlingError(throwable: Throwable, exceptionInterceptor: ((Throwable) -> Boolean)?) {
+        /*
+        * Database 작업의 에러들 핸들링하기
+        * 어떤 에러가 발생할 수 있는지 조사하고 exception 처리
+        * */
+
         if (exceptionInterceptor?.invoke(throwable) == true) return
         val message = throwable.message?.let { it } ?: "Exception Message"
 
         when (throwable) {
-            is HttpException -> {
 
-            }
-            is SocketTimeoutException -> {
-                // response 받을때 까지 시간 초과
-                setNetworkException(SOCKET_TIME_OUT_EXCEPTION_STATUS, message)
-            }
-            is UnknownHostException -> {
-                // 네트워크에 연결이 되지 않을 경우
-                setNetworkException(UNKNOWN_HOST_EXCEPTION_STATUS, message)
-            }
-            is Exception -> {
-                setNetworkException(NORMAL_EXCEPTION_STATUS, message)
-            }
         }
     }
 
@@ -71,10 +63,7 @@ open class BaseViewModel: ViewModel() {
     }
     protected fun handlingDatabaseError(throwable: Throwable) {
         val message = throwable.message.toString()
-        /*
-        * Database 작업의 에러들 핸들링하기
-        * 어떤 에러가 발생할 수 있는지 조사하고 exception 처리
-        * */
+        Log.d("Database Error", "${message}")
     }
 
     sealed class LoadingType {
