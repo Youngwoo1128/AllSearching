@@ -31,20 +31,16 @@ class SearchingResultViewModel @Inject constructor(
         get() = _insertResult
     private val _insertResult = SingleLiveEvent<DataBaseResult>()
 
-    val resultLiveData: LiveData<ResponseResult>
-        get() = _resultLiveData
-    private val _resultLiveData = MutableLiveData<ResponseResult>()
+    val pagingData: LiveData<ResponseResult>
+        get() = _pagingData
+    private val _pagingData = MutableLiveData<ResponseResult>()
 
 
     fun getSearchingResult(query: String) {
         viewModelScope.launch {
-            _resultLiveData.value = searchResultUseCase(query)
+            _pagingData.value = searchResultUseCase(query)
         }
     }
-
-//    suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
-//        return searchResultUseCase(query).cachedIn(viewModelScope)
-//    }
 
 //    fun getSearchingResultLiveData(query: String) {
 //        //LiveData 용 으로도 한번 만들어보기
@@ -103,26 +99,8 @@ class SearchingResultViewModel @Inject constructor(
         }
     }
 
-//    fun insertSearchingItem(item: Documents) {
-//        viewModelScope.requestAPI {
-//
-//            val savedResearchingList = getAllResearchingUseCase.invoke()
-//            val listIndex = when(savedResearchingList.isEmpty()) {
-//                true -> 0
-//                else -> savedResearchingList[savedResearchingList.size - 1].index
-//            }
-//
-//            insertResearchingUseCase(Researching(
-//                id = null,
-//                index = listIndex.plus(1),
-//                dateTime = item.datetime,
-//                viewType = item.viewType,
-//                title = item.title,
-//                thumbnail = item.thumbnail,
-//                url = item.url
-//            ))
-//            _insertToRoom.call()
-//        }
-//    }
+    override fun handlingNetworkError(error: ResponseResult.ResponseFail) {
+        super.handlingNetworkError(error)
+    }
 
 }

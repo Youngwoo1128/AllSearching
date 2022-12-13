@@ -1,9 +1,8 @@
 package com.woojoo.allsearching.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.FragmentStorageBinding
 import com.woojoo.allsearching.domain.entites.Researching
@@ -15,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment_storage) {
 
-    private val viewModel by viewModels<StorageViewModel>()
+    private val viewModel by activityViewModels<StorageViewModel>()
     private lateinit var adapter: StorageAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

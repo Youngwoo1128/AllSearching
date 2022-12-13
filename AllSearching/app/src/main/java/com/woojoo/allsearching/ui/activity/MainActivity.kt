@@ -1,22 +1,38 @@
 package com.woojoo.allsearching.ui.activity
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.woojoo.allsearching.R
+import com.woojoo.allsearching.constant.EXTRA_NETWORK_EXCEPTION
 import com.woojoo.allsearching.databinding.ActivityMainBinding
 import com.woojoo.allsearching.ui.BindingActivity
 import com.woojoo.allsearching.ui.adapter.MainViewPagerAdapter
+import com.woojoo.allsearching.ui.dialog.NetworkExceptionDialogAction
+import com.woojoo.allsearching.ui.dialog.dialogFragmentManager
+import com.woojoo.allsearching.ui.dialog.setFragmentResultListener
+import com.woojoo.allsearching.ui.dialog.showNetworkExceptionDialog
 import com.woojoo.allsearching.ui.fragment.SearchingResultFragment
 import com.woojoo.allsearching.ui.fragment.StorageFragment
+import com.woojoo.allsearching.ui.viewmodels.BaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main){
 
+    private val viewModel by viewModels<BaseViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setFragmentResultListener()
+        setObserve()
         initView()
+    }
+
+    private fun setObserve() {
+        viewModel.networkException.observe(this) { resError ->
+            showNetworkExceptionDialog()
+        }
     }
 
 
@@ -38,8 +54,35 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         }
     }
 
+    private fun showNetworkExceptionDialog() {
+        showNetworkExceptionDialog(
+            dialogFragmentManager = dialogFragmentManager(),
+            requestTag = NETWORK_EXCEPTION,
+            message = getString(R.string.network_exception),
+            isCancelable = false,
+            buttonText = getString(R.string.string_ok)
+        )
+    }
+    private fun setFragmentResultListener() {
+        setFragmentResultListener(
+            dialogFragmentManager = dialogFragmentManager(),
+            requestKey = NETWORK_EXCEPTION,
+            listener = { _, bundle ->
+                when(bundle.getParcelable(EXTRA_NETWORK_EXCEPTION) as? NetworkExceptionDialogAction) {
+                    // 어떤 작업 할지 기획해보기
+                    NetworkExceptionDialogAction.NetworkExceptionKeyword -> {
+
+                    }
+                    else -> {}
+
+                }
+            }
+        )
+    }
+
     companion object {
         private const val FRAGMENT_SEARCHING_RESULT_VALUE = 0
         private const val FRAGMENT_STORAGE_VALUE = 1
+        private const val NETWORK_EXCEPTION = "NETWORK_EXCEPTION"
     }
 }

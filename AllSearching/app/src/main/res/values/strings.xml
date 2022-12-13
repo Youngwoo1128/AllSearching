@@ -7,4 +7,5 @@
     <string name="string_favorite_fail">즐겨찾기 실패</string>
     <string name="string_input_keyword">검색할 키워드를 입력해주세요.</string>
     <string name="string_ok">확인</string>
+    <string name="network_exception">네트워크 환경을 다시 확인한 후 시도하여 주세요</string>
 </resources>

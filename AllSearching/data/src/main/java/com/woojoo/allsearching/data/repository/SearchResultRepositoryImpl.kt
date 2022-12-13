@@ -11,19 +11,13 @@ import com.woojoo.allsearching.domain.ResponseResult
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.ResError
 import com.woojoo.allsearching.domain.repository.SearchResultRepository
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class SearchResultRepositoryImpl @Inject constructor(
     private val searchingDataSource: SearchingDataSource,
     private val networkAPI: NetworkAPI
 ) : SearchResultRepository {
-
-//    override suspend fun getTotalList(query: String): Flow<PagingData<Documents>> {
-//        return Pager(
-//            config = PagingConfig(pageSize = REQUEST_PARAM_SIZE, enablePlaceholders = false),
-//            pagingSourceFactory = { SearchingPagingDataSource(query, networkAPI) }
-//        ).flow
-//    }
 
     override suspend fun getTotalList(query: String): ResponseResult {
         return try {
@@ -34,7 +28,11 @@ class SearchResultRepositoryImpl @Inject constructor(
             ResponseResult.ResponseSuccess(pager)
         } catch(e: Exception) {
             ResponseResult.ResponseFail(
-                ResError(message = e.message.toString())
+                ResError(message = e.message.toString(), e)
+            )
+        } catch(e: UnknownHostException) {
+            ResponseResult.ResponseFail(
+                ResError(message = e.message.toString(), e)
             )
         }
     }

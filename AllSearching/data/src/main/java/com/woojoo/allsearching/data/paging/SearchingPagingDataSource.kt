@@ -63,36 +63,4 @@ class SearchingPagingDataSource (
             LoadResult.Error(e)
         }
     }
-
-//    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Documents> {
-//        try {
-//            val page = params.key ?: 1
-//            Log.d("currentPageValue", "$page")
-//            val response = searchingResultMapping(
-//                networkAPI.searchImageResult(query, page, 30).documents,
-//                networkAPI.searchVideoResult(query, page, 30).documents
-//            ).toList()
-//        }catch(e: HttpException) {
-//
-//        }
-//        return try {
-//            val response = searchingResultMapping(
-//                networkAPI.searchImageResult(query, page, 30).documents,
-//                networkAPI.searchVideoResult(query, page, 30).documents
-//            ).toList()
-//
-//            LoadResult.Page(
-//                data = response,
-//                prevKey = if (page == 1) null else page - 1,
-//                nextKey = if (response.isEmpty()) null else page + 1
-//            )
-//        } catch (e: HttpException) {
-//            e.printStackTrace()
-//            LoadResult.Error(e)
-//        } catch (e: java.lang.Exception) {
-//            e.printStackTrace()
-//            LoadResult.Error(e)
-//        }
-//    }
-
 }

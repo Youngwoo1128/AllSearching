@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -27,7 +28,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
 
-    private val viewModel by viewModels<SearchingResultViewModel>()
+    private val viewModel by activityViewModels<SearchingResultViewModel>()
     private lateinit var adapter: SearchingResultAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,7 +52,7 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
             showResultToast(result)
         }
 
-        viewModel.resultLiveData.observe(viewLifecycleOwner) { result ->
+        viewModel.pagingData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is ResponseResult.ResponseSuccess -> {
                     viewLifecycleOwner.lifecycleScope.launch {
@@ -61,8 +62,8 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
                     }
                 }
 
-                else -> {
-
+                is ResponseResult.ResponseFail -> {
+                    viewModel.handlingNetworkError(result)
                 }
             }
         }

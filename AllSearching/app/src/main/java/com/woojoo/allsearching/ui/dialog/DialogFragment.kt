@@ -94,3 +94,21 @@ fun showEmptySearchingKeywordDialog(
         tag = EmptySearchingKeywordDialog.TAG
     )
 }
+
+fun showNetworkExceptionDialog(
+    dialogFragmentManager: DialogFragmentManager,
+    requestTag: String? = null,
+    message: String,
+    isCancelable: Boolean,
+    buttonText: String
+) {
+    dialogFragmentManager.show(
+        dialogFragmentManager = NetworkExceptionDialog.newInstance(
+            requestTag = requestTag,
+            message = message,
+            isCancelable = isCancelable,
+            buttonText = buttonText
+        ),
+        tag = NetworkExceptionDialog.TAG
+    )
+}

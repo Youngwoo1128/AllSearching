@@ -4,10 +4,13 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.woojoo.allsearching.domain.entites.ResError
 import com.bumptech.glide.load.HttpException
+import com.woojoo.allsearching.domain.ResponseResult
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -66,23 +69,28 @@ open class BaseViewModel: ViewModel() {
         Log.d("Database Error", "${message}")
     }
 
-    protected fun handlingNetworkError(throwable: Throwable) {
+    open fun handlingNetworkError(error: ResponseResult.ResponseFail) {
         /*
         * HttpException 종류에 대해서 조사하고 에러 핸들링 해보기
         * */
-        val message = throwable.message.toString()
+        val errorMessage = error.error.message
+        val exception = error.error.exception
 
-        when (throwable) {
+        when (exception) {
             is HttpException -> {}
-            is SocketTimeoutException -> setNetworkException(SOCKET_TIME_OUT_EXCEPTION_STATUS, message)
-            is UnknownHostException -> setNetworkException(UNKNOWN_HOST_EXCEPTION_STATUS, message)
-            is ConnectException -> setNetworkException(CONNECT_EXCEPTION_STATUS, message)
-            else -> setNetworkException(NORMAL_EXCEPTION_STATUS, message)
+            is SocketTimeoutException -> setNetworkException(SOCKET_TIME_OUT_EXCEPTION_STATUS, errorMessage, exception)
+            is UnknownHostException -> setNetworkException(UNKNOWN_HOST_EXCEPTION_STATUS, errorMessage, exception)
+            is ConnectException -> setNetworkException(CONNECT_EXCEPTION_STATUS, errorMessage, exception)
+            else -> setNetworkException(NORMAL_EXCEPTION_STATUS, errorMessage, exception)
         }
     }
 
-    private fun setNetworkException(status: Int, message: String) {
-        _networkException.value = ResError(message)
+    private fun setNetworkException(status: Int, message: String, exception: Exception) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _networkException.value = ResError(message, exception)
+            Log.d("Network Exception Message", message)
+            exception.printStackTrace()
+        }
     }
 
     sealed class LoadingType {
