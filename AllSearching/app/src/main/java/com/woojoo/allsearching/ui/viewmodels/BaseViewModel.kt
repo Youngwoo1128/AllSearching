@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.lang.Exception
+import java.net.ConnectException
 
 //android 에서 핸들링 가능한 Exception 종류를 알아보고 적용 후 data 영역으로 전환
 
@@ -35,7 +36,7 @@ open class BaseViewModel: ViewModel() {
         val coroutineException = CoroutineExceptionHandler { _, throwable ->
             Log.d("Error : ", "${throwable.message}")
             throwable.printStackTrace()
-            handlingError(throwable, exceptionInterceptor)
+            handlingDatabaseError(throwable, exceptionInterceptor)
             exceptionHandle?.invoke()
         }
 
@@ -44,7 +45,7 @@ open class BaseViewModel: ViewModel() {
         }
     }
 
-    private fun handlingError(throwable: Throwable, exceptionInterceptor: ((Throwable) -> Boolean)?) {
+    private fun handlingDatabaseError(throwable: Throwable, exceptionInterceptor: ((Throwable) -> Boolean)?) {
         /*
         * Database 작업의 에러들 핸들링하기
         * 어떤 에러가 발생할 수 있는지 조사하고 exception 처리
@@ -58,12 +59,28 @@ open class BaseViewModel: ViewModel() {
         }
     }
 
-    private fun setNetworkException(status: Int, message: String) {
-        _networkException.value = Error(status, message)
-    }
+
     protected fun handlingDatabaseError(throwable: Throwable) {
         val message = throwable.message.toString()
         Log.d("Database Error", "${message}")
+    }
+
+    protected fun handlingNetworkError(throwable: Throwable) {
+        /*
+        * HttpException 종류에 대해서 조사하고 에러 핸들링 해보기
+        * */
+        val message = throwable.message.toString()
+
+        when (throwable) {
+            is HttpException -> {}
+            is SocketTimeoutException -> setNetworkException(SOCKET_TIME_OUT_EXCEPTION_STATUS, message)
+            is UnknownHostException -> setNetworkException(UNKNOWN_HOST_EXCEPTION_STATUS, message)
+            is ConnectException -> setNetworkException(CONNECT_EXCEPTION_STATUS, message)
+        }
+    }
+
+    private fun setNetworkException(status: Int, message: String) {
+        _networkException.value = Error(status, message)
     }
 
     sealed class LoadingType {

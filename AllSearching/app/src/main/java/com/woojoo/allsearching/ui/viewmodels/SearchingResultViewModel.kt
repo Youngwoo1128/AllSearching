@@ -13,6 +13,7 @@ import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -35,9 +36,10 @@ class SearchingResultViewModel @Inject constructor(
 
 
     suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
-        return searchResultUseCase(query).cachedIn(viewModelScope)
+        return searchResultUseCase(query).cachedIn(viewModelScope).catch {
+            handlingNetworkError(it)
+        }
     }
-
 
 
     fun insertSearchingItem(item: Documents) {
