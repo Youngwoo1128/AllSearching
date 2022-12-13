@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.woojoo.allsearching.domain.entites.Error
+import com.woojoo.allsearching.domain.entites.ResError
 import com.bumptech.glide.load.HttpException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -18,9 +18,9 @@ import java.net.ConnectException
 
 open class BaseViewModel: ViewModel() {
 
-    val networkException : LiveData<Error>
+    val networkException : LiveData<ResError>
         get() = _networkException
-    private val _networkException = MutableLiveData<Error>()
+    private val _networkException = MutableLiveData<ResError>()
 
     val exceptionHandler: LiveData<Exception>
         get() = _exceptionHandler
@@ -82,7 +82,7 @@ open class BaseViewModel: ViewModel() {
     }
 
     private fun setNetworkException(status: Int, message: String) {
-        _networkException.value = Error(status, message)
+        _networkException.value = ResError(message)
     }
 
     sealed class LoadingType {

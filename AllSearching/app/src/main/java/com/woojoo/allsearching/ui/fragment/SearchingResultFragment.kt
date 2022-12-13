@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.constant.EXTRA_EMPTY_SEARCHING_KEYWORD
 import com.woojoo.allsearching.databinding.FragmentSearchingResultBinding
+import com.woojoo.allsearching.domain.ResponseResult
 import com.woojoo.allsearching.domain.entites.Documents
-import com.woojoo.allsearching.domain.entites.ResponseResult
+import com.woojoo.allsearching.domain.entites.DataBaseResult
 import com.woojoo.allsearching.extension.IntentProvider
 import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
@@ -51,8 +52,18 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
         }
 
         viewModel.resultLiveData.observe(viewLifecycleOwner) { result ->
-            viewLifecycleOwner.lifecycleScope.launch {
-                adapter.submitData(result)
+            when (result) {
+                is ResponseResult.ResponseSuccess -> {
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        result.pagingData.collectLatest {
+                            adapter.submitData(it)
+                        }
+                    }
+                }
+
+                else -> {
+
+                }
             }
         }
     }
@@ -80,13 +91,8 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
             if (binding.editTextSearching.text.toString().isNullOrEmpty()) {
                 showEmptyKeywordDialog()
             } else {
-                lifecycleScope.launch {
-                    //Activity에서 Scope를 열어서 하는게 맞나,, 고민해보기
-                    viewModel.getSearchingResult(binding.editTextSearching.text.toString())
-                        .collectLatest {
-                            adapter.submitData(it)
-                        }
-                }
+                //Activity에서 Scope를 열어서 하는게 맞나,, 고민해보기
+                viewModel.getSearchingResult(binding.editTextSearching.text.toString())
             }
         }
     }
@@ -116,9 +122,9 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
         )
     }
 
-    private fun showResultToast(result : ResponseResult) {
+    private fun showResultToast(result : DataBaseResult) {
         when (result) {
-            is ResponseResult.ResultSuccess -> {
+            is DataBaseResult.ResultSuccess -> {
                 Toast.makeText(
                     requireContext(),
                     requireContext().getString(R.string.string_favorite),
@@ -132,7 +138,7 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
                     requireContext().getString(R.string.string_favorite_fail),
                     Toast.LENGTH_SHORT
                 ).show()
-                Log.d("throwable Message", "${(result as? ResponseResult.ResultFail)?.throwable?.message}")
+                Log.d("throwable Message", "${(result as? DataBaseResult.ResultFail)?.throwable?.message}")
                 viewModel.retryInsertSearchingItem {
 
                 }

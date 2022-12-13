@@ -1,6 +1,5 @@
 package com.woojoo.allsearching.data.repository
 
-import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -8,9 +7,10 @@ import androidx.paging.liveData
 import com.woojoo.allsearching.data.datasources.SearchingDataSource
 import com.woojoo.allsearching.data.network.NetworkAPI
 import com.woojoo.allsearching.data.paging.SearchingPagingDataSource
+import com.woojoo.allsearching.domain.ResponseResult
 import com.woojoo.allsearching.domain.entites.Documents
+import com.woojoo.allsearching.domain.entites.ResError
 import com.woojoo.allsearching.domain.repository.SearchResultRepository
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class SearchResultRepositoryImpl @Inject constructor(
@@ -18,11 +18,25 @@ class SearchResultRepositoryImpl @Inject constructor(
     private val networkAPI: NetworkAPI
 ) : SearchResultRepository {
 
-    override suspend fun getTotalList(query: String): Flow<PagingData<Documents>> {
-        return Pager(
-            config = PagingConfig(pageSize = REQUEST_PARAM_SIZE, enablePlaceholders = false),
-            pagingSourceFactory = { SearchingPagingDataSource(query, networkAPI) }
-        ).flow
+//    override suspend fun getTotalList(query: String): Flow<PagingData<Documents>> {
+//        return Pager(
+//            config = PagingConfig(pageSize = REQUEST_PARAM_SIZE, enablePlaceholders = false),
+//            pagingSourceFactory = { SearchingPagingDataSource(query, networkAPI) }
+//        ).flow
+//    }
+
+    override suspend fun getTotalList(query: String): ResponseResult {
+        return try {
+            val pager = Pager(
+                config = PagingConfig(pageSize = REQUEST_PARAM_SIZE, enablePlaceholders = false),
+                pagingSourceFactory = { SearchingPagingDataSource(query, networkAPI) }
+            ).flow
+            ResponseResult.ResponseSuccess(pager)
+        } catch(e: Exception) {
+            ResponseResult.ResponseFail(
+                ResError(message = e.message.toString())
+            )
+        }
     }
 
     override suspend fun getTotalListLiveData(query: String): PagingData<Documents> {
