@@ -55,10 +55,7 @@ class SearchingPagingDataSource (
                 prevKey = if (page == 1) null else page - 1,
                 nextKey = if (response.isEmpty()) null else page + 1
             )
-        } catch (e: HttpException) {
-            e.printStackTrace()
-            LoadResult.Error(e)
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
             LoadResult.Error(e)
         }
