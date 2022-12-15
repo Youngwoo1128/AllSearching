@@ -16,7 +16,7 @@ class ImageResultViewHolder(val binding: ItemImageResultBinding): RecyclerView.V
             .load(item?.thumbnail)
             .placeholder(R.drawable.default_image)
             .circleCrop()
-            .into(binding.ivThumnail)
+            .into(binding.imageViewThumnail)
 
         binding.layoutImageResult.setOnClickListener {
             item?.let { result ->

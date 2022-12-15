@@ -15,7 +15,7 @@ class VideoResultViewHolder(val binding: ItemVideoResultBinding): RecyclerView.V
             .load(item?.thumbnail)
             .placeholder(R.drawable.default_image)
             .circleCrop()
-            .into(binding.ivThumnail)
+            .into(binding.imageViewThumnail)
 
         binding.layoutVideoResult.setOnClickListener {
             item?.let { result ->

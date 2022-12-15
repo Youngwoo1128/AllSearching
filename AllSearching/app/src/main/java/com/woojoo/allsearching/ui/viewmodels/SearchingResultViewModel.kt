@@ -48,6 +48,7 @@ class SearchingResultViewModel @Inject constructor(
     private val _pagingData = MutableLiveData<PagingData<Documents>>()
 
 
+
     private suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
         return searchResultUseCase(query).cachedIn(viewModelScope)
     }

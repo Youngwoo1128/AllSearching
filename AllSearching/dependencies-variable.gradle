@@ -1,6 +1,7 @@
 ext {
-    compileSdkVersion = 32
+    compileSdkVersion = 33
     minSdkVersion = 28
+    targetSDK = 33
 
 
     androidxCoreVersion = '1.7.0'

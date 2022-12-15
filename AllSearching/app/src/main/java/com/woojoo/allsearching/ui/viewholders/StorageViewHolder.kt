@@ -17,7 +17,7 @@ class StorageViewHolder(val binding: ItemStorageBinding): RecyclerView.ViewHolde
             .load(item.thumbnail)
             .placeholder(R.drawable.default_image)
             .circleCrop()
-            .into(binding.ivThumnail)
+            .into(binding.imageViewThumnail)
     }
 
 }
