@@ -11,10 +11,10 @@ import retrofit2.HttpException
 * PagingSource 를 만들기 위해서는 Paging Key인 데이터 로드를 위한 식별자와 데이터를 정의해야한다.
 * 페이지 번호 또는 offset과 같은 식별자를 Retrofit 또는 Room에 전달하여 데이터를 받아오는 것이다.
 * */
-class SearchingPagingDataSource (
+class SearchingPagingDataSource(
     private val query: String,
     private val networkAPI: NetworkAPI
-): PagingSource<Int, Documents>() {
+) : PagingSource<Int, Documents>() {
 
     /*
     * 스와이스 Refresh나 데이터 업데이트 등으로 현재 목록을 대체할 새 데이터를 로드할 때 사용된다.
@@ -60,4 +60,5 @@ class SearchingPagingDataSource (
             LoadResult.Error(e)
         }
     }
+
 }

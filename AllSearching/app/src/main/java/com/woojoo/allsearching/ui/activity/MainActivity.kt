@@ -24,15 +24,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setFragmentResultListener()
-        setObserve()
         initView()
-    }
-
-    private fun setObserve() {
-        viewModel.networkException.observe(this) { resError ->
-            showNetworkExceptionDialog()
-        }
     }
 
 
@@ -54,35 +46,8 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         }
     }
 
-    private fun showNetworkExceptionDialog() {
-        showNetworkExceptionDialog(
-            dialogFragmentManager = dialogFragmentManager(),
-            requestTag = NETWORK_EXCEPTION,
-            message = getString(R.string.network_exception),
-            isCancelable = false,
-            buttonText = getString(R.string.string_ok)
-        )
-    }
-    private fun setFragmentResultListener() {
-        setFragmentResultListener(
-            dialogFragmentManager = dialogFragmentManager(),
-            requestKey = NETWORK_EXCEPTION,
-            listener = { _, bundle ->
-                when(bundle.getParcelable(EXTRA_NETWORK_EXCEPTION) as? NetworkExceptionDialogAction) {
-                    // 어떤 작업 할지 기획해보기
-                    NetworkExceptionDialogAction.NetworkExceptionKeyword -> {
-
-                    }
-                    else -> {}
-
-                }
-            }
-        )
-    }
-
     companion object {
         private const val FRAGMENT_SEARCHING_RESULT_VALUE = 0
         private const val FRAGMENT_STORAGE_VALUE = 1
-        private const val NETWORK_EXCEPTION = "NETWORK_EXCEPTION"
     }
 }

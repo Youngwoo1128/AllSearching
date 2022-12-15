@@ -5,14 +5,15 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
+import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.constant.EXTRA_EMPTY_SEARCHING_KEYWORD
+import com.woojoo.allsearching.constant.EXTRA_NETWORK_EXCEPTION
 import com.woojoo.allsearching.databinding.FragmentSearchingResultBinding
-import com.woojoo.allsearching.domain.ResponseResult
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.DataBaseResult
 import com.woojoo.allsearching.extension.IntentProvider
@@ -26,7 +27,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
+class SearchingResultFragment :
+    BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
 
     private val viewModel by activityViewModels<SearchingResultViewModel>()
     private lateinit var adapter: SearchingResultAdapter
@@ -37,6 +39,7 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
         setFragmentResultListener()
         setObserver()
         initView()
+        addPagingListener()
     }
 
     private fun setObserver() {
@@ -52,20 +55,8 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
             showResultToast(result)
         }
 
-        viewModel.pagingData.observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is ResponseResult.ResponseSuccess -> {
-                    viewLifecycleOwner.lifecycleScope.launch {
-                        result.pagingData.collectLatest {
-                            adapter.submitData(it)
-                        }
-                    }
-                }
-
-                is ResponseResult.ResponseFail -> {
-                    viewModel.handlingNetworkError(result)
-                }
-            }
+        viewModel.networkException.observe(viewLifecycleOwner) { result ->
+            showNetworkErrorDialog()
         }
     }
 
@@ -92,8 +83,11 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
             if (binding.editTextSearching.text.toString().isNullOrEmpty()) {
                 showEmptyKeywordDialog()
             } else {
-                //Activity에서 Scope를 열어서 하는게 맞나,, 고민해보기
-                viewModel.getSearchingResult(binding.editTextSearching.text.toString())
+                viewLifecycleOwner.lifecycleScope.launch {
+                    viewModel.getSearchingResult(binding.editTextSearching.text.toString()).collectLatest { result ->
+                        adapter.submitData(result)
+                    }
+                }
             }
         }
     }
@@ -107,6 +101,21 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
                     EmptySearchingKeywordDialogAction.EmptySearchingKeyword -> {
                         requireContext().showKeyboardOnEditText(binding.editTextSearching)
                     }
+
+                    else -> Unit
+                }
+            }
+        )
+
+        setFragmentResultListener(
+            dialogFragmentManager = dialogFragmentManager(),
+            requestKey = NETWORK_EXCEPTION,
+            listener = { _, bundle ->
+                when (bundle.getParcelable(EXTRA_NETWORK_EXCEPTION) as? NetworkExceptionDialogAction) {
+                    NetworkExceptionDialogAction.NetworkExceptionKeyword -> {
+
+                    }
+
                     else -> Unit
                 }
             }
@@ -117,13 +126,23 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
         showEmptySearchingKeywordDialog(
             dialogFragmentManager = dialogFragmentManager(),
             requestTag = EMPTY_KEYWORD,
-            message = requireContext().getString(R.string.string_input_keyword),
+            message = getString(R.string.string_input_keyword),
             isCancelable = false,
-            buttonText = requireContext().getString(R.string.string_ok)
+            buttonText = getString(R.string.string_ok)
         )
     }
 
-    private fun showResultToast(result : DataBaseResult) {
+    private fun showNetworkErrorDialog() {
+        showNetworkExceptionDialog(
+            dialogFragmentManager = dialogFragmentManager(),
+            requestTag = NETWORK_EXCEPTION,
+            message = getString(R.string.network_exception),
+            isCancelable = false,
+            buttonText = getString(R.string.string_ok)
+        )
+    }
+
+    private fun showResultToast(result: DataBaseResult) {
         when (result) {
             is DataBaseResult.ResultSuccess -> {
                 Toast.makeText(
@@ -133,13 +152,17 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
                 ).show()
                 Log.d("inserted Item: ", "${result.any}")
             }
+
             else -> {
                 Toast.makeText(
                     requireContext(),
                     requireContext().getString(R.string.string_favorite_fail),
                     Toast.LENGTH_SHORT
                 ).show()
-                Log.d("throwable Message", "${(result as? DataBaseResult.ResultFail)?.throwable?.message}")
+                Log.d(
+                    "throwable Message",
+                    "${(result as? DataBaseResult.ResultFail)?.throwable?.message}"
+                )
                 viewModel.retryInsertSearchingItem {
 
                 }
@@ -147,7 +170,18 @@ class SearchingResultFragment : BindingFragment<FragmentSearchingResultBinding>(
         }
     }
 
+    private fun addPagingListener() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest {
+                if (it.refresh is LoadState.Error) {
+                    viewModel.handlingNetworkError((it.refresh as LoadState.Error).error)
+                }
+            }
+        }
+    }
+
     companion object {
         private const val EMPTY_KEYWORD = "EMPTY_KEYWORD"
+        private const val NETWORK_EXCEPTION = "NETWORK_EXCEPTION"
     }
 }

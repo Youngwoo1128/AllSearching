@@ -69,28 +69,26 @@ open class BaseViewModel: ViewModel() {
         Log.d("Database Error", "${message}")
     }
 
-    open fun handlingNetworkError(error: ResponseResult.ResponseFail) {
+
+    open fun handlingNetworkError(error: Throwable) {
         /*
         * HttpException 종류에 대해서 조사하고 에러 핸들링 해보기
         * */
-        val errorMessage = error.error.message
-        val exception = error.error.exception
+        val errorMessage = error.message.toString()
+        val exception = error.cause
 
         when (exception) {
             is HttpException -> {}
             is SocketTimeoutException -> setNetworkException(SOCKET_TIME_OUT_EXCEPTION_STATUS, errorMessage, exception)
             is UnknownHostException -> setNetworkException(UNKNOWN_HOST_EXCEPTION_STATUS, errorMessage, exception)
             is ConnectException -> setNetworkException(CONNECT_EXCEPTION_STATUS, errorMessage, exception)
-            else -> setNetworkException(NORMAL_EXCEPTION_STATUS, errorMessage, exception)
+            else -> setNetworkException(NORMAL_EXCEPTION_STATUS, errorMessage, exception!!)
         }
     }
 
-    private fun setNetworkException(status: Int, message: String, exception: Exception) {
-        viewModelScope.launch(Dispatchers.IO) {
-            _networkException.value = ResError(message, exception)
-            Log.d("Network Exception Message", message)
-            exception.printStackTrace()
-        }
+    private fun setNetworkException(status: Int, message: String, throwable: Throwable) {
+        Log.d("Network Exception", "status : $status message: ${throwable.message}")
+        _networkException.value = ResError(message, throwable)
     }
 
     sealed class LoadingType {
@@ -98,8 +96,6 @@ open class BaseViewModel: ViewModel() {
     }
 
     companion object {
-        const val AUTHORIZATION_CHANGED_STATUS = 401
-        const val SERVER_CHECKING_EXCEPTION_STATUS = 502
         const val SOCKET_TIME_OUT_EXCEPTION_STATUS = 600
         const val UNKNOWN_HOST_EXCEPTION_STATUS = 601
         const val CONNECT_EXCEPTION_STATUS = 602
