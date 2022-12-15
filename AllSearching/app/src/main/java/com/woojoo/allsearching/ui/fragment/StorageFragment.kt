@@ -3,6 +3,7 @@ package com.woojoo.allsearching.ui.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.FragmentStorageBinding
 import com.woojoo.allsearching.domain.entites.Researching
@@ -48,6 +49,8 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
             }
         })
 
+        val gridLayoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recyclerViewResearching.layoutManager = gridLayoutManager
         binding.recyclerViewResearching.adapter = adapter
     }
 }

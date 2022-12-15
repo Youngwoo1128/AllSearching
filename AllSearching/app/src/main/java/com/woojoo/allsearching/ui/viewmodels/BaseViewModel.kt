@@ -25,11 +25,6 @@ open class BaseViewModel: ViewModel() {
         get() = _networkException
     private val _networkException = MutableLiveData<ResError>()
 
-    val exceptionHandler: LiveData<Exception>
-        get() = _exceptionHandler
-    private val _exceptionHandler = MutableLiveData<Exception>()
-
-
     fun CoroutineScope.requestDataBase(
         exceptionHandle: (() -> Unit)? = null,
         exceptionInterceptor: ((Throwable) -> Boolean)? = null,
@@ -56,7 +51,6 @@ open class BaseViewModel: ViewModel() {
         * */
 
         if (exceptionInterceptor?.invoke(throwable) == true) return
-        val message = throwable.message?.let { it } ?: "Exception Message"
 
         when (throwable) {
 
