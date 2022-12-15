@@ -163,9 +163,7 @@ class SearchingResultFragment :
                     "throwable Message",
                     "${(result as? DataBaseResult.ResultFail)?.throwable?.message}"
                 )
-                viewModel.retryInsertSearchingItem {
 
-                }
             }
         }
     }
@@ -173,8 +171,9 @@ class SearchingResultFragment :
     private fun addPagingListener() {
         viewLifecycleOwner.lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest {
+
                 if (it.refresh is LoadState.Error) {
-                    viewModel.handlingNetworkError((it.refresh as LoadState.Error).error)
+                    viewModel.handleNetworkError((it.refresh as LoadState.Error).error)
                 }
             }
         }

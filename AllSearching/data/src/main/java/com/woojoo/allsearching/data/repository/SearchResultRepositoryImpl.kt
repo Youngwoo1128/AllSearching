@@ -7,9 +7,7 @@ import androidx.paging.liveData
 import com.woojoo.allsearching.data.datasources.SearchingDataSource
 import com.woojoo.allsearching.data.network.NetworkAPI
 import com.woojoo.allsearching.data.paging.SearchingPagingDataSource
-import com.woojoo.allsearching.domain.ResponseResult
 import com.woojoo.allsearching.domain.entites.Documents
-import com.woojoo.allsearching.domain.entites.ResError
 import com.woojoo.allsearching.domain.repository.SearchResultRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

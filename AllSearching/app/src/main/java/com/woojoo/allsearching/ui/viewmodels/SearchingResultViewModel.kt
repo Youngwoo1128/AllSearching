@@ -5,16 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.woojoo.allsearching.domain.ResponseResult
 import com.woojoo.allsearching.domain.entites.DataBaseResult
 import com.woojoo.allsearching.domain.entites.Documents
+import com.woojoo.allsearching.domain.entites.Error
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.InsertResearchingUseCase
+import com.woojoo.allsearching.domain.usecases.NetworkExceptionUseCase
 import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
 import com.woojoo.allsearching.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn
@@ -26,7 +26,8 @@ import javax.inject.Inject
 class SearchingResultViewModel @Inject constructor(
     private val searchResultUseCase: SearchResultUseCase,
     private val insertResearchingUseCase: InsertResearchingUseCase,
-    private val getAllResearchingUseCase: GetAllResearchingUseCase
+    private val getAllResearchingUseCase: GetAllResearchingUseCase,
+    private val networkExceptionUseCase: NetworkExceptionUseCase
 ) : BaseViewModel() {
 
     val insertToRoom: LiveData<Unit>
@@ -37,18 +38,15 @@ class SearchingResultViewModel @Inject constructor(
         get() = _insertResult
     private val _insertResult = SingleLiveEvent<DataBaseResult>()
 
+    val networkException : LiveData<Error>
+        get() = _networkException
+    private val _networkException = MutableLiveData<Error>()
+
 
     suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
         return searchResultUseCase(query).cachedIn(viewModelScope)
     }
 
-
-//    fun getSearchingResultLiveData(query: String) {
-//        //LiveData 용 으로도 한번 만들어보기
-//        viewModelScope.launch(Dispatchers.IO) {
-//            _resultLiveData.postValue(searchResultUseCase.getSearchingResultLiveData(query))
-//        }
-//    }
 
     fun insertSearchingItem(item: Documents) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -85,5 +83,10 @@ class SearchingResultViewModel @Inject constructor(
         }
     }
 
+    fun handleNetworkError(throwable: Throwable) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _networkException.postValue(networkExceptionUseCase(throwable))
+        }
+    }
 
 }

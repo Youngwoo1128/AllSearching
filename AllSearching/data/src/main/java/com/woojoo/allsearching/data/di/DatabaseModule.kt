@@ -2,7 +2,6 @@ package com.woojoo.allsearching.data.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.woojoo.allsearching.data.local.ResearchingDao
 import com.woojoo.allsearching.data.local.ResearchingDatabase
 import dagger.Module

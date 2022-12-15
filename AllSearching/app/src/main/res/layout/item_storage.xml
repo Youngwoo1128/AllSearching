@@ -25,7 +25,6 @@
             android:padding="8dp"
             android:background="@drawable/bg_faf6ff_radius_16">
 
-
             <ImageView
                 android:id="@+id/iv_thumnail"
                 android:layout_width="120dp"

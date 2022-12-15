@@ -9,7 +9,7 @@ import com.woojoo.allsearching.constant.EXTRA_WEB_VIEW_MODEL
 import com.woojoo.allsearching.databinding.ActivityWebViewBinding
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.ui.BindingActivity
-//import com.woojoo.allsearching.utils.ResultWebChromeClient
+import com.woojoo.allsearching.utils.ResultWebChromeClient
 
 class ResultWebViewActivity : BindingActivity<ActivityWebViewBinding>(R.layout.activity_web_view) {
 
@@ -40,13 +40,13 @@ class ResultWebViewActivity : BindingActivity<ActivityWebViewBinding>(R.layout.a
     }
 
     private fun initWebViewSetting() {
-//        with(binding.webView) {
-//            webViewClient = object : WebViewClient()
-////            webChromeClient = ResultWebChromeClient(this@ResultWebViewActivity)
-//            settings.setDefaultSetting()
-//            clearHistory()
-//            clearCache(true)
-//        }
+        with(binding.webView) {
+            webViewClient = object : WebViewClient(){}
+            webChromeClient = ResultWebChromeClient(this@ResultWebViewActivity)
+            settings.setDefaultSetting()
+            clearHistory()
+            clearCache(true)
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
