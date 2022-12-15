@@ -5,9 +5,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.*
+import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.woojoo.allsearching.R
@@ -55,8 +54,14 @@ class SearchingResultFragment :
             showResultToast(result)
         }
 
-        viewModel.networkException.observe(viewLifecycleOwner) { result ->
+        viewModel.networkException.observe(viewLifecycleOwner) {
             showNetworkErrorDialog()
+        }
+
+        viewModel.pagingData.observe(viewLifecycleOwner) { pagingData ->
+            viewLifecycleOwner.lifecycleScope.launch {
+                adapter.submitData(pagingData)
+            }
         }
     }
 
@@ -84,9 +89,7 @@ class SearchingResultFragment :
                 showEmptyKeywordDialog()
             } else {
                 viewLifecycleOwner.lifecycleScope.launch {
-                    viewModel.getSearchingResult(binding.editTextSearching.text.toString()).collectLatest { result ->
-                        adapter.submitData(result)
-                    }
+                    viewModel.getPagingData(binding.editTextSearching.text.toString())
                 }
             }
         }
@@ -171,7 +174,6 @@ class SearchingResultFragment :
     private fun addPagingListener() {
         viewLifecycleOwner.lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest {
-
                 if (it.refresh is LoadState.Error) {
                     viewModel.handleNetworkError((it.refresh as LoadState.Error).error)
                 }

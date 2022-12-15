@@ -17,6 +17,7 @@ import com.woojoo.allsearching.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -38,13 +39,25 @@ class SearchingResultViewModel @Inject constructor(
         get() = _insertResult
     private val _insertResult = SingleLiveEvent<DataBaseResult>()
 
-    val networkException : LiveData<Error>
+    val networkException: LiveData<Error>
         get() = _networkException
     private val _networkException = MutableLiveData<Error>()
 
+    val pagingData: LiveData<PagingData<Documents>>
+        get() = _pagingData
+    private val _pagingData = MutableLiveData<PagingData<Documents>>()
 
-    suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
+
+    private suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
         return searchResultUseCase(query).cachedIn(viewModelScope)
+    }
+
+    fun getPagingData(query: String) {
+        viewModelScope.launch {
+            getSearchingResult(query).cachedIn(viewModelScope).collectLatest {
+                _pagingData.value = it
+            }
+        }
     }
 
 
