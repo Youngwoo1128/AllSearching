@@ -19,10 +19,14 @@ Retorfit을 통한 Kakao Open API를 사용하여 네트워킹 작업 및 Androi
 --------------------------
 </br>
 <img src="https://user-images.githubusercontent.com/77264918/208038036-13b66668-7ddd-456e-99d3-6a1b830d4ce8.gif" width="300" height="700" />
+요약 : 1. image 타입의 Response 와 video 타입의 response를 하나의 list로 관리 </br>
+      2. image model과 video model의 viewType을 지정해 RecyclerView에서 두개의 ViewType 사용 </br>
+      3. Android Room의 Insert를 활용하여 즐겨찾기 기능 구현 </br>
+      4. 네트워크 에러가 있을 시 Exception 처리</br>
 
 
-
-
+</br>
+</br>
 
 
 Android Room을 활용한 로컬 데이터베이스 
