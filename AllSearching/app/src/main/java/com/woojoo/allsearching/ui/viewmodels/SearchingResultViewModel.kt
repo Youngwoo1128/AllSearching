@@ -2,6 +2,7 @@ package com.woojoo.allsearching.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -29,7 +30,7 @@ class SearchingResultViewModel @Inject constructor(
     private val insertResearchingUseCase: InsertResearchingUseCase,
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
     private val networkExceptionUseCase: NetworkExceptionUseCase
-) : BaseViewModel() {
+) : ViewModel() {
 
     val insertToRoom: LiveData<Unit>
         get() = _insertToRoom
@@ -80,11 +81,11 @@ class SearchingResultViewModel @Inject constructor(
                     url = item.url
                 )
             ).onEach { result ->
-                _insertResult.value = result
+                _insertResult.postValue(result)
                 if (result == DataBaseResult.ResultFail()) {
                     val throwable = result as? DataBaseResult.ResultFail
                     throwable?.throwable?.let {
-                        handlingDatabaseError(it)
+//                        handlingDatabaseError(it)
                     } ?: run {}
                 }
             }.launchIn(viewModelScope)
