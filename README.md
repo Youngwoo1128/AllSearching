@@ -27,7 +27,7 @@ Retorfit을 통한 Kakao Open API를 사용하여 네트워킹 작업 및 Androi
 Android Room을 활용한 로컬 데이터베이스 
 --------------------------
 </br>
-<img src="https://user-images.githubusercontent.com/77264918/208038036-13b66668-7ddd-456e-99d3-6a1b830d4ce8.gif](https://user-images.githubusercontent.com/77264918/208035940-ab152b56-7f99-4c47-9366-4c1022c8b86e.gif)" width="400" height="1000" />
+<img src="https://user-images.githubusercontent.com/77264918/208038687-777e3772-cc66-408c-b87e-06a7959ebbc7.gif" width="400" height="1000" />
 </br>
 
 
