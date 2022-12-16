@@ -37,7 +37,8 @@ Android Room을 활용한 로컬 데이터베이스
 
 Clean Architecture 기반 개발
 --------------------------
-![CleanArchitectureImage](https://user-images.githubusercontent.com/77264918/206121269-d2eff147-1af3-4cc2-bda4-5169f6f076f3.jpeg)
+<img src="https://user-images.githubusercontent.com/77264918/206121269-d2eff147-1af3-4cc2-bda4-5169f6f076f3.jpeg" width="600" height="600" />
+
 
 Presentor -> domain <- data
 
