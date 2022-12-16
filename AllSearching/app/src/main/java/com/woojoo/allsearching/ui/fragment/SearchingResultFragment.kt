@@ -114,15 +114,7 @@ class SearchingResultFragment :
         setFragmentResultListener(
             dialogFragmentManager = dialogFragmentManager(),
             requestKey = NETWORK_EXCEPTION,
-            listener = { _, bundle ->
-                when (bundle.getParcelable(EXTRA_NETWORK_EXCEPTION) as? NetworkExceptionDialogAction) {
-                    NetworkExceptionDialogAction.NetworkExceptionKeyword -> {
-
-                    }
-
-                    else -> Unit
-                }
-            }
+            listener = { _, bundle -> }
         )
     }
 
