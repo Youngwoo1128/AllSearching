@@ -17,9 +17,9 @@
 </br>
 Retorfit을 통한 Kakao Open API를 사용하여 네트워킹 작업 및 Android Room을 활용한 즐겨찾기 기능
 --------------------------
-</br>
 ![Screen_Recording_20221216_151735_AllSearching_1](https://user-images.githubusercontent.com/77264918/208035406-0c401266-2bd9-47f5-963f-8f70c15ef16d.gif)
-</br>
+
+
 
 
 Android Room을 활용한 로컬 데이터베이스 
