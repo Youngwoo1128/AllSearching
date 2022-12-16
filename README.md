@@ -44,7 +44,8 @@ Presentor -> domain <- data
 
 AndroidX 페이징
 --------------------------
-<img src="https://user-images.githubusercontent.com/77264918/206464648-2f4980fc-e144-4590-a3cb-27e97813be2d.png" width="600" height="600" />
+![paging](https://user-images.githubusercontent.com/77264918/208039735-84ddb0af-8ec2-4dd1-ab58-4e817b983adb.png)
+
 
 
 
