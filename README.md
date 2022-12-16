@@ -12,22 +12,20 @@
 **그 외** : ViewBinding, DataBinding, Coroutine, Android Jetpack, WebView </br>
 
 </br>
+
+
 </br>
-
-
-Retrofit 을 통한 Kakao Open API 사용하여 네트워킹 작업,
-Android Room 을 활용한 insert의 즐겨찾기 기능,
-
-
+Retorfit을 통한 Kakao Open API를 사용하여 네트워킹 작업 및 Android Room을 활용한 즐겨찾기 기능
 --------------------------
+</br>
 ![Screen_Recording_20221216_151735_AllSearching_1](https://user-images.githubusercontent.com/77264918/208035406-0c401266-2bd9-47f5-963f-8f70c15ef16d.gif)
 </br>
 
 
 Android Room을 활용한 로컬 데이터베이스 
 --------------------------
+</br>
 ![2](https://user-images.githubusercontent.com/77264918/208035940-ab152b56-7f99-4c47-9366-4c1022c8b86e.gif)
-
 </br>
 
 
