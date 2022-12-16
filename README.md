@@ -44,10 +44,11 @@ Presentor -> domain <- data
 
 AndroidX 페이징
 --------------------------
+<img src="https://user-images.githubusercontent.com/77264918/206464648-2f4980fc-e144-4590-a3cb-27e97813be2d.png" width="600" height="600" />
 
-![paging](https://user-images.githubusercontent.com/77264918/206464648-2f4980fc-e144-4590-a3cb-27e97813be2d.png)
 
 
 Hilt
 --------------------------
-![hilt](https://user-images.githubusercontent.com/77264918/206464948-04f9fd8b-84bc-468b-9644-df6c53e3c5de.png)
+<img src="https://user-images.githubusercontent.com/77264918/206464948-04f9fd8b-84bc-468b-9644-df6c53e3c5de.png" width="600" height="600" />
+
