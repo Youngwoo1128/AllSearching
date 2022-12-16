@@ -32,10 +32,6 @@ Android Room을 활용한 로컬 데이터베이스
 </br>
 
 
-
-
-
-
 Clean Architecture 기반 개발
 --------------------------
 <img src="https://user-images.githubusercontent.com/77264918/206121269-d2eff147-1af3-4cc2-bda4-5169f6f076f3.jpeg" width="600" height="600" />
@@ -46,6 +42,7 @@ Presentor -> domain <- data
 AndroidX 페이징
 --------------------------
 <img src="https://user-images.githubusercontent.com/77264918/208039735-84ddb0af-8ec2-4dd1-ab58-4e817b983adb.png" width="1000" height="300" />
+</br>
 
 
 
