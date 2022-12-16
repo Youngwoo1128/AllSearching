@@ -12,6 +12,11 @@
 **그 외** : ViewBinding, DataBinding, Coroutine, Android Jetpack, WebView </br>
 
 
+--------------------------
+![Uploading Screen_Recording_20221216_151735_AllSearching_1.gif…]()
+
+
+
 Clean Architecture 기반 개발
 --------------------------
 ![CleanArchitectureImage](https://user-images.githubusercontent.com/77264918/206121269-d2eff147-1af3-4cc2-bda4-5169f6f076f3.jpeg)
