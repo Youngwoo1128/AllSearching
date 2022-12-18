@@ -10,7 +10,6 @@ import com.woojoo.allsearching.domain.entites.DataBaseResult
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.Error
 import com.woojoo.allsearching.domain.entites.Researching
-import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.InsertResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.NetworkExceptionUseCase
 import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
@@ -77,7 +76,6 @@ class SearchingResultViewModel @Inject constructor(
                 if (result == DataBaseResult.ResultFail()) {
                     val throwable = result as? DataBaseResult.ResultFail
                     throwable?.throwable?.let {
-//                        handlingDatabaseError(it)
                     } ?: run {}
                 }
             }.launchIn(viewModelScope)
