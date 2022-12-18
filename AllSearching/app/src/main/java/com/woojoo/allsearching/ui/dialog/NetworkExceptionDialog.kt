@@ -31,12 +31,9 @@ class NetworkExceptionDialog: BaseDialogFragment<DialogNetowrkExceptionBinding>(
     private fun setCloseAction() {
         arguments?.let {
             val tag = it.getString(REQUEST_TAG) ?: return@let
-
             setFragmentResult(
                 requestKey = tag,
-                result = bundleOf(
-                    EXTRA_EMPTY_SEARCHING_KEYWORD to NetworkExceptionDialogAction.NetworkExceptionKeyword
-                )
+                result = bundleOf()
             )
         }
         dismiss()
@@ -64,9 +61,4 @@ class NetworkExceptionDialog: BaseDialogFragment<DialogNetowrkExceptionBinding>(
             )
         }
     }
-}
-
-sealed class NetworkExceptionDialogAction: Parcelable {
-    @Parcelize
-    object NetworkExceptionKeyword: NetworkExceptionDialogAction()
 }

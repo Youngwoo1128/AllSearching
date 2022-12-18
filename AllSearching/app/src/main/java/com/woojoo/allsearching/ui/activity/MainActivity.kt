@@ -1,26 +1,18 @@
 package com.woojoo.allsearching.ui.activity
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.woojoo.allsearching.R
-import com.woojoo.allsearching.constant.EXTRA_NETWORK_EXCEPTION
 import com.woojoo.allsearching.databinding.ActivityMainBinding
 import com.woojoo.allsearching.ui.BindingActivity
 import com.woojoo.allsearching.ui.adapter.MainViewPagerAdapter
-import com.woojoo.allsearching.ui.dialog.NetworkExceptionDialogAction
-import com.woojoo.allsearching.ui.dialog.dialogFragmentManager
-import com.woojoo.allsearching.ui.dialog.setFragmentResultListener
-import com.woojoo.allsearching.ui.dialog.showNetworkExceptionDialog
 import com.woojoo.allsearching.ui.fragment.SearchingResultFragment
 import com.woojoo.allsearching.ui.fragment.StorageFragment
-import com.woojoo.allsearching.ui.viewmodels.BaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main){
 
-    private val viewModel by viewModels<BaseViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

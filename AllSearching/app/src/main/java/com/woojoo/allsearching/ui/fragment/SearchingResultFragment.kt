@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -29,7 +30,7 @@ import kotlinx.coroutines.launch
 class SearchingResultFragment :
     BindingFragment<FragmentSearchingResultBinding>(R.layout.fragment_searching_result) {
 
-    private val viewModel by activityViewModels<SearchingResultViewModel>()
+    private val viewModel by viewModels<SearchingResultViewModel>()
     private lateinit var adapter: SearchingResultAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -113,15 +114,7 @@ class SearchingResultFragment :
         setFragmentResultListener(
             dialogFragmentManager = dialogFragmentManager(),
             requestKey = NETWORK_EXCEPTION,
-            listener = { _, bundle ->
-                when (bundle.getParcelable(EXTRA_NETWORK_EXCEPTION) as? NetworkExceptionDialogAction) {
-                    NetworkExceptionDialogAction.NetworkExceptionKeyword -> {
-
-                    }
-
-                    else -> Unit
-                }
-            }
+            listener = { _, bundle -> }
         )
     }
 

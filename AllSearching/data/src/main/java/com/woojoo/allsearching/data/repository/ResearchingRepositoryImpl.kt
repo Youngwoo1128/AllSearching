@@ -39,6 +39,13 @@ class ResearchingRepositoryImpl @Inject constructor(
     }
 
     override suspend fun updateResearchingItem(item: Researching) {
-        researchingDao.update(item.toData())
+//        val getAll = getResearchingList()
+//
+//        for (i in getAll.indices) {
+//            val updatedItem = getAll[i]
+//            updatedItem.index = i.toLong()
+//            researchingDao.update(updatedItem.toData())
+//        }
     }
+
 }
