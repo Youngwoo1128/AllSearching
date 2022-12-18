@@ -1,6 +1,7 @@
 package com.woojoo.allsearching.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -44,6 +45,7 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
     private fun initView() {
         adapter = StorageAdapter(object : StorageAdapter.DeleteLocalItem {
             override fun deleteLocalItem(item: Researching) {
+                Log.d("deleted Item", "$item")
                 viewModel.deleteResearchingItem(item)
             }
         })

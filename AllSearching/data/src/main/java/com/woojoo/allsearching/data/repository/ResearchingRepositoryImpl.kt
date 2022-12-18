@@ -1,5 +1,7 @@
 package com.woojoo.allsearching.data.repository
 
+import android.util.Log
+import com.woojoo.allsearching.data.datasources.DeleteDataSource
 import com.woojoo.allsearching.data.local.ResearchingDao
 import com.woojoo.allsearching.data.mapping.toData
 import com.woojoo.allsearching.data.mapping.toDomain
@@ -9,10 +11,12 @@ import com.woojoo.allsearching.domain.repository.ResearchingRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import java.util.Arrays
 import javax.inject.Inject
 
 class ResearchingRepositoryImpl @Inject constructor(
-    private val researchingDao: ResearchingDao
+    private val researchingDao: ResearchingDao,
+    private val deleteDataSource: DeleteDataSource
 ) : ResearchingRepository {
 
     override suspend fun getResearchingList(): List<Researching> {
@@ -31,21 +35,11 @@ class ResearchingRepositoryImpl @Inject constructor(
     }
 
     override suspend fun deleteResearching(item: Researching): Int {
+        val researchingList = getResearchingList()
+        val deletedId = deleteDataSource.getDeletedItemIndex(researchingList, item).toInt()
+        Log.d("deletedId : ", "$deletedId")
         researchingDao.delete(item.toData())
-
-        val totalList = getResearchingList()
-
-        return 0
-    }
-
-    override suspend fun updateResearchingItem(item: Researching) {
-//        val getAll = getResearchingList()
-//
-//        for (i in getAll.indices) {
-//            val updatedItem = getAll[i]
-//            updatedItem.index = i.toLong()
-//            researchingDao.update(updatedItem.toData())
-//        }
+        return deletedId
     }
 
 }

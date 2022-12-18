@@ -26,8 +26,8 @@ class StorageAdapter(private val callback: DeleteLocalItem) : RecyclerView.Adapt
     override fun getItemCount(): Int = researchingList.size
 
     fun removeItem(index: Int) {
-        researchingList.removeAt(index - 1)
-        notifyItemRemoved(index - 1)
+        researchingList.removeAt(index)
+        notifyItemRemoved(index)
     }
 
     interface DeleteLocalItem {

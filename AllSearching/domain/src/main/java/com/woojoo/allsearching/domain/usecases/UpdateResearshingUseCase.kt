@@ -7,8 +7,8 @@ import javax.inject.Inject
 class UpdateResearchingUseCase @Inject constructor(
     private val researchingRepository: ResearchingRepository
 ){
-    suspend operator fun invoke(item: Researching) {
-        researchingRepository.updateResearchingItem(item)
-    }
+//    suspend operator fun invoke(item: Researching) {
+//        researchingRepository.updateResearchingItem(item)
+//    }
 
 }
