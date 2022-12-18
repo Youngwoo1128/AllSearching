@@ -16,7 +16,6 @@ import javax.inject.Inject
 class StorageViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
     private val deleteResearchingUseCase: DeleteResearchingUseCase,
-    private val updatedResearchingUseCase: UpdateResearchingUseCase
 ) : BaseViewModel() {
 
     val localResearching: LiveData<List<Researching>>
