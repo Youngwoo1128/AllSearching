@@ -8,10 +8,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.woojoo.allsearching.ui.dialog.*
-import androidx.fragment.app.viewModels
-import com.woojoo.allsearching.ui.dialog.dialogFragmentManager
-import com.woojoo.allsearching.ui.viewmodels.BaseViewModel
 
 open class BindingFragment<T: ViewDataBinding>(@LayoutRes private val layoutId: Int) : Fragment() {
 
