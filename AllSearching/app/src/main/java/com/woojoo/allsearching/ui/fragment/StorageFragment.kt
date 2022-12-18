@@ -11,6 +11,7 @@ import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.adapter.StorageAdapter
 import com.woojoo.allsearching.ui.viewmodels.StorageViewModel
+import com.woojoo.allsearching.utils.LoadingStatus
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -21,6 +21,7 @@ import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
 import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
 import com.woojoo.allsearching.ui.dialog.*
+import com.woojoo.allsearching.utils.LoadingStatus
 import com.woojoo.allsearching.utils.showKeyboardOnEditText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

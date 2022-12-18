@@ -9,7 +9,6 @@ import com.woojoo.allsearching.utils.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.DeleteResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
-import com.woojoo.allsearching.domain.usecases.UpdateResearchingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

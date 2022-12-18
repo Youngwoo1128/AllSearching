@@ -28,7 +28,6 @@ import javax.inject.Inject
 class SearchingResultViewModel @Inject constructor(
     private val searchResultUseCase: SearchResultUseCase,
     private val insertResearchingUseCase: InsertResearchingUseCase,
-    private val getAllResearchingUseCase: GetAllResearchingUseCase,
     private val networkExceptionUseCase: NetworkExceptionUseCase
 ) : ViewModel() {
 
@@ -47,8 +46,6 @@ class SearchingResultViewModel @Inject constructor(
     val pagingData: LiveData<PagingData<Documents>>
         get() = _pagingData
     private val _pagingData = MutableLiveData<PagingData<Documents>>()
-
-
 
     private suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
         return searchResultUseCase(query).cachedIn(viewModelScope)
