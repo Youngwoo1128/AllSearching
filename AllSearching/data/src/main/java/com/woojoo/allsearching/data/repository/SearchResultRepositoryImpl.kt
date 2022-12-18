@@ -4,7 +4,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
-import com.woojoo.allsearching.data.datasources.SearchingDataSource
 import com.woojoo.allsearching.data.network.NetworkAPI
 import com.woojoo.allsearching.data.paging.SearchingPagingDataSource
 import com.woojoo.allsearching.domain.entites.Documents
@@ -13,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class SearchResultRepositoryImpl @Inject constructor(
-    private val searchingDataSource: SearchingDataSource,
     private val networkAPI: NetworkAPI
 ) : SearchResultRepository {
 
