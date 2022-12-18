@@ -32,7 +32,10 @@ class ResearchingRepositoryImpl @Inject constructor(
 
     override suspend fun deleteResearching(item: Researching): Int {
         researchingDao.delete(item.toData())
-        return item.index.toInt()
+
+        val totalList = getResearchingList()
+
+        return 0
     }
 
     override suspend fun updateResearchingItem(item: Researching) {

@@ -38,7 +38,6 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
         viewModel.deletedItem.observe(viewLifecycleOwner) {
             adapter.removeItem(it)
-            viewModel.updateResearchingList(it)
         }
     }
 

@@ -41,15 +41,4 @@ class StorageViewModel @Inject constructor(
         }
     }
 
-    fun updateResearchingList(deletedKey: Int) {
-        viewModelScope.requestDataBase {
-            val researchingList = getAllResearchingUseCase()
-
-            for (i in deletedKey..researchingList.size) {
-                val savedItem = researchingList[i - 1]
-                savedItem.index = i.toLong()
-                updatedResearchingUseCase.invoke(savedItem)
-            }
-        }
-    }
 }
