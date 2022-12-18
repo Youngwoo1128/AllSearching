@@ -11,7 +11,6 @@ import com.woojoo.allsearching.domain.repository.ResearchingRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import java.util.Arrays
 import javax.inject.Inject
 
 class ResearchingRepositoryImpl @Inject constructor(
