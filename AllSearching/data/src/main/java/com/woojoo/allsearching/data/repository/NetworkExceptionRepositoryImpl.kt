@@ -24,9 +24,9 @@ class NetworkExceptionRepositoryImpl: NetworkExceptionRepository {
 
 
     companion object {
-        const val SOCKET_TIME_OUT_EXCEPTION_STATUS = 600
-        const val UNKNOWN_HOST_EXCEPTION_STATUS = 601
-        const val CONNECT_EXCEPTION_STATUS = 602
-        const val NORMAL_EXCEPTION_STATUS = 603
+        private const val SOCKET_TIME_OUT_EXCEPTION_STATUS = 600
+        private const val UNKNOWN_HOST_EXCEPTION_STATUS = 601
+        private const val CONNECT_EXCEPTION_STATUS = 602
+        private const val NORMAL_EXCEPTION_STATUS = 603
     }
 }
