@@ -11,6 +11,7 @@ import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.adapter.StorageAdapter
 import com.woojoo.allsearching.ui.viewmodels.StorageViewModel
+import com.woojoo.allsearching.utils.LoadStatus
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,6 +40,14 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
         viewModel.deletedItem.observe(viewLifecycleOwner) {
             adapter.removeItem(it)
+            viewModel.setLoadStatusFinish()
+        }
+
+        viewModel.loadStatus.observe(viewLifecycleOwner) { loadStatus ->
+            when (loadStatus) {
+                is LoadStatus.isLoading -> binding.progressBar.visibility = View.VISIBLE
+                else -> binding.progressBar.visibility = View.GONE
+            }
         }
     }
 
@@ -46,6 +55,7 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
         adapter = StorageAdapter(object : StorageAdapter.DeleteLocalItem {
             override fun deleteLocalItem(item: Researching) {
                 Log.d("deleted Item", "$item")
+                viewModel.setLoadStatusLoading()
                 viewModel.deleteResearchingItem(item)
             }
         })

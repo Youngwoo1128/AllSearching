@@ -9,8 +9,10 @@ import com.woojoo.allsearching.utils.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.DeleteResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
+import com.woojoo.allsearching.utils.LoadStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,7 +22,6 @@ class StorageViewModel @Inject constructor(
     private val deleteResearchingUseCase: DeleteResearchingUseCase,
 ) : ViewModel() {
 
-
     val localResearching: LiveData<List<Researching>>
         get() = _localResearching
     private val _localResearching = MutableLiveData<List<Researching>>()
@@ -28,6 +29,10 @@ class StorageViewModel @Inject constructor(
     val deletedItem: LiveData<Int>
         get() = _deletedItem
     private val _deletedItem = SingleLiveEvent<Int>()
+
+    val loadStatus: LiveData<LoadStatus>
+        get() = _loadStatus
+    private val _loadStatus = MutableLiveData<LoadStatus>()
 
     fun getLocalResearchingList() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -39,7 +44,14 @@ class StorageViewModel @Inject constructor(
     fun deleteResearchingItem(item: Researching) {
         viewModelScope.launch(Dispatchers.IO) {
             _deletedItem.postValue(deleteResearchingUseCase(item))
-            Log.d("Deleted Item :", "${_deletedItem.value}")
         }
+    }
+
+    fun setLoadStatusLoading() {
+        _loadStatus.value = LoadStatus.isLoading
+    }
+
+    fun setLoadStatusFinish() {
+        _loadStatus.value = LoadStatus.loadFinish
     }
 }
