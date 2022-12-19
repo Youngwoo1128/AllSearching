@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
+import java.io.Serializable
 
 inline fun <reified T: Parcelable> Intent.getParcelableValue(key: String): T? {
     return when  {
