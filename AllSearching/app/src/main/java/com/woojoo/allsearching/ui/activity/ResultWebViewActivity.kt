@@ -10,6 +10,7 @@ import com.woojoo.allsearching.databinding.ActivityWebViewBinding
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.ui.BindingActivity
 import com.woojoo.allsearching.utils.ResultWebChromeClient
+import com.woojoo.allsearching.utils.getParcelableValue
 
 class ResultWebViewActivity : BindingActivity<ActivityWebViewBinding>(R.layout.activity_web_view) {
 
@@ -21,8 +22,7 @@ class ResultWebViewActivity : BindingActivity<ActivityWebViewBinding>(R.layout.a
     }
 
     private fun initView() {
-        val searchingData = intent?.extras?.getParcelable<Documents>(EXTRA_WEB_VIEW_MODEL)
-
+        val searchingData = intent?.extras?.getParcelableValue<Documents>(EXTRA_WEB_VIEW_MODEL)
         startWebBrowser(searchingData)
 
         binding.tvTitle.text = searchingData?.title
