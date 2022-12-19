@@ -19,8 +19,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -57,7 +55,7 @@ class SearchingResultViewModel @Inject constructor(
 
     fun getPagingData(query: String) {
         viewModelScope.launch {
-            getSearchingResult(query).cachedIn(viewModelScope).collectLatest {
+            getSearchingResult(query).collectLatest {
                 _pagingData.value = it
             }
         }
@@ -66,7 +64,6 @@ class SearchingResultViewModel @Inject constructor(
 
     fun insertSearchingItem(item: Documents) {
         viewModelScope.launch(Dispatchers.IO) {
-
             insertResearchingUseCase(
                 Researching(
                     id = null,
@@ -76,20 +73,9 @@ class SearchingResultViewModel @Inject constructor(
                     thumbnail = item.thumbnail,
                     url = item.url
                 )
-            ).onEach { result ->
+            ).collectLatest { result ->
                 _insertResult.postValue(result)
-                if (result == DataBaseResult.ResultFail()) {
-                    val throwable = result as? DataBaseResult.ResultFail
-                    throwable?.throwable?.let {
-                    } ?: run {}
-                }
-            }.launchIn(viewModelScope)
-        }
-    }
-
-    fun retryInsertSearchingItem(retryCount: Int = 3, retryMethod: () -> Unit) {
-        repeat(retryCount) {
-            retryMethod.invoke()
+            }
         }
     }
 

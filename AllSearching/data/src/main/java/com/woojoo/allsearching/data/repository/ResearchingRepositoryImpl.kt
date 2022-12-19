@@ -25,7 +25,7 @@ class ResearchingRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun insertResearching(item: Researching): Flow<DataBaseResult> {
+    override suspend fun insertResearching(item: Researching): Flow<DataBaseResult> {
         return flow<DataBaseResult> {
             researchingDao.insertResearching(item.toData())
             emit(DataBaseResult.ResultSuccess(item))

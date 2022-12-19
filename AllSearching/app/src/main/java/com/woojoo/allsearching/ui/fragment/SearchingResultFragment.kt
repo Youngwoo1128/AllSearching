@@ -20,6 +20,7 @@ import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
 import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
 import com.woojoo.allsearching.ui.dialog.*
 import com.woojoo.allsearching.utils.LoadStatus
+import com.woojoo.allsearching.utils.getParcelableValue
 import com.woojoo.allsearching.utils.showKeyboardOnEditText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -93,7 +94,7 @@ class SearchingResultFragment :
         )
 
         binding.buttonSearching.setOnClickListener {
-            if (binding.editTextSearching.text.toString().isNullOrEmpty()) {
+            if (binding.editTextSearching.text.toString().isEmpty()) {
                 showEmptyKeywordDialog()
             } else {
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -109,7 +110,7 @@ class SearchingResultFragment :
             dialogFragmentManager = dialogFragmentManager(),
             requestKey = EMPTY_KEYWORD,
             listener = { _, bundle ->
-                when (bundle.getParcelable(EXTRA_EMPTY_SEARCHING_KEYWORD) as? EmptySearchingKeywordDialogAction) {
+                when (bundle.getParcelableValue<EmptySearchingKeywordDialogAction>(EXTRA_EMPTY_SEARCHING_KEYWORD)) {
                     EmptySearchingKeywordDialogAction.EmptySearchingKeyword -> {
                         requireContext().showKeyboardOnEditText(binding.editTextSearching)
                     }
@@ -122,7 +123,7 @@ class SearchingResultFragment :
         setFragmentResultListener(
             dialogFragmentManager = dialogFragmentManager(),
             requestKey = NETWORK_EXCEPTION,
-            listener = { _, bundle -> }
+            listener = { _, _ -> }
         )
     }
 
