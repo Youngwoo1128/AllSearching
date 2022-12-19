@@ -19,6 +19,7 @@ import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
 import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
 import com.woojoo.allsearching.ui.dialog.*
+import com.woojoo.allsearching.utils.LoadStatus
 import com.woojoo.allsearching.utils.showKeyboardOnEditText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -61,6 +62,14 @@ class SearchingResultFragment :
             viewLifecycleOwner.lifecycleScope.launch {
                 adapter.submitData(pagingData)
             }
+            viewModel.setLoadStatusFinish()
+        }
+
+        viewModel.loadStatus.observe(viewLifecycleOwner) { loadStatus ->
+            when (loadStatus) {
+                is LoadStatus.isLoading -> binding.progressBar.visibility = View.VISIBLE
+                else -> binding.progressBar.visibility = View.GONE
+            }
         }
     }
 
@@ -88,6 +97,7 @@ class SearchingResultFragment :
                 showEmptyKeywordDialog()
             } else {
                 viewLifecycleOwner.lifecycleScope.launch {
+                    viewModel.setLoadStatusLoading()
                     viewModel.getPagingData(binding.editTextSearching.text.toString())
                 }
             }

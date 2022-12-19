@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.FragmentStorageBinding
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment_storage) {
 
-    private val viewModel by activityViewModels<StorageViewModel>()
+    private val viewModel by viewModels<StorageViewModel>()
     private lateinit var adapter: StorageAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

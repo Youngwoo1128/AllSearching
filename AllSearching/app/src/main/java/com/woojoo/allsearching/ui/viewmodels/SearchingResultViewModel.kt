@@ -13,6 +13,7 @@ import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.InsertResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.NetworkExceptionUseCase
 import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
+import com.woojoo.allsearching.utils.LoadStatus
 import com.woojoo.allsearching.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -45,6 +46,10 @@ class SearchingResultViewModel @Inject constructor(
     val pagingData: LiveData<PagingData<Documents>>
         get() = _pagingData
     private val _pagingData = MutableLiveData<PagingData<Documents>>()
+
+    val loadStatus: LiveData<LoadStatus>
+        get() = _loadStatus
+    private val _loadStatus = MutableLiveData<LoadStatus>()
 
     private suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
         return searchResultUseCase(query).cachedIn(viewModelScope)
@@ -94,4 +99,11 @@ class SearchingResultViewModel @Inject constructor(
         }
     }
 
+    fun setLoadStatusLoading() {
+        _loadStatus.value = LoadStatus.isLoading
+    }
+
+    fun setLoadStatusFinish() {
+        _loadStatus.value = LoadStatus.loadFinish
+    }
 }
