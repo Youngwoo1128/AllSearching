@@ -3,10 +3,12 @@ package com.woojoo.allsearching.ui.fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.woojoo.allsearching.R
 import com.woojoo.allsearching.databinding.FragmentStorageBinding
+import com.woojoo.allsearching.domain.entites.DeleteResult
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.adapter.StorageAdapter
@@ -38,8 +40,11 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
             adapter.addNewItem(result)
         }
 
-        viewModel.deletedItem.observe(viewLifecycleOwner) {
-            adapter.removeItem(it)
+        viewModel.deletedItem.observe(viewLifecycleOwner) { deleteResult ->
+            when (deleteResult) {
+                is DeleteResult.DeleteSuccess ->  adapter.removeItem(deleteResult.success)
+                else -> Toast.makeText(requireContext(), getString(R.string.delete_exception), Toast.LENGTH_SHORT).show()
+            }
             viewModel.setLoadStatusFinish()
         }
 

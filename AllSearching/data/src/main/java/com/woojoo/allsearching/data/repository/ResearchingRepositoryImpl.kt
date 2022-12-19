@@ -7,6 +7,7 @@ import com.woojoo.allsearching.data.mapping.toData
 import com.woojoo.allsearching.data.mapping.toDomain
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.entites.DataBaseResult
+import com.woojoo.allsearching.domain.entites.DeleteResult
 import com.woojoo.allsearching.domain.repository.ResearchingRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -33,12 +34,12 @@ class ResearchingRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun deleteResearching(item: Researching): Int {
+    override suspend fun deleteResearching(item: Researching): DeleteResult {
         val researchingList = getResearchingList()
-        val deletedId = deleteDataSource.getDeletedItemIndex(researchingList, item).toInt()
-        Log.d("deletedId : ", "$deletedId")
+        val result = deleteDataSource.getDeletedItemIndex(researchingList, item)
+        Log.d("deletedId : ", "$result")
         researchingDao.delete(item.toData())
-        return deletedId
+        return result
     }
 
 }

@@ -1,5 +1,6 @@
 package com.woojoo.allsearching.data.datasources
 
+import com.woojoo.allsearching.domain.entites.DeleteResult
 import com.woojoo.allsearching.domain.entites.Researching
 
 class DeleteDataSourceImpl: DeleteDataSource {
@@ -18,22 +19,27 @@ class DeleteDataSourceImpl: DeleteDataSource {
     * insert 하게 되면 id는 autoIncrement 로 인해 자동으로 정렬되어있음,
     * 이 특징을 이용해 이진 탐색으로 구현하기
     * */
-    override fun getDeletedItemIndex(researchingList: List<Researching>, findItem: Researching): Long {
+    override fun getDeletedItemIndex(researchingList: List<Researching>, findItem: Researching): DeleteResult {
         return findDeleteIdIndex(researchingList, 0, researchingList.size, findItem)
     }
 
-    private fun findDeleteIdIndex(list: List<Researching>, start: Int, end: Int, item: Researching): Long {
-        val pivot = (start + end) / 2
+    private fun findDeleteIdIndex(list: List<Researching>, start: Int, end: Int, item: Researching): DeleteResult {
+        try {
+            val pivot = (start + end) / 2
 
-        if (list[pivot].id == item.id) {
-            return pivot.toLong()
-        }
+            if (list[pivot].id == item.id) {
+                return DeleteResult.DeleteSuccess(pivot)
+            }
 
-        return if (list[pivot].id!! > item.id!!) {
-            findDeleteIdIndex(list, start, pivot, item)
-        } else {
-            findDeleteIdIndex(list, pivot, end, item)
+            return if (list[pivot].id!! > item.id!!) {
+                findDeleteIdIndex(list, start, pivot, item)
+            } else {
+                findDeleteIdIndex(list, pivot, end, item)
+            }
+        } catch (e: StackOverflowError) {
+            return DeleteResult.DeleteFail
+        } catch (e: Exception) {
+            return DeleteResult.DeleteFail
         }
     }
-
 }

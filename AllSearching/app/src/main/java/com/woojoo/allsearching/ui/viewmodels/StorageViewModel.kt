@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.woojoo.allsearching.domain.entites.DeleteResult
 import com.woojoo.allsearching.utils.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.DeleteResearchingUseCase
@@ -25,9 +26,9 @@ class StorageViewModel @Inject constructor(
         get() = _localResearching
     private val _localResearching = MutableLiveData<List<Researching>>()
 
-    val deletedItem: LiveData<Int>
+    val deletedItem: LiveData<DeleteResult>
         get() = _deletedItem
-    private val _deletedItem = SingleLiveEvent<Int>()
+    private val _deletedItem = SingleLiveEvent<DeleteResult>()
 
     val loadStatus: LiveData<LoadStatus>
         get() = _loadStatus
