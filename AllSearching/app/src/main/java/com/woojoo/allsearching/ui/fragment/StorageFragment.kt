@@ -27,6 +27,7 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
         setObserver()
         initView()
+
     }
 
     override fun onResume() {
@@ -69,4 +70,5 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
         binding.recyclerViewResearching.layoutManager = gridLayoutManager
         binding.recyclerViewResearching.adapter = adapter
     }
+
 }
