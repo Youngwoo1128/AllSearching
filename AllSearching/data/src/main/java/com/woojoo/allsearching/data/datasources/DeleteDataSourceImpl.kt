@@ -1,5 +1,6 @@
 package com.woojoo.allsearching.data.datasources
 
+import android.util.Log
 import com.woojoo.allsearching.domain.entites.DeleteResult
 import com.woojoo.allsearching.domain.entites.Researching
 
@@ -20,6 +21,7 @@ class DeleteDataSourceImpl: DeleteDataSource {
     * 이 특징을 이용해 이진 탐색으로 구현하기
     * */
     override fun getDeletedItemIndex(researchingList: List<Researching>, findItem: Researching): DeleteResult {
+        Log.d("entrance", "DeleteDataSourceImpl")
         return findDeleteIdIndex(researchingList, 0, researchingList.size, findItem)
     }
 

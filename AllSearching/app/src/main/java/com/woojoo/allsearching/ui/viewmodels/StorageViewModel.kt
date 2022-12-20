@@ -53,7 +53,9 @@ class StorageViewModel @Inject constructor(
 
     fun deleteResearchingItem(item: Researching) {
         viewModelScope.launch(Dispatchers.IO) {
-            _deletedItem.postValue(deleteResearchingUseCase(item))
+            deleteResearchingUseCase(item).collectLatest {
+                _deletedItem.postValue(it)
+            }
         }
     }
 

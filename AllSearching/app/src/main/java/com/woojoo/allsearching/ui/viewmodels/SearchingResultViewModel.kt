@@ -10,9 +10,7 @@ import com.woojoo.allsearching.domain.entites.DataBaseResult
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.Error
 import com.woojoo.allsearching.domain.entites.Researching
-import com.woojoo.allsearching.domain.usecases.InsertResearchingUseCase
-import com.woojoo.allsearching.domain.usecases.NetworkExceptionUseCase
-import com.woojoo.allsearching.domain.usecases.SearchResultUseCase
+import com.woojoo.allsearching.domain.usecases.*
 import com.woojoo.allsearching.utils.LoadStatus
 import com.woojoo.allsearching.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,7 +24,9 @@ import javax.inject.Inject
 class SearchingResultViewModel @Inject constructor(
     private val searchResultUseCase: SearchResultUseCase,
     private val insertResearchingUseCase: InsertResearchingUseCase,
-    private val networkExceptionUseCase: NetworkExceptionUseCase
+    private val networkExceptionUseCase: NetworkExceptionUseCase,
+    private val getAllResearchingUseCase: GetAllResearchingUseCase,
+    private val getLastIdUseCase: GetLastIdUseCase
 ) : ViewModel() {
 
     val insertToRoom: LiveData<Unit>

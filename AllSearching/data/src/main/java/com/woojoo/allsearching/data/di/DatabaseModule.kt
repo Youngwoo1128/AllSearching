@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.woojoo.allsearching.data.datasources.DeleteDataSource
 import com.woojoo.allsearching.data.datasources.DeleteDataSourceImpl
+import com.woojoo.allsearching.data.datasources.GetLastIdDataSource
+import com.woojoo.allsearching.data.datasources.GetLastIdDataSourceImpl
 import com.woojoo.allsearching.data.local.ResearchingDao
 import com.woojoo.allsearching.data.local.ResearchingDatabase
 import dagger.Module
@@ -34,4 +36,7 @@ object DatabaseModule {
     @Provides
     fun provideDeleteDataSource(): DeleteDataSource = DeleteDataSourceImpl()
 
+    @Singleton
+    @Provides
+    fun provideLastIdDataSource(): GetLastIdDataSource = GetLastIdDataSourceImpl()
 }

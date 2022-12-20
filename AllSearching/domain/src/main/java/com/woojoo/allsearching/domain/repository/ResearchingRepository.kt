@@ -9,6 +9,7 @@ import java.util.Deque
 interface ResearchingRepository {
     suspend fun getResearchingList(): List<Researching>
     suspend fun insertResearching(item: Researching): Flow<DataBaseResult>
-    suspend fun deleteResearching(item: Researching): DeleteResult
+    suspend fun deleteResearching(item: Researching): Flow<DeleteResult>
     suspend fun notifyNewResearching(): Flow<Researching>
+    suspend fun getLastId(list: List<Researching>): Int
 }
