@@ -1,0 +1,118 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.woojoo.allsearching"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="28"
+8-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:5:22-64
+12
+13    <application
+13-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:7:5-40:19
+14        android:name="com.woojoo.allsearching.AllSearchingApplication"
+14-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:8:9-71
+15        android:allowBackup="true"
+15-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:9:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.8.0] /Users/youngwoosong/.gradle/caches/transforms-3/9e0f42bc7ad8f0ce4a24679467ed5807/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+17        android:debuggable="true"
+18        android:extractNativeLibs="false"
+19        android:icon="@mipmap/ic_launcher"
+19-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:10:9-43
+20        android:label="@string/app_name"
+20-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:11:9-41
+21        android:roundIcon="@mipmap/ic_launcher_round"
+21-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:12:9-54
+22        android:supportsRtl="true"
+22-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:13:9-35
+23        android:testOnly="true"
+24        android:theme="@style/Theme.KBankTest"
+24-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:15:9-47
+25        android:usesCleartextTraffic="true" >
+25-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:14:9-44
+26        <activity
+26-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:16:9-22:20
+27            android:name="com.woojoo.allsearching.ui.BindingActivity"
+27-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:17:13-47
+28            android:exported="false" >
+28-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:18:13-37
+29            <meta-data
+29-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:19:13-21:36
+30                android:name="android.app.lib_name"
+30-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:20:17-52
+31                android:value="" />
+31-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:21:17-33
+32        </activity>
+33        <activity
+33-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:23:9-30:20
+34            android:name="com.woojoo.allsearching.ui.activity.ResultWebViewActivity"
+34-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:24:13-62
+35            android:configChanges="keyboardHidden|orientation|screenSize"
+35-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:26:13-74
+36            android:exported="false" >
+36-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:25:13-37
+37            <meta-data
+37-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:19:13-21:36
+38                android:name="android.app.lib_name"
+38-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:20:17-52
+39                android:value="" />
+39-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:21:17-33
+40        </activity>
+41        <activity
+41-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:31:9-39:20
+42            android:name="com.woojoo.allsearching.ui.activity.MainActivity"
+42-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:32:13-53
+43            android:exported="true" >
+43-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:33:13-36
+44            <intent-filter>
+44-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:34:13-38:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:35:17-69
+45-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:35:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:37:17-77
+47-->/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:37:27-74
+48            </intent-filter>
+49        </activity>
+50
+51        <provider
+51-->[androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+52            android:name="androidx.startup.InitializationProvider"
+52-->[androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:27:13-67
+53            android:authorities="com.woojoo.allsearching.androidx-startup"
+53-->[androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:28:13-68
+54            android:exported="false" >
+54-->[androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:29:13-37
+55            <meta-data
+55-->[androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+56                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+56-->[androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:32:17-75
+57                android:value="androidx.startup" />
+57-->[androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:33:17-49
+58            <meta-data
+58-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+59                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+59-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+60                android:value="androidx.startup" />
+60-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+61        </provider>
+62
+63        <service
+63-->[androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:25:9-28:40
+64            android:name="androidx.room.MultiInstanceInvalidationService"
+64-->[androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:26:13-74
+65            android:directBootAware="true"
+65-->[androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:27:13-43
+66            android:exported="false" />
+66-->[androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:28:13-37
+67    </application>
+68
+69</manifest>

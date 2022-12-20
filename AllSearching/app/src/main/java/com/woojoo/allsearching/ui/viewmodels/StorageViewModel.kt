@@ -10,9 +10,14 @@ import com.woojoo.allsearching.utils.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.DeleteResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
+import com.woojoo.allsearching.domain.usecases.NotifyResearchingUseCase
 import com.woojoo.allsearching.utils.LoadStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectIndexed
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,6 +25,7 @@ import javax.inject.Inject
 class StorageViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
     private val deleteResearchingUseCase: DeleteResearchingUseCase,
+    private val notifyResearchingUseCase: NotifyResearchingUseCase
 ) : ViewModel() {
 
     val localResearching: LiveData<List<Researching>>
@@ -34,6 +40,10 @@ class StorageViewModel @Inject constructor(
         get() = _loadStatus
     private val _loadStatus = MutableLiveData<LoadStatus>()
 
+    val notifyResearching: LiveData<Researching>
+        get() = _notifyResearching
+    private val _notifyResearching = MutableLiveData<Researching>()
+
     fun getLocalResearchingList() {
         viewModelScope.launch(Dispatchers.IO) {
             _localResearching.postValue(getAllResearchingUseCase())
@@ -44,6 +54,14 @@ class StorageViewModel @Inject constructor(
     fun deleteResearchingItem(item: Researching) {
         viewModelScope.launch(Dispatchers.IO) {
             _deletedItem.postValue(deleteResearchingUseCase(item))
+        }
+    }
+
+    fun notifyAddItem() {
+        viewModelScope.launch(Dispatchers.IO) {
+            notifyResearchingUseCase().collectIndexed { index, value ->
+                _notifyResearching.postValue(value)
+            }
         }
     }
 

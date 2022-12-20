@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_storage.xml",
+        "source": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/res/layout/item_storage.xml"
+    },
+    {
+        "merged": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_image_result.xml",
+        "source": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/res/layout/item_image_result.xml"
+    },
+    {
+        "merged": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_searching_result.xml",
+        "source": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/res/layout/fragment_searching_result.xml"
+    },
+    {
+        "merged": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_binding.xml",
+        "source": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/res/layout/activity_binding.xml"
+    },
+    {
+        "merged": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_storage.xml",
+        "source": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/res/layout/fragment_storage.xml"
+    },
+    {
+        "merged": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_web_view.xml",
+        "source": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/res/layout/activity_web_view.xml"
+    },
+    {
+        "merged": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_video_result.xml",
+        "source": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/res/layout/item_video_result.xml"
+    },
+    {
+        "merged": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_empty_searching_keyword.xml",
+        "source": "/Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/res/layout/dialog_empty_searching_keyword.xml"
+    }
+]

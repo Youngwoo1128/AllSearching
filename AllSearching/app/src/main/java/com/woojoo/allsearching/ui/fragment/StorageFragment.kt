@@ -27,13 +27,13 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
         setObserver()
         initView()
-
+        viewModel.getLocalResearchingList()
     }
 
     override fun onResume() {
         super.onResume()
 
-        viewModel.getLocalResearchingList()
+        viewModel.notifyAddItem()
     }
 
     private fun setObserver() {
@@ -47,6 +47,10 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
                 else -> Toast.makeText(requireContext(), getString(R.string.delete_exception), Toast.LENGTH_SHORT).show()
             }
             viewModel.setLoadStatusFinish()
+        }
+
+        viewModel.notifyResearching.observe(viewLifecycleOwner) { item ->
+            adapter.insertNewItem(item)
         }
 
         viewModel.loadStatus.observe(viewLifecycleOwner) { loadStatus ->

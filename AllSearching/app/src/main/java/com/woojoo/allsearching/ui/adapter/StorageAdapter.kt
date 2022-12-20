@@ -40,4 +40,9 @@ class StorageAdapter(private val callback: DeleteLocalItem) : RecyclerView.Adapt
         notifyDataSetChanged()
     }
 
+    fun insertNewItem(item: Researching) {
+        researchingList.add(item)
+        notifyDataSetChanged()
+    }
+
 }

@@ -9,15 +9,19 @@ import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.entites.DataBaseResult
 import com.woojoo.allsearching.domain.entites.DeleteResult
 import com.woojoo.allsearching.domain.repository.ResearchingRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.*
+import java.util.Deque
+import java.util.LinkedList
+import java.util.Queue
 import javax.inject.Inject
 
 class ResearchingRepositoryImpl @Inject constructor(
     private val researchingDao: ResearchingDao,
     private val deleteDataSource: DeleteDataSource
 ) : ResearchingRepository {
+
+    private val queue: Deque<Researching> = LinkedList()
 
     override suspend fun getResearchingList(): List<Researching> {
         return researchingDao.getAll().map {
@@ -26,8 +30,9 @@ class ResearchingRepositoryImpl @Inject constructor(
     }
 
     override suspend fun insertResearching(item: Researching): Flow<DataBaseResult> {
+        researchingDao.insertResearching(item.toData())
+        queue.offer(item)
         return flow<DataBaseResult> {
-            researchingDao.insertResearching(item.toData())
             emit(DataBaseResult.ResultSuccess(item))
         }.catch { throwable ->
             emit(DataBaseResult.ResultFail(throwable))
@@ -42,4 +47,15 @@ class ResearchingRepositoryImpl @Inject constructor(
         return result
     }
 
+    override suspend fun notifyNewResearching(): Flow<Researching> {
+        return flow<Researching> {
+            while (queue.size > 0) {
+                val dequeue = queue.poll()
+                delay(10L)
+                if (dequeue != null) {
+                    emit(dequeue)
+                }
+            }
+        }
+    }
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                       
+                                                   
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="18dp"
+        android:paddingBottom="24dp"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:background="@drawable/bg_ffffff_radius_16" android:tag="layout/dialog_empty_searching_keyword_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+
+        <TextView
+            android:id="@+id/tv_dialog_main_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="example TextView Text"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_faf6ff_radius_16"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_dialog_main_text"
+            app:layout_constraintStart_toStartOf="@+id/tv_dialog_main_text"
+            app:layout_constraintEnd_toEndOf="@id/tv_dialog_main_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="example Button Text"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+         

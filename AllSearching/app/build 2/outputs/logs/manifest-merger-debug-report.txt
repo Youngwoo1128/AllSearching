@@ -1,0 +1,351 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:1-42:12
+MERGED from [androidx.databinding:databinding-adapters:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/e05ff3237c56c3cb1582825282524a58/transformed/databinding-adapters-7.1.3/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.databinding:databinding-ktx:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/276f3ac3088c3078a1653b7defc9ad74/transformed/databinding-ktx-7.1.3/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.databinding:databinding-runtime:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/e20ae6b97df27338b814f453e6474133/transformed/databinding-runtime-7.1.3/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.databinding:viewbinding:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/1a8256a327edbe98ccff4bd0bf752e25/transformed/viewbinding-7.1.3/AndroidManifest.xml:17:1-24:12
+MERGED from [:data] /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/data/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:domain] /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/domain/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.fragment:fragment-ktx:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/e5e4bc94cd182cfe41f42c892aab4557/transformed/fragment-ktx-1.5.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity-ktx:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/bf9cef7f5b19531b30e149816caf553e/transformed/activity-ktx-1.5.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/29dd7644b35ec001dfd9b805db656349/transformed/material-1.5.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/130f704852641f2fdccdebce6e496ad9/transformed/constraintlayout-2.1.3/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.4.1] /Users/youngwoosong/.gradle/caches/transforms-3/e35d0a038c524ff44f769cea4daa6ef8/transformed/appcompat-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:glide:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/dc8305dda6c601ffb5512d6444017d0b/transformed/glide-4.13.1/AndroidManifest.xml:2:1-12:12
+MERGED from [com.google.dagger:hilt-android:2.42] /Users/youngwoosong/.gradle/caches/transforms-3/40b6b06f7fd10a047af73edeabe88681/transformed/hilt-android-2.42/AndroidManifest.xml:16:1-19:12
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/98503efcfcdd935d5a58079cf8e83c46/transformed/lifecycle-extensions-2.2.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/d518eaa423d5b957b843f41438625f9f/transformed/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/35fe5ef96b02ab8cfe4aba5896ef2d18/transformed/fragment-1.5.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.paging:paging-runtime-ktx:3.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/f9ac5a5ab814932e23ec0d94691bbbf1/transformed/paging-runtime-ktx-3.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.paging:paging-runtime:3.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/841af5fd0062222d79f144536a1b8c5e/transformed/paging-runtime-3.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/3f225fab1665328f1f7a36e94e129c24/transformed/lifecycle-viewmodel-ktx-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/eec3da1592dd0c423e961efd2fd73fe8/transformed/activity-1.5.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/eabaf1e02015818a9f7b64d5fcf8bfee/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/aabcf2496a1cbd3e3efa0079d16e6020/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/cc1f5188ea624deeb9bac8c4adab8e85/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/1ac0ce4c47f67e8d75095b573df94d00/transformed/lifecycle-viewmodel-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/9bc9f23e64d6ca74ba9bfc0105e0e79f/transformed/lifecycle-viewmodel-savedstate-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.7.0] /Users/youngwoosong/.gradle/caches/transforms-3/30b500c3b6f91e62ba715a3629a8382c/transformed/core-ktx-1.7.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/46c661f0e1b35e94b62746bdc1215533/transformed/lifecycle-runtime-ktx-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/abb795686549c0ad5c2ab3362cf22598/transformed/lifecycle-livedata-ktx-2.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-ktx:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/542cec1ab9538eb23a6c33caa00412a1/transformed/room-ktx-2.4.3/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/ea6a1c19a4361901eecc9a070f241513/transformed/savedstate-ktx-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/49a4b09c7bf3a793b0233d5759442b20/transformed/lifecycle-livedata-core-ktx-2.5.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/698b3b36e94cabae1225ff9aa0bbff12/transformed/savedstate-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/9f4e0d46084dd30e8a0d74bf11eb3d99/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] /Users/youngwoosong/.gradle/caches/transforms-3/2d176981bfb8741e5bcd408e1202833e/transformed/appcompat-resources-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/30c2c31c237382db26db00cb37bc46d9/transformed/emoji2-views-helper-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/5c39463057b9ecad5bdac7c294e7a2f4/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2437314df129e10ad11fcfd86123db18/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/f0c4bd0e8856dc15d8d806be1ce1b2a4/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/7a0aed346486705c3ef28b431821c43d/transformed/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/22005e8fc48133099da186b797560e6f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/274827638976a41374de00473f4a4fe9/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/834ff47d5c97d375090d12a31205395b/transformed/lifecycle-service-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/8c99881d25de3cf2fb570f4d35ee880f/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/018e33b8cf2609068f33bea3244fbc29/transformed/recyclerview-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/a2fb9d06184e1950029c4128c0eb0fbd/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.8.0] /Users/youngwoosong/.gradle/caches/transforms-3/9e0f42bc7ad8f0ce4a24679467ed5807/transformed/core-1.8.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/56e5a5d1d03ad3d201f3308c0f3db8b5/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/4c47de1bae2692ee2375d9defdd746cb/transformed/gifdecoder-4.13.1/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/a02e7c688d041398fe7c79783974e599/transformed/exifinterface-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/66fe89c32f19c8078ae1faa508903c8d/transformed/startup-runtime-1.0.0/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/9be033a9a9641973ca6e09338318889a/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/43d057440a87afdd72d895fa074d0028/transformed/lifecycle-livedata-2.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/1c8d0521ae4c6b11fa9ea4d188ffb99b/transformed/lifecycle-livedata-core-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/1cfe6cf58a00e4a0ff174ac9f6c8e540/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/08ebf703b358e1ec032206b4ced3c6b1/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.sqlite:sqlite:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/a9a3702778888ac024b1531d53d31010/transformed/sqlite-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/50bf739722834f3437d111db01d95035/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/0d8867354ec413274af9671f66328a81/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/97ea27537e6872e60d84a94ff888edaa/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/8facba9d5e82d7aced989d51e2b2abf3/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/904b4c4189abaa7afcf5659150382e5c/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/8f58eb03d67fd2c3611184c9b8265812/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.dagger:dagger-lint-aar:2.42] /Users/youngwoosong/.gradle/caches/transforms-3/3ce15597f6701c7019dc563d8b5c6d6d/transformed/dagger-lint-aar-2.42/AndroidManifest.xml:16:1-19:12
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:1-42:12
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:1-42:12
+	package
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:3:5-38
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:1-42:12
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:1-42:12
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:5:22-64
+application
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:7:5-40:19
+MERGED from [com.google.android.material:material:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/29dd7644b35ec001dfd9b805db656349/transformed/material-1.5.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/29dd7644b35ec001dfd9b805db656349/transformed/material-1.5.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/130f704852641f2fdccdebce6e496ad9/transformed/constraintlayout-2.1.3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/130f704852641f2fdccdebce6e496ad9/transformed/constraintlayout-2.1.3/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:glide:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/dc8305dda6c601ffb5512d6444017d0b/transformed/glide-4.13.1/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/dc8305dda6c601ffb5512d6444017d0b/transformed/glide-4.13.1/AndroidManifest.xml:10:5-20
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/98503efcfcdd935d5a58079cf8e83c46/transformed/lifecycle-extensions-2.2.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/98503efcfcdd935d5a58079cf8e83c46/transformed/lifecycle-extensions-2.2.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.core:core:1.8.0] /Users/youngwoosong/.gradle/caches/transforms-3/9e0f42bc7ad8f0ce4a24679467ed5807/transformed/core-1.8.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.8.0] /Users/youngwoosong/.gradle/caches/transforms-3/9e0f42bc7ad8f0ce4a24679467ed5807/transformed/core-1.8.0/AndroidManifest.xml:24:5-89
+MERGED from [com.github.bumptech.glide:gifdecoder:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/4c47de1bae2692ee2375d9defdd746cb/transformed/gifdecoder-4.13.1/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/4c47de1bae2692ee2375d9defdd746cb/transformed/gifdecoder-4.13.1/AndroidManifest.xml:9:5-20
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/66fe89c32f19c8078ae1faa508903c8d/transformed/startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/66fe89c32f19c8078ae1faa508903c8d/transformed/startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/50bf739722834f3437d111db01d95035/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/50bf739722834f3437d111db01d95035/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.8.0] /Users/youngwoosong/.gradle/caches/transforms-3/9e0f42bc7ad8f0ce4a24679467ed5807/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:13:9-35
+	android:label
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:11:9-41
+	android:roundIcon
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:12:9-54
+	android:icon
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:10:9-43
+	android:allowBackup
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:9:9-35
+	android:theme
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:15:9-47
+	android:usesCleartextTraffic
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:14:9-44
+	android:name
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:8:9-71
+activity#com.woojoo.allsearching.ui.BindingActivity
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:16:9-22:20
+	android:exported
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:18:13-37
+	android:name
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:17:13-47
+meta-data#android.app.lib_name
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:19:13-21:36
+	android:value
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:21:17-33
+	android:name
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:20:17-52
+activity#com.woojoo.allsearching.ui.activity.ResultWebViewActivity
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:23:9-30:20
+	android:exported
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:25:13-37
+	android:configChanges
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:26:13-74
+	android:name
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:24:13-62
+activity#com.woojoo.allsearching.ui.activity.MainActivity
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:31:9-39:20
+	android:exported
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:33:13-36
+	android:name
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:32:13-53
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:34:13-38:29
+action#android.intent.action.MAIN
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:35:17-69
+	android:name
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:35:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:37:17-77
+	android:name
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml:37:27-74
+uses-sdk
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:databinding-adapters:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/e05ff3237c56c3cb1582825282524a58/transformed/databinding-adapters-7.1.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.databinding:databinding-adapters:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/e05ff3237c56c3cb1582825282524a58/transformed/databinding-adapters-7.1.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.databinding:databinding-ktx:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/276f3ac3088c3078a1653b7defc9ad74/transformed/databinding-ktx-7.1.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.databinding:databinding-ktx:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/276f3ac3088c3078a1653b7defc9ad74/transformed/databinding-ktx-7.1.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.databinding:databinding-runtime:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/e20ae6b97df27338b814f453e6474133/transformed/databinding-runtime-7.1.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.databinding:databinding-runtime:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/e20ae6b97df27338b814f453e6474133/transformed/databinding-runtime-7.1.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.databinding:viewbinding:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/1a8256a327edbe98ccff4bd0bf752e25/transformed/viewbinding-7.1.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.databinding:viewbinding:7.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/1a8256a327edbe98ccff4bd0bf752e25/transformed/viewbinding-7.1.3/AndroidManifest.xml:20:5-22:41
+MERGED from [:data] /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/data/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:data] /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/data/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:domain] /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/domain/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:domain] /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/domain/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.fragment:fragment-ktx:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/e5e4bc94cd182cfe41f42c892aab4557/transformed/fragment-ktx-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/e5e4bc94cd182cfe41f42c892aab4557/transformed/fragment-ktx-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/bf9cef7f5b19531b30e149816caf553e/transformed/activity-ktx-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/bf9cef7f5b19531b30e149816caf553e/transformed/activity-ktx-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.material:material:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/29dd7644b35ec001dfd9b805db656349/transformed/material-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/29dd7644b35ec001dfd9b805db656349/transformed/material-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/130f704852641f2fdccdebce6e496ad9/transformed/constraintlayout-2.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /Users/youngwoosong/.gradle/caches/transforms-3/130f704852641f2fdccdebce6e496ad9/transformed/constraintlayout-2.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.4.1] /Users/youngwoosong/.gradle/caches/transforms-3/e35d0a038c524ff44f769cea4daa6ef8/transformed/appcompat-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.4.1] /Users/youngwoosong/.gradle/caches/transforms-3/e35d0a038c524ff44f769cea4daa6ef8/transformed/appcompat-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:glide:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/dc8305dda6c601ffb5512d6444017d0b/transformed/glide-4.13.1/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/dc8305dda6c601ffb5512d6444017d0b/transformed/glide-4.13.1/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.dagger:hilt-android:2.42] /Users/youngwoosong/.gradle/caches/transforms-3/40b6b06f7fd10a047af73edeabe88681/transformed/hilt-android-2.42/AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:hilt-android:2.42] /Users/youngwoosong/.gradle/caches/transforms-3/40b6b06f7fd10a047af73edeabe88681/transformed/hilt-android-2.42/AndroidManifest.xml:18:3-42
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/98503efcfcdd935d5a58079cf8e83c46/transformed/lifecycle-extensions-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/98503efcfcdd935d5a58079cf8e83c46/transformed/lifecycle-extensions-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/d518eaa423d5b957b843f41438625f9f/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/d518eaa423d5b957b843f41438625f9f/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/35fe5ef96b02ab8cfe4aba5896ef2d18/transformed/fragment-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/35fe5ef96b02ab8cfe4aba5896ef2d18/transformed/fragment-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.paging:paging-runtime-ktx:3.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/f9ac5a5ab814932e23ec0d94691bbbf1/transformed/paging-runtime-ktx-3.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.paging:paging-runtime-ktx:3.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/f9ac5a5ab814932e23ec0d94691bbbf1/transformed/paging-runtime-ktx-3.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.paging:paging-runtime:3.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/841af5fd0062222d79f144536a1b8c5e/transformed/paging-runtime-3.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.paging:paging-runtime:3.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/841af5fd0062222d79f144536a1b8c5e/transformed/paging-runtime-3.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/3f225fab1665328f1f7a36e94e129c24/transformed/lifecycle-viewmodel-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/3f225fab1665328f1f7a36e94e129c24/transformed/lifecycle-viewmodel-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/eec3da1592dd0c423e961efd2fd73fe8/transformed/activity-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/eec3da1592dd0c423e961efd2fd73fe8/transformed/activity-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/eabaf1e02015818a9f7b64d5fcf8bfee/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/eabaf1e02015818a9f7b64d5fcf8bfee/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/aabcf2496a1cbd3e3efa0079d16e6020/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/aabcf2496a1cbd3e3efa0079d16e6020/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/cc1f5188ea624deeb9bac8c4adab8e85/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/cc1f5188ea624deeb9bac8c4adab8e85/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/1ac0ce4c47f67e8d75095b573df94d00/transformed/lifecycle-viewmodel-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/1ac0ce4c47f67e8d75095b573df94d00/transformed/lifecycle-viewmodel-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/9bc9f23e64d6ca74ba9bfc0105e0e79f/transformed/lifecycle-viewmodel-savedstate-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/9bc9f23e64d6ca74ba9bfc0105e0e79f/transformed/lifecycle-viewmodel-savedstate-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.7.0] /Users/youngwoosong/.gradle/caches/transforms-3/30b500c3b6f91e62ba715a3629a8382c/transformed/core-ktx-1.7.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.7.0] /Users/youngwoosong/.gradle/caches/transforms-3/30b500c3b6f91e62ba715a3629a8382c/transformed/core-ktx-1.7.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/46c661f0e1b35e94b62746bdc1215533/transformed/lifecycle-runtime-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/46c661f0e1b35e94b62746bdc1215533/transformed/lifecycle-runtime-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/abb795686549c0ad5c2ab3362cf22598/transformed/lifecycle-livedata-ktx-2.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/abb795686549c0ad5c2ab3362cf22598/transformed/lifecycle-livedata-ktx-2.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-ktx:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/542cec1ab9538eb23a6c33caa00412a1/transformed/room-ktx-2.4.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-ktx:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/542cec1ab9538eb23a6c33caa00412a1/transformed/room-ktx-2.4.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/ea6a1c19a4361901eecc9a070f241513/transformed/savedstate-ktx-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/ea6a1c19a4361901eecc9a070f241513/transformed/savedstate-ktx-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/49a4b09c7bf3a793b0233d5759442b20/transformed/lifecycle-livedata-core-ktx-2.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.0] /Users/youngwoosong/.gradle/caches/transforms-3/49a4b09c7bf3a793b0233d5759442b20/transformed/lifecycle-livedata-core-ktx-2.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/698b3b36e94cabae1225ff9aa0bbff12/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/698b3b36e94cabae1225ff9aa0bbff12/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/9f4e0d46084dd30e8a0d74bf11eb3d99/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/9f4e0d46084dd30e8a0d74bf11eb3d99/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] /Users/youngwoosong/.gradle/caches/transforms-3/2d176981bfb8741e5bcd408e1202833e/transformed/appcompat-resources-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] /Users/youngwoosong/.gradle/caches/transforms-3/2d176981bfb8741e5bcd408e1202833e/transformed/appcompat-resources-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/30c2c31c237382db26db00cb37bc46d9/transformed/emoji2-views-helper-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/30c2c31c237382db26db00cb37bc46d9/transformed/emoji2-views-helper-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/5c39463057b9ecad5bdac7c294e7a2f4/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/5c39463057b9ecad5bdac7c294e7a2f4/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2437314df129e10ad11fcfd86123db18/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2437314df129e10ad11fcfd86123db18/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/f0c4bd0e8856dc15d8d806be1ce1b2a4/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/f0c4bd0e8856dc15d8d806be1ce1b2a4/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/7a0aed346486705c3ef28b431821c43d/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/7a0aed346486705c3ef28b431821c43d/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/22005e8fc48133099da186b797560e6f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/22005e8fc48133099da186b797560e6f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/274827638976a41374de00473f4a4fe9/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/274827638976a41374de00473f4a4fe9/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/834ff47d5c97d375090d12a31205395b/transformed/lifecycle-service-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/834ff47d5c97d375090d12a31205395b/transformed/lifecycle-service-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/8c99881d25de3cf2fb570f4d35ee880f/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/8c99881d25de3cf2fb570f4d35ee880f/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/018e33b8cf2609068f33bea3244fbc29/transformed/recyclerview-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/018e33b8cf2609068f33bea3244fbc29/transformed/recyclerview-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/a2fb9d06184e1950029c4128c0eb0fbd/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/a2fb9d06184e1950029c4128c0eb0fbd/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.8.0] /Users/youngwoosong/.gradle/caches/transforms-3/9e0f42bc7ad8f0ce4a24679467ed5807/transformed/core-1.8.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.8.0] /Users/youngwoosong/.gradle/caches/transforms-3/9e0f42bc7ad8f0ce4a24679467ed5807/transformed/core-1.8.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/56e5a5d1d03ad3d201f3308c0f3db8b5/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/56e5a5d1d03ad3d201f3308c0f3db8b5/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/4c47de1bae2692ee2375d9defdd746cb/transformed/gifdecoder-4.13.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.13.1] /Users/youngwoosong/.gradle/caches/transforms-3/4c47de1bae2692ee2375d9defdd746cb/transformed/gifdecoder-4.13.1/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/a02e7c688d041398fe7c79783974e599/transformed/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/a02e7c688d041398fe7c79783974e599/transformed/exifinterface-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/66fe89c32f19c8078ae1faa508903c8d/transformed/startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/66fe89c32f19c8078ae1faa508903c8d/transformed/startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/9be033a9a9641973ca6e09338318889a/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/9be033a9a9641973ca6e09338318889a/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/43d057440a87afdd72d895fa074d0028/transformed/lifecycle-livedata-2.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/43d057440a87afdd72d895fa074d0028/transformed/lifecycle-livedata-2.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/1c8d0521ae4c6b11fa9ea4d188ffb99b/transformed/lifecycle-livedata-core-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /Users/youngwoosong/.gradle/caches/transforms-3/1c8d0521ae4c6b11fa9ea4d188ffb99b/transformed/lifecycle-livedata-core-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/1cfe6cf58a00e4a0ff174ac9f6c8e540/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/1cfe6cf58a00e4a0ff174ac9f6c8e540/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/08ebf703b358e1ec032206b4ced3c6b1/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/08ebf703b358e1ec032206b4ced3c6b1/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/a9a3702778888ac024b1531d53d31010/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.2.0] /Users/youngwoosong/.gradle/caches/transforms-3/a9a3702778888ac024b1531d53d31010/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/50bf739722834f3437d111db01d95035/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/youngwoosong/.gradle/caches/transforms-3/50bf739722834f3437d111db01d95035/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/0d8867354ec413274af9671f66328a81/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/0d8867354ec413274af9671f66328a81/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/97ea27537e6872e60d84a94ff888edaa/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/97ea27537e6872e60d84a94ff888edaa/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/8facba9d5e82d7aced989d51e2b2abf3/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/8facba9d5e82d7aced989d51e2b2abf3/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/904b4c4189abaa7afcf5659150382e5c/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/904b4c4189abaa7afcf5659150382e5c/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/8f58eb03d67fd2c3611184c9b8265812/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/youngwoosong/.gradle/caches/transforms-3/8f58eb03d67fd2c3611184c9b8265812/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.dagger:dagger-lint-aar:2.42] /Users/youngwoosong/.gradle/caches/transforms-3/3ce15597f6701c7019dc563d8b5c6d6d/transformed/dagger-lint-aar-2.42/AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:dagger-lint-aar:2.42] /Users/youngwoosong/.gradle/caches/transforms-3/3ce15597f6701c7019dc563d8b5c6d6d/transformed/dagger-lint-aar-2.42/AndroidManifest.xml:18:3-42
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+		ADDED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/youngwoosong/Desktop/Portfolio/AllSearching/AllSearching/app/src/main/AndroidManifest.xml
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/66fe89c32f19c8078ae1faa508903c8d/transformed/startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/66fe89c32f19c8078ae1faa508903c8d/transformed/startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:30:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:28:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:29:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:27:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:33:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/youngwoosong/.gradle/caches/transforms-3/2a8ccd5f3604df47ac86288f517075c0/transformed/emoji2-1.0.0/AndroidManifest.xml:32:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/youngwoosong/.gradle/caches/transforms-3/e73c43276ece90049972dcd8e8f1c7da/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:25:9-28:40
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:28:13-37
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:27:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.4.3] /Users/youngwoosong/.gradle/caches/transforms-3/ab121480d749de5e58ffd696139d1868/transformed/room-runtime-2.4.3/AndroidManifest.xml:26:13-74
