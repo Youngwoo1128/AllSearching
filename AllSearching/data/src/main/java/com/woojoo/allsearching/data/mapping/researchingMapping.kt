@@ -29,3 +29,22 @@ fun Documents.toEntity() = ResearchingEntity(
     thumbnail = thumbnail,
     url = url
 )
+
+
+fun Documents.toDomain() = Researching(
+    id = null,
+    dateTime = datetime,
+    viewType = viewType,
+    title = title,
+    thumbnail = thumbnail,
+    url = url
+)
+
+fun Documents.toDomain(id: Long?) = Researching(
+    id = id,
+    dateTime = datetime,
+    viewType = viewType,
+    title = title,
+    thumbnail = thumbnail,
+    url = url
+)

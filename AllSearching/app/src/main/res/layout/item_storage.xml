@@ -53,22 +53,24 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView_delete"
                 tools:text="1"/>
 
-<!--            <ImageView-->
-<!--                android:id="@+id/imageView_delete"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/ic_baseline_delete_24"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                android:onClickListener="@{() -> callback.deleteLocalItem(item)}" />-->
-
             <ImageView
                 android:id="@+id/imageView_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_delete_24"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onClickListener="@{() -> callback.deleteLocalItem(item)}" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView_delete"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_baseline_delete_24"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent" />-->
+<!--            -->
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

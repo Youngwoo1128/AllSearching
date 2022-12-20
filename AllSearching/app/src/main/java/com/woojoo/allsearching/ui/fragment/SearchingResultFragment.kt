@@ -13,7 +13,7 @@ import com.woojoo.allsearching.R
 import com.woojoo.allsearching.constant.EXTRA_EMPTY_SEARCHING_KEYWORD
 import com.woojoo.allsearching.databinding.FragmentSearchingResultBinding
 import com.woojoo.allsearching.domain.entites.Documents
-import com.woojoo.allsearching.domain.entites.DataBaseResult
+import com.woojoo.allsearching.domain.entites.InsertResult
 import com.woojoo.allsearching.extension.IntentProvider
 import com.woojoo.allsearching.ui.BindingFragment
 import com.woojoo.allsearching.ui.viewmodels.SearchingResultViewModel
@@ -151,9 +151,9 @@ class SearchingResultFragment :
         )
     }
 
-    private fun showResultToast(result: DataBaseResult) {
+    private fun showResultToast(result: InsertResult) {
         when (result) {
-            is DataBaseResult.ResultSuccess -> {
+            is InsertResult.ResultSuccess -> {
                 Toast.makeText(
                     requireContext(),
                     requireContext().getString(R.string.string_favorite),
@@ -170,7 +170,7 @@ class SearchingResultFragment :
                 ).show()
                 Log.d(
                     "throwable Message",
-                    "${(result as? DataBaseResult.ResultFail)?.throwable?.message}"
+                    "${(result as? InsertResult.ResultFail)?.throwable?.message}"
                 )
 
             }

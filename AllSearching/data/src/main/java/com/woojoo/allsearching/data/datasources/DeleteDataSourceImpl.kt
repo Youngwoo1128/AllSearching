@@ -41,6 +41,7 @@ class DeleteDataSourceImpl: DeleteDataSource {
         } catch (e: StackOverflowError) {
             return DeleteResult.DeleteFail
         } catch (e: Exception) {
+            Log.d("exception reason", "${e.message}")
             return DeleteResult.DeleteFail
         }
     }

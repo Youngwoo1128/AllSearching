@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.woojoo.allsearching.domain.entites.DataBaseResult
+import com.woojoo.allsearching.domain.entites.InsertResult
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.Error
 import com.woojoo.allsearching.domain.usecases.*
@@ -31,9 +31,9 @@ class SearchingResultViewModel @Inject constructor(
         get() = _insertToRoom
     private val _insertToRoom = SingleLiveEvent<Unit>()
 
-    val insertResult: LiveData<DataBaseResult>
+    val insertResult: LiveData<InsertResult>
         get() = _insertResult
-    private val _insertResult = SingleLiveEvent<DataBaseResult>()
+    private val _insertResult = SingleLiveEvent<InsertResult>()
 
     val networkException: LiveData<Error>
         get() = _networkException
