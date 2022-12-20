@@ -9,7 +9,6 @@ import androidx.paging.cachedIn
 import com.woojoo.allsearching.domain.entites.DataBaseResult
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.Error
-import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.*
 import com.woojoo.allsearching.utils.LoadStatus
 import com.woojoo.allsearching.utils.SingleLiveEvent
@@ -25,8 +24,7 @@ class SearchingResultViewModel @Inject constructor(
     private val searchResultUseCase: SearchResultUseCase,
     private val insertResearchingUseCase: InsertResearchingUseCase,
     private val networkExceptionUseCase: NetworkExceptionUseCase,
-    private val getAllResearchingUseCase: GetAllResearchingUseCase,
-    private val getLastIdUseCase: GetLastIdUseCase
+    private val checkExistUseCase: CheckExistUseCase
 ) : ViewModel() {
 
     val insertToRoom: LiveData<Unit>
@@ -49,6 +47,10 @@ class SearchingResultViewModel @Inject constructor(
         get() = _loadStatus
     private val _loadStatus = MutableLiveData<LoadStatus>()
 
+    val isExistItem: LiveData<Boolean>
+        get() = _isExistItem
+    private val _isExistItem = SingleLiveEvent<Boolean>()
+
     private suspend fun getSearchingResult(query: String): Flow<PagingData<Documents>> {
         return searchResultUseCase(query).cachedIn(viewModelScope)
     }
@@ -61,20 +63,15 @@ class SearchingResultViewModel @Inject constructor(
         }
     }
 
-
     fun insertSearchingItem(item: Documents) {
         viewModelScope.launch(Dispatchers.IO) {
-            insertResearchingUseCase(
-                Researching(
-                    id = null,
-                    dateTime = item.datetime,
-                    viewType = item.viewType,
-                    title = item.title,
-                    thumbnail = item.thumbnail,
-                    url = item.url
-                )
-            ).collectLatest { result ->
-                _insertResult.postValue(result)
+            val isExistItem = checkExistUseCase(item)
+            if (isExistItem) {
+                _isExistItem.postValue(isExistItem)
+            } else {
+                insertResearchingUseCase(item).collectLatest { result ->
+                    _insertResult.postValue(result)
+                }
             }
         }
     }

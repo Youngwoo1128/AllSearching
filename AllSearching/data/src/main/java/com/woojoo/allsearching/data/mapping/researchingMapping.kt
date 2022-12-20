@@ -1,6 +1,7 @@
 package com.woojoo.allsearching.data.mapping
 
 import com.woojoo.allsearching.data.local.ResearchingEntity
+import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.entites.Researching
 
 fun ResearchingEntity.toDomain() = Researching(
@@ -19,4 +20,12 @@ fun Researching.toData() = ResearchingEntity(
     title,
     thumbnail,
     url
+)
+
+fun Documents.toEntity() = ResearchingEntity(
+    dateTime = datetime,
+    viewType = viewType,
+    title = title,
+    thumbnail = thumbnail,
+    url = url
 )

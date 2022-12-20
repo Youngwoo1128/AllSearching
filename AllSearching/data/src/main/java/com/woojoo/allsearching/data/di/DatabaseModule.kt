@@ -2,10 +2,10 @@ package com.woojoo.allsearching.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.woojoo.allsearching.data.datasources.CheckOverlapDataSource
+import com.woojoo.allsearching.data.datasources.CheckOverlapDataSourceImpl
 import com.woojoo.allsearching.data.datasources.DeleteDataSource
 import com.woojoo.allsearching.data.datasources.DeleteDataSourceImpl
-import com.woojoo.allsearching.data.datasources.GetLastIdDataSource
-import com.woojoo.allsearching.data.datasources.GetLastIdDataSourceImpl
 import com.woojoo.allsearching.data.local.ResearchingDao
 import com.woojoo.allsearching.data.local.ResearchingDatabase
 import dagger.Module
@@ -38,5 +38,5 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideLastIdDataSource(): GetLastIdDataSource = GetLastIdDataSourceImpl()
+    fun provideCheckOverlapDataSource(): CheckOverlapDataSource = CheckOverlapDataSourceImpl()
 }

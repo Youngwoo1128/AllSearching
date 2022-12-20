@@ -66,6 +66,10 @@ class SearchingResultFragment :
             viewModel.setLoadStatusFinish()
         }
 
+        viewModel.isExistItem.observe(viewLifecycleOwner) { isExist ->
+            Toast.makeText(requireContext(), getString(R.string.isExistItem), Toast.LENGTH_SHORT).show()
+        }
+
         viewModel.loadStatus.observe(viewLifecycleOwner) { loadStatus ->
             when (loadStatus) {
                 is LoadStatus.isLoading -> binding.progressBar.visibility = View.VISIBLE

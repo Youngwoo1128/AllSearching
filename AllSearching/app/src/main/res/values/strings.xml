@@ -9,4 +9,5 @@
     <string name="string_ok">확인</string>
     <string name="network_exception">네트워크 환경을 확인하여 주세요.</string>
     <string name="delete_exception">잠시 후 다시 시도하여 주세요.</string>
+    <string name="isExistItem">이미 즐겨찾기한 아이템입니다.</string>
 </resources>
