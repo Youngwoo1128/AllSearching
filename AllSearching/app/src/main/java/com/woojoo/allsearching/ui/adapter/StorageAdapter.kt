@@ -28,10 +28,6 @@ class StorageAdapter(private val callback: DeleteLocalItem) : RecyclerView.Adapt
         notifyItemRemoved(index)
     }
 
-    interface DeleteLocalItem {
-        fun deleteLocalItem(item: Researching)
-    }
-
     fun addNewItem(newItem: List<Researching>) {
         researchingList.addAll(newItem)
         researchingList = researchingList.distinct().toMutableList()
@@ -41,6 +37,10 @@ class StorageAdapter(private val callback: DeleteLocalItem) : RecyclerView.Adapt
     fun insertNewItem(item: Researching) {
         researchingList.add(item)
         notifyDataSetChanged()
+    }
+
+    interface DeleteLocalItem {
+        fun deleteLocalItem(item: Researching)
     }
 
 }
