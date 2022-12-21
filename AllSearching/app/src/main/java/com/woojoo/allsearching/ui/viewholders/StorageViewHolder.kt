@@ -1,5 +1,6 @@
 package com.woojoo.allsearching.ui.viewholders
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.woojoo.allsearching.R
@@ -13,9 +14,10 @@ class StorageViewHolder(val binding: ItemStorageBinding): RecyclerView.ViewHolde
         binding.item = item
         binding.callback = callback
 
-        binding.imageViewDelete.setOnClickListener {
-            callback.deleteLocalItem(item)
-        }
+//        binding.imageViewDelete.setOnClickListener {
+//            Log.d("ywsong", "ViewHolder item: $item")
+//            callback.deleteLocalItem(item)
+//        }
 
         Glide.with(binding.root.context)
             .load(item.thumbnail)

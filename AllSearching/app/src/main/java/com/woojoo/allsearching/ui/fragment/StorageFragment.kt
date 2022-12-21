@@ -21,6 +21,7 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
     private val viewModel by viewModels<StorageViewModel>()
     private lateinit var adapter: StorageAdapter
+    private var isInsertReady = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +34,12 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
     override fun onResume() {
         super.onResume()
 
-        viewModel.notifyAddItem()
+        if (isInsertReady) {
+            viewModel.notifyAddItem()
+        } else {
+            isInsertReady = true
+        }
+
     }
 
     private fun setObserver() {
@@ -43,7 +49,7 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
         viewModel.deletedItem.observe(viewLifecycleOwner) { deleteResult ->
             when (deleteResult) {
-                is DeleteResult.DeleteSuccess ->  adapter.removeItem(deleteResult.success)
+                is DeleteResult.DeleteSuccess -> adapter.removeItem(deleteResult.success)
                 else -> Toast.makeText(requireContext(), getString(R.string.delete_exception), Toast.LENGTH_SHORT).show()
             }
             viewModel.setLoadStatusFinish()
@@ -64,7 +70,6 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
     private fun initView() {
         adapter = StorageAdapter(object : StorageAdapter.DeleteLocalItem {
             override fun deleteLocalItem(item: Researching) {
-                Log.d("deleted Item", "$item")
                 viewModel.setLoadStatusLoading()
                 viewModel.deleteResearchingItem(item)
             }

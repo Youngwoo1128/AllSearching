@@ -9,7 +9,7 @@ import com.woojoo.allsearching.ui.viewholders.StorageViewHolder
 
 class StorageAdapter(private val callback: DeleteLocalItem) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var researchingList = mutableListOf<Researching>()
+    var researchingList = mutableListOf<Researching>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = ItemStorageBinding.inflate(LayoutInflater.from(parent.context), parent, false)

@@ -9,7 +9,8 @@ import kotlinx.coroutines.flow.Flow
 interface ResearchingRepository {
     suspend fun getResearchingList(): List<Researching>
     suspend fun insertResearching(item: Documents): Flow<InsertResult>
-    suspend fun deleteResearching(item: Researching): Flow<DeleteResult>
+    suspend fun getDeleteItem(item: Researching): Flow<DeleteResult>
+    suspend fun deleteItem(item: Researching)
     suspend fun notifyNewResearching(): Flow<Researching>
     suspend fun isExistItem(item: Documents): Boolean
     suspend fun addNotificationQueue(item: Documents)

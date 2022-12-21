@@ -43,19 +43,22 @@ class ResearchingRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun deleteResearching(item: Researching): Flow<DeleteResult> {
+    override suspend fun getDeleteItem(item: Researching): Flow<DeleteResult> {
+        Log.e("ywsong", "1 item=$item")
         return flow {
             val researchingList = getResearchingList()
-            val result = if (item.id == null) {
-                val hashValue = deleteHashMap.getOrDefault(item.url, null)
-                deleteDataSource.getDeletedItemIndex(researchingList, hashValue!!)
-            } else {
-                deleteDataSource.getDeletedItemIndex(researchingList, item)
-            }
-            Log.d("deletedId : ", "$result")
-            researchingDao.delete(item.toData())
+            val hashValue = if (item.id == null) deleteHashMap.getOrDefault(item.url, null)!! else item
+            val result = deleteDataSource.getDeletedItemIndex(researchingList, hashValue)
+            Log.e("ywsong", "3 item=$item")
+
+            researchingDao.delete(hashValue.toData())
             emit(result)
         }
+    }
+
+    override suspend fun deleteItem(item: Researching) {
+        Log.d("ywsong", "delete : $item")
+//        researchingDao.delete(item.toData())
     }
 
     override suspend fun notifyNewResearching(): Flow<Researching> {
@@ -70,23 +73,28 @@ class ResearchingRepositoryImpl @Inject constructor(
         }
     }
 
+    /*중복 insert 방지*/
     override suspend fun isExistItem(item: Documents): Boolean {
         return checkOverlapDataSource.isExistItem(getResearchingList(), item)
     }
 
+    /*
+    * 즐겨찾기 하면 queue 에 저장
+    * StorageFragment 가 onResume 상태가 되면 queue에 있는 것들을 pop 한 다음 notify
+    * */
     override suspend fun addNotificationQueue(item: Documents) {
         notificationQueue.offer(item.toDomain())
     }
 
+    /*
+    * StorageFragment가 viewCreated 되면 정상적으로 delete 가능
+    * insert 한 모델을 지우고 싶때는
+    * */
     override suspend fun addDeleteHashMap(item: Documents) {
         val researchingList = getResearchingList()
         val researching = item.toDomain()
         researching.id = researchingList.last().id
         deleteHashMap[item.url] = researching
-        Log.d("hashmap", "${deleteHashMap[item.url]}")
     }
-
-
-//    private suspend fun getLastI
 
 }

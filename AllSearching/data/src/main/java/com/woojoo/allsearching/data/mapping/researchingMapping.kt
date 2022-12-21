@@ -14,7 +14,7 @@ fun ResearchingEntity.toDomain() = Researching(
 )
 
 fun Researching.toData() = ResearchingEntity(
-    id,
+    id = id,
     dateTime,
     viewType,
     title,

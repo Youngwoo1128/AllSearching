@@ -1,6 +1,5 @@
 package com.woojoo.allsearching.ui.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.woojoo.allsearching.domain.entites.DeleteResult
 import com.woojoo.allsearching.utils.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
-import com.woojoo.allsearching.domain.usecases.DeleteResearchingUseCase
+import com.woojoo.allsearching.domain.usecases.DeleteUseCase
+import com.woojoo.allsearching.domain.usecases.GetDeleteResearchingItem
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.NotifyResearchingUseCase
 import com.woojoo.allsearching.utils.LoadStatus
@@ -22,8 +22,9 @@ import javax.inject.Inject
 @HiltViewModel
 class StorageViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
-    private val deleteResearchingUseCase: DeleteResearchingUseCase,
-    private val notifyResearchingUseCase: NotifyResearchingUseCase
+    private val getDeleteResearchingItem: GetDeleteResearchingItem,
+    private val notifyResearchingUseCase: NotifyResearchingUseCase,
+    private val deleteUseCase: DeleteUseCase
 ) : ViewModel() {
 
     val localResearching: LiveData<List<Researching>>
@@ -45,13 +46,12 @@ class StorageViewModel @Inject constructor(
     fun getLocalResearchingList() {
         viewModelScope.launch(Dispatchers.IO) {
             _localResearching.postValue(getAllResearchingUseCase())
-            Log.d("researching List Size : ", "${_localResearching.value?.size}")
         }
     }
 
     fun deleteResearchingItem(item: Researching) {
         viewModelScope.launch(Dispatchers.IO) {
-            deleteResearchingUseCase(item).collectLatest {
+            getDeleteResearchingItem(item).collectLatest {
                 _deletedItem.postValue(it)
             }
         }

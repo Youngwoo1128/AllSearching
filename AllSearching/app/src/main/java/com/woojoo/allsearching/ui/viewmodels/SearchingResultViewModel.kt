@@ -72,8 +72,9 @@ class SearchingResultViewModel @Inject constructor(
             } else {
                 insertResearchingUseCase(item).collectLatest { result ->
                     _insertResult.postValue(result)
+                    checkInsertUseCase(item)
                 }
-                checkInsertUseCase(item)
+
             }
         }
     }
