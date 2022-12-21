@@ -24,7 +24,8 @@ class SearchingResultViewModel @Inject constructor(
     private val searchResultUseCase: SearchResultUseCase,
     private val insertResearchingUseCase: InsertResearchingUseCase,
     private val networkExceptionUseCase: NetworkExceptionUseCase,
-    private val checkExistUseCase: CheckExistUseCase
+    private val checkExistUseCase: CheckExistUseCase,
+    private val checkInsertUseCase: CheckInsertUseCase
 ) : ViewModel() {
 
     val insertToRoom: LiveData<Unit>
@@ -67,11 +68,12 @@ class SearchingResultViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             val isExistItem = checkExistUseCase(item)
             if (isExistItem) {
-                _isExistItem.postValue(isExistItem)
+                _isExistItem.postValue(true)
             } else {
                 insertResearchingUseCase(item).collectLatest { result ->
                     _insertResult.postValue(result)
                 }
+                checkInsertUseCase(item)
             }
         }
     }

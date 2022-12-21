@@ -12,4 +12,6 @@ interface ResearchingRepository {
     suspend fun deleteResearching(item: Researching): Flow<DeleteResult>
     suspend fun notifyNewResearching(): Flow<Researching>
     suspend fun isExistItem(item: Documents): Boolean
+    suspend fun addNotificationQueue(item: Documents)
+    suspend fun addDeleteHashMap(item: Documents)
 }

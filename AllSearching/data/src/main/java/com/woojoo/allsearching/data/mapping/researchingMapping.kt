@@ -39,12 +39,3 @@ fun Documents.toDomain() = Researching(
     thumbnail = thumbnail,
     url = url
 )
-
-fun Documents.toDomain(id: Long?) = Researching(
-    id = id,
-    dateTime = datetime,
-    viewType = viewType,
-    title = title,
-    thumbnail = thumbnail,
-    url = url
-)

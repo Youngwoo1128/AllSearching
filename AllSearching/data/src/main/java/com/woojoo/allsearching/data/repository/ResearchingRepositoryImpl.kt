@@ -12,8 +12,9 @@ import com.woojoo.allsearching.domain.entites.InsertResult
 import com.woojoo.allsearching.domain.entites.DeleteResult
 import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.repository.ResearchingRepository
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import okhttp3.internal.wait
 import java.util.Deque
 import java.util.LinkedList
 import javax.inject.Inject
@@ -36,8 +37,6 @@ class ResearchingRepositoryImpl @Inject constructor(
     override suspend fun insertResearching(item: Documents): Flow<InsertResult> {
         return flow<InsertResult> {
             researchingDao.insertResearching(item.toEntity())
-            notificationQueue.offer(item.toDomain())
-            deleteHashMap[item.url] = item.toDomain(getLastIndex())
             emit(InsertResult.ResultSuccess(item))
         }.catch { throwable ->
             emit(InsertResult.ResultFail(throwable))
@@ -75,8 +74,19 @@ class ResearchingRepositoryImpl @Inject constructor(
         return checkOverlapDataSource.isExistItem(getResearchingList(), item)
     }
 
-    private suspend fun getLastIndex(): Long? {
-        return getResearchingList().last().id?.plus(1)
+    override suspend fun addNotificationQueue(item: Documents) {
+        notificationQueue.offer(item.toDomain())
     }
+
+    override suspend fun addDeleteHashMap(item: Documents) {
+        val researchingList = getResearchingList()
+        val researching = item.toDomain()
+        researching.id = researchingList.last().id
+        deleteHashMap[item.url] = researching
+        Log.d("hashmap", "${deleteHashMap[item.url]}")
+    }
+
+
+//    private suspend fun getLastI
 
 }
