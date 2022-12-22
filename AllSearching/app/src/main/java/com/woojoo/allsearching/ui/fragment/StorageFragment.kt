@@ -1,7 +1,6 @@
 package com.woojoo.allsearching.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -49,7 +48,7 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
         viewModel.deletedItem.observe(viewLifecycleOwner) { deleteResult ->
             when (deleteResult) {
-                is DeleteResult.DeleteSuccess -> adapter.removeItem(deleteResult.success)
+                is DeleteResult.DeleteSuccess -> adapter.removeItem(deleteResult.searchedIndex)
                 else -> Toast.makeText(requireContext(), getString(R.string.delete_exception), Toast.LENGTH_SHORT).show()
             }
             viewModel.setLoadStatusFinish()

@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.woojoo.allsearching.domain.entites.DeleteResult
 import com.woojoo.allsearching.utils.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
-import com.woojoo.allsearching.domain.usecases.DeleteUseCase
 import com.woojoo.allsearching.domain.usecases.GetDeleteResearchingItem
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
 import com.woojoo.allsearching.domain.usecases.NotifyResearchingUseCase
@@ -24,7 +23,6 @@ class StorageViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
     private val getDeleteResearchingItem: GetDeleteResearchingItem,
     private val notifyResearchingUseCase: NotifyResearchingUseCase,
-    private val deleteUseCase: DeleteUseCase
 ) : ViewModel() {
 
     val localResearching: LiveData<List<Researching>>
