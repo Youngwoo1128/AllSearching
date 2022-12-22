@@ -16,6 +16,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -58,8 +59,8 @@ class StorageViewModel @Inject constructor(
 
     fun notifyAddItem() {
         viewModelScope.launch(Dispatchers.IO) {
-            notifyResearchingUseCase().collectIndexed { index, value ->
-                Log.d("allSearching Project", "notifyIndex : $index")
+            notifyResearchingUseCase().onEach { value ->
+                Log.d("allSearching Project", "notifyValue : $value")
                 _notifyResearching.postValue(value)
             }
         }
