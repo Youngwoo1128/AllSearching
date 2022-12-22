@@ -1,6 +1,5 @@
 package com.woojoo.allsearching.data.repository
 
-import android.util.Log
 import com.woojoo.allsearching.data.datasources.CheckOverlapDataSource
 import com.woojoo.allsearching.data.datasources.DeleteDataSource
 import com.woojoo.allsearching.data.local.ResearchingDao
@@ -14,7 +13,6 @@ import com.woojoo.allsearching.domain.entites.Documents
 import com.woojoo.allsearching.domain.repository.ResearchingRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import okhttp3.internal.wait
 import java.util.Deque
 import java.util.LinkedList
 import javax.inject.Inject
@@ -44,14 +42,17 @@ class ResearchingRepositoryImpl @Inject constructor(
     }
 
     override suspend fun deleteItem(item: Researching): Flow<DeleteResult> {
-        Log.e("ywsong", "1 item=$item")
+
         return flow {
             val researchingList = getResearchingList()
-            val hashValue = if (item.id == null) deleteHashMap.getOrDefault(item.url, null)!! else item
-            val result = deleteDataSource.getDeletedItemIndex(researchingList, hashValue)
-            Log.e("ywsong", "3 item=$item")
-
-            researchingDao.delete(hashValue.toData())
+            /*
+            * 즐겨찾기를 한 item은 id를 찾을 방법이 없기때문에 hash를 통해서 찾기
+            * 즐겨찾기한 아이템들이 아닌 기존 DB에 있는 item은 id를 알 수 있기 때문에 이분탐색으로 찾기
+            * 위 두가지 케이스를 통해서 adapter에게 삭제할 index를 알리기 위해서 emit
+            * */
+            val deleteItem = if (item.id == null) deleteHashMap.getOrDefault(item.url, null)!! else item
+            val result = deleteDataSource.getDeletedItemIndex(researchingList, deleteItem)
+            researchingDao.delete(deleteItem.toData())
             emit(result)
         }
     }
