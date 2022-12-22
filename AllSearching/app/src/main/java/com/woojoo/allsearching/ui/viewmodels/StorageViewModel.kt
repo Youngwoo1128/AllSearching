@@ -1,5 +1,6 @@
 package com.woojoo.allsearching.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,7 +23,7 @@ import javax.inject.Inject
 class StorageViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
     private val getDeleteResearchingItem: GetDeleteResearchingItem,
-    private val notifyResearchingUseCase: NotifyResearchingUseCase,
+    private val notifyResearchingUseCase: NotifyResearchingUseCase
 ) : ViewModel() {
 
     val localResearching: LiveData<List<Researching>>
@@ -58,6 +59,7 @@ class StorageViewModel @Inject constructor(
     fun notifyAddItem() {
         viewModelScope.launch(Dispatchers.IO) {
             notifyResearchingUseCase().collectIndexed { index, value ->
+                Log.d("allSearching Project", "notifyIndex : $index")
                 _notifyResearching.postValue(value)
             }
         }
