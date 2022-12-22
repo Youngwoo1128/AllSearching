@@ -5,8 +5,6 @@ import com.woojoo.allsearching.data.network.response.ResDocument
 import com.woojoo.allsearching.domain.entites.Documents
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
-import kotlin.Comparator
 import kotlin.collections.ArrayList
 
 
