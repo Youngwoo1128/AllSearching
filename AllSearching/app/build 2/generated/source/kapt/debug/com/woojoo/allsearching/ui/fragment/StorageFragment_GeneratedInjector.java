@@ -1,4 +1,4 @@
-package com.woojoo.allsearching.ui.fragment;
+package com.woojoo.allsearching.ui.fragments;
 
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.FragmentComponent;

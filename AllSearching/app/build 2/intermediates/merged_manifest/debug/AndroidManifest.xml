@@ -31,7 +31,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.woojoo.allsearching.ui.activity.ResultWebViewActivity"
+            android:name="com.woojoo.allsearching.ui.activities.ResultWebViewActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" >
             <meta-data
@@ -39,7 +39,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.woojoo.allsearching.ui.activity.MainActivity"
+            android:name="com.woojoo.allsearching.ui.activities.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

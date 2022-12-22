@@ -1,4 +1,4 @@
-package com.woojoo.allsearching.ui.fragment
+package com.woojoo.allsearching.ui.fragments
 
 import android.os.Bundle
 import android.util.Log

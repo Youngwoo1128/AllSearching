@@ -3,8 +3,8 @@ package com.woojoo.allsearching.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.woojoo.allsearching.ui.fragment.SearchingResultFragment
-import com.woojoo.allsearching.ui.fragment.StorageFragment
+import com.woojoo.allsearching.ui.fragments.SearchingResultFragment
+import com.woojoo.allsearching.ui.fragments.StorageFragment
 
 class MainViewPagerAdapter(
     fragmentActivity: FragmentActivity

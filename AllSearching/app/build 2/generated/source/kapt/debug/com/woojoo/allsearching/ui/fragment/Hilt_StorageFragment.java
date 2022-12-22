@@ -1,4 +1,4 @@
-package com.woojoo.allsearching.ui.fragment;
+package com.woojoo.allsearching.ui.fragments;
 
 import android.app.Activity;
 import android.content.Context;

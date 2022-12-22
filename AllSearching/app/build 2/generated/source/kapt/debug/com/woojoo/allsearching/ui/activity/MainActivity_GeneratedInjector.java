@@ -1,4 +1,4 @@
-package com.woojoo.allsearching.ui.activity;
+package com.woojoo.allsearching.ui.activities;
 
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ActivityComponent;

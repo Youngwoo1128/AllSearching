@@ -1,4 +1,4 @@
-package com.woojoo.allsearching.ui.activity
+package com.woojoo.allsearching.ui.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle

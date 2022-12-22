@@ -1,4 +1,4 @@
-package com.woojoo.allsearching.ui.activity
+package com.woojoo.allsearching.ui.activities
 
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2

@@ -21,7 +21,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.activity.ResultWebViewActivity"
+            android:name=".ui.activities.ResultWebViewActivity"
             android:exported="false"
             android:configChanges="keyboardHidden|orientation|screenSize">
             <meta-data
@@ -29,7 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
