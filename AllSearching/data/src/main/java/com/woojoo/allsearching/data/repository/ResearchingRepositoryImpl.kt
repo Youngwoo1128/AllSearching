@@ -43,7 +43,7 @@ class ResearchingRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getDeleteItem(item: Researching): Flow<DeleteResult> {
+    override suspend fun deleteItem(item: Researching): Flow<DeleteResult> {
         Log.e("ywsong", "1 item=$item")
         return flow {
             val researchingList = getResearchingList()
@@ -54,11 +54,6 @@ class ResearchingRepositoryImpl @Inject constructor(
             researchingDao.delete(hashValue.toData())
             emit(result)
         }
-    }
-
-    override suspend fun deleteItem(item: Researching) {
-        Log.d("ywsong", "delete : $item")
-//        researchingDao.delete(item.toData())
     }
 
     override suspend fun notifyNewResearching(): Flow<Researching> {
@@ -87,7 +82,7 @@ class ResearchingRepositoryImpl @Inject constructor(
     }
 
     /*
-    * StorageFragment가 viewCreated 되면 정상적으로 delete 가능
+    * SearachingFragment 에서 즐겨찾기를 진행하고 StorageFragment 진입하여 삭제 가능하도록
     * insert 한 모델을 지우고 싶때는
     * */
     override suspend fun addDeleteHashMap(item: Documents) {
