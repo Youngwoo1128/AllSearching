@@ -14,4 +14,5 @@ interface ResearchingRepository {
     suspend fun isExistItem(item: Documents): Boolean
     suspend fun addNotificationQueue(item: Documents)
     suspend fun addDeleteHashMap(item: Documents)
+    fun isNotifyQueueEmpty(): Boolean
 }

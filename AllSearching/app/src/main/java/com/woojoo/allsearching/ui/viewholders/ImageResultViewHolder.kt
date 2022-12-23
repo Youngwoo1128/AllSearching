@@ -9,25 +9,17 @@ import com.woojoo.allsearching.ui.adapter.SearchingResultAdapter
 
 class ImageResultViewHolder(val binding: ItemImageResultBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun onBind(item: Documents?, callback: SearchingResultAdapter.InsertSearchingData) {
+    fun onBind(item: Documents, callback: SearchingResultAdapter.InsertSearchingData) {
         binding.item = item
 
         Glide.with(binding.root.context)
-            .load(item?.thumbnail)
+            .load(item.thumbnail)
             .placeholder(R.drawable.default_image)
             .circleCrop()
             .into(binding.imageViewThumnail)
 
-        binding.layoutImageResult.setOnClickListener {
-            item?.let { result ->
-                callback.onClick(result)
-            }
-        }
-
         binding.ivFavorite.setOnClickListener {
-            item?.let {
-                callback.onInsertSearchingData(it)
-            }
+            callback.onInsertSearchingData(item)
         }
     }
 }

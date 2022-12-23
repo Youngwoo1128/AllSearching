@@ -1,5 +1,6 @@
 package com.woojoo.allsearching.data.di
 
+import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -9,7 +10,9 @@ import com.woojoo.allsearching.data.network.NetworkAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -35,13 +38,35 @@ object NetworkModule {
         }
     }
 
+
+    @Singleton
+    @Provides
+    fun provideContext(
+        @ApplicationContext context: Context
+    ) = context
+
+    @Singleton
+    @Provides
+    fun provideCacheFile(
+        context: Context
+    ) = Cache(context.cacheDir, (5 * 1024 * 1024).toLong())
+
+    @Singleton
+    @Provides
+    fun provideHeaderInterceptor(
+        context: Context
+    ) = HeaderInterceptor(context)
+
     @Singleton
     @Provides
     fun provideOkhttpClient(
-        logger: HttpLoggingInterceptor
+        logger: HttpLoggingInterceptor,
+        headerInterceptor: HeaderInterceptor,
+        cache: Cache
     ): OkHttpClient {
         return OkHttpClient.Builder().apply {
-            addInterceptor(HeaderInterceptor())
+            cache(cache)
+            addInterceptor(headerInterceptor)
             addInterceptor(logger)
         }.build()
     }

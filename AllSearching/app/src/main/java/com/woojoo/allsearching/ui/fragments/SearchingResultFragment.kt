@@ -44,11 +44,7 @@ class SearchingResultFragment :
 
     private fun setObserver() {
         viewModel.insertToRoom.observe(viewLifecycleOwner) {
-            Toast.makeText(
-                requireContext(),
-                requireContext().getString(R.string.string_favorite),
-                Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(requireContext(), requireContext().getString(R.string.string_favorite), Toast.LENGTH_SHORT).show()
         }
 
         viewModel.insertResult.observe(viewLifecycleOwner) { result ->

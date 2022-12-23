@@ -10,13 +10,13 @@ import com.woojoo.allsearching.utils.SingleLiveEvent
 import com.woojoo.allsearching.domain.entites.Researching
 import com.woojoo.allsearching.domain.usecases.GetDeleteResearchingItem
 import com.woojoo.allsearching.domain.usecases.GetAllResearchingUseCase
+import com.woojoo.allsearching.domain.usecases.NotifyQueueUseCase
 import com.woojoo.allsearching.domain.usecases.NotifyResearchingUseCase
 import com.woojoo.allsearching.utils.LoadStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,7 +24,8 @@ import javax.inject.Inject
 class StorageViewModel @Inject constructor(
     private val getAllResearchingUseCase: GetAllResearchingUseCase,
     private val getDeleteResearchingItem: GetDeleteResearchingItem,
-    private val notifyResearchingUseCase: NotifyResearchingUseCase
+    private val notifyResearchingUseCase: NotifyResearchingUseCase,
+    private val notifyQueueUseCase: NotifyQueueUseCase
 ) : ViewModel() {
 
     val localResearching: LiveData<List<Researching>>
@@ -59,11 +60,16 @@ class StorageViewModel @Inject constructor(
 
     fun notifyAddItem() {
         viewModelScope.launch(Dispatchers.IO) {
-            notifyResearchingUseCase().onEach { value ->
+            notifyResearchingUseCase().collectIndexed { index, value ->
                 Log.d("allSearching Project", "notifyValue : $value")
                 _notifyResearching.postValue(value)
             }
         }
+    }
+
+    fun isNotifyQueueEmpty(): Boolean {
+        Log.d("ywsong Tag", "$notifyQueueUseCase")
+        return notifyQueueUseCase()
     }
 
     fun setLoadStatusLoading() {

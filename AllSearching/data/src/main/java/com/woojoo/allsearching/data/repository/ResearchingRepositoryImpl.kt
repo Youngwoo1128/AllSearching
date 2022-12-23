@@ -95,4 +95,8 @@ class ResearchingRepositoryImpl @Inject constructor(
         deleteHashMap[item.url] = researching
     }
 
+    override fun isNotifyQueueEmpty(): Boolean {
+        return notificationQueue.isEmpty()
+    }
+
 }

@@ -20,7 +20,6 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
     private val viewModel by viewModels<StorageViewModel>()
     private lateinit var adapter: StorageAdapter
-    private var isInsertReady = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,13 +32,11 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
     override fun onResume() {
         super.onResume()
 
-        if (isInsertReady) {
+        if (!viewModel.isNotifyQueueEmpty()) {
             viewModel.notifyAddItem()
-        } else {
-            isInsertReady = true
         }
-
     }
+
 
     private fun setObserver() {
         viewModel.localResearching.observe(viewLifecycleOwner) { result ->

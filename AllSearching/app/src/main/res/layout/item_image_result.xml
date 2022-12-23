@@ -8,6 +8,9 @@
         <variable
             name="item"
             type="com.woojoo.allsearching.domain.entites.Documents" />
+        <variable
+            name="callback"
+            type="com.woojoo.allsearching.ui.adapter.SearchingResultAdapter.InsertSearchingData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +20,8 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:onClickListener="@{() -> callback.onClick(item)}" >
 
         <ImageView
             android:id="@+id/imageView_thumnail"
