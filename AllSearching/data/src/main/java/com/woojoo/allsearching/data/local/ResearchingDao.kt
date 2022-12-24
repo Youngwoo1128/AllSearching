@@ -18,11 +18,4 @@ interface ResearchingDao {
 
     @Delete
     suspend fun delete(researchingEntity: ResearchingEntity)
-
-//    @Query("DELETE FROM ${ResearchingEntity.TABLE_NAME} WHERE id = :id")
-//    suspend fun delete(id: Long)
-
-
-    @Update
-    suspend fun update(researchingEntity: ResearchingEntity)
 }

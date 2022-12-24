@@ -11,7 +11,7 @@ class GetDeleteResearchingItem @Inject constructor(
 ) {
 
     suspend operator fun invoke(item: Researching): Flow<DeleteResult> {
-        return researchingRepository.deleteItem(item)
+        return researchingRepository.deleteResearching(item)
     }
 
 }

@@ -26,21 +26,18 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
 
         setObserver()
         initView()
-        viewModel.getLocalResearchingList()
     }
 
     override fun onResume() {
         super.onResume()
 
-        if (!viewModel.isNotifyQueueEmpty()) {
-            viewModel.notifyAddItem()
-        }
+        viewModel.getLocalResearchingList()
     }
 
 
     private fun setObserver() {
         viewModel.localResearching.observe(viewLifecycleOwner) { result ->
-            adapter.addNewItem(result)
+            adapter.addDBList(result)
         }
 
         viewModel.deletedItem.observe(viewLifecycleOwner) { deleteResult ->
@@ -49,10 +46,6 @@ class StorageFragment: BindingFragment<FragmentStorageBinding>(R.layout.fragment
                 else -> Toast.makeText(requireContext(), getString(R.string.delete_exception), Toast.LENGTH_SHORT).show()
             }
             viewModel.setLoadStatusFinish()
-        }
-
-        viewModel.notifyResearching.observe(viewLifecycleOwner) { item ->
-            adapter.insertNewItem(item)
         }
 
         viewModel.loadStatus.observe(viewLifecycleOwner) { loadStatus ->

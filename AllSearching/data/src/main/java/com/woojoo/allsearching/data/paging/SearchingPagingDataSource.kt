@@ -5,7 +5,6 @@ import androidx.paging.*
 import com.woojoo.allsearching.data.mapping.searchingResultMapping
 import com.woojoo.allsearching.data.network.NetworkAPI
 import com.woojoo.allsearching.domain.entites.Documents
-import retrofit2.HttpException
 
 /*
 * PagingSource 를 만들기 위해서는 Paging Key인 데이터 로드를 위한 식별자와 데이터를 정의해야한다.
