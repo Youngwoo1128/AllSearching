@@ -11,6 +11,7 @@ class ImageResultViewHolder(val binding: ItemImageResultBinding): RecyclerView.V
 
     fun onBind(item: Documents, callback: SearchingResultAdapter.InsertSearchingData) {
         binding.item = item
+        binding.callback = callback
 
         Glide.with(binding.root.context)
             .load(item.thumbnail)
